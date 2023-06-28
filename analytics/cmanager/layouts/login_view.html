@@ -1,0 +1,67 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Pradeep G                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Mahendra A     Date : 06/05/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("common/header.html");
+
+?>
+<div class="body3" color="white">
+    <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+            <div id="main_container">
+                <?php
+                if(isset($sMsg) && ($sMsg != "")){
+                echo $sMsg;
+                }
+                ?>
+                <div class="login_form">
+                    <form action="" method="post" class="niceform" id="loginscreen">
+                        <center> <h3>Admin Login</h3></center>
+                        <fieldset>
+
+                            <dl>
+                                <dt><label for="username">Username:</label></dt>
+                                <dd><input type="text" name="username" id="username" size="35" autofocus required onkeypress="checklogin();"/></dd>
+                            </dl>
+                            <dl>
+                                <dt><label for="pwd">Password:</label></dt>
+                                <dd><input type="password" name="pwd" id="pwd" size="35" required onkeypress="checklogin();"/></dd>
+                            </dl>
+                            <dl>
+                                <dd>
+                                    <div class="camp-form">
+                                        <button name="action" class="button2" type="submit" value="login" onkeypress="checklogin();">Login</button>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </fieldset>
+
+                    </form>
+
+                </div>
+
+                <!--                <div class="footer_login">
+                                    <div class="left_footer_login">Powered by <a href="http://www.ideabytes.in">Ideabytes</a></div>
+                                </div>-->
+            </div>
+        </article>
+    </div>
+    <!-- content end -->
+</div>
+
+<?php
+include("common/footer.html");
+?>
+<script>
+    $(document).ready(function() {
+        $('#login').hide();
+    });
+</script>

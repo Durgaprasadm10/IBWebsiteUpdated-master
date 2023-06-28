@@ -1,0 +1,142 @@
+<?php
+/*************************************************************************
+ * Ideabytes Software India Pvt Ltd.                        		     *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          		 *
+ * Created Date : 18/08/2014                                      		 *
+ * Created By : Sri Ravi Teja                                            *
+ * Vision : Project Visitortracking MVC                              	 *  
+ * Modified by : Sri Ravi Teja    Date : 01/09/2014  Version : 2.0   	 *
+ * Description : Displays the clicks within the month range              *
+ ************************************************************************/
+
+	include ("common/header.html");
+?>
+
+
+<div id="box">
+    <form name="selectbymonth" action="analytics_bymonthclicks.php" method="post">
+		Select Year : 
+		<select name="selectedyear" id="selectedyear" class="field" onchange="document.selectbymonth.submit();">
+			<?php
+			if ($stmtC->rowCount() > 0) 
+			{
+				foreach ($analyticsDataC as $aData) 
+				{
+					$selectedC = ($aData["year"] == @$selectedyear) ? "selected" : "";
+					echo "<option " . $selectedC . " value='" . $aData["year"] . "'>" . $aData["year"] . "</option>";
+				}
+			}
+			?>
+		</select> 
+			Select Month :
+			<?php
+				echo '<select name="selectedmonth" id="selectedmonth" class="field" onchange="document.selectbymonth.submit();" >';
+				$iMonth = 1;
+				foreach($monthsArray as $data)
+				{
+					if($iMonth == 1)
+					{
+						$month = $data;
+					}
+					if(in_array($selectedmonth,$monthsArray))
+					{
+						$selectedmonth = $selectedmonth;
+					}
+					else
+					{
+						if($selectedyear == date('Y'))
+						{
+							$selectedmonth =  date('n');
+						}
+						else
+						{
+							$selectedmonth = $month;
+						}
+					}
+					$selectedM = ($data == $selectedmonth) ? "selected" : "";
+					echo "<option " . $selectedM . "  value='" . $data . "'>" . $months_names[$data] . "</option>";
+					$iMonth++;
+				}
+			?>
+				</select>	
+				
+	</form>
+			
+	<div class="table">
+		<!-- Box Head -->
+		<div class="box-head">
+			<div class="left">Monthly Reports for <class style="font-weight: bold; font-size: 17px"><?php echo $months_names[$selectedmonth]; ?></class>  year: <class style="font-weight: bold; font-size: 17px"><?php echo $selectedyear; ?></class> & Total count of the month: <class style="font-weight: bold; font-size: 17px"><?php echo $count; ?></class></div>
+		</div>
+
+		<!-- End Box Head -->	
+		<?php
+		echo "<table id='example' class='display' >";
+
+		echo "<thead><tr><th>Date</th><th>Time</th><th>Country</th><th>City</th><th>Ip Address</th><th>Visited Page</th><th>ReferringPage</th></tr></thead><tbody>";
+		if($count > 0){
+			foreach ($analyticsData as $aData) {
+				$key = array_search($coockie, $timezone_array);
+				$tz = str_replace('-', '', $key );
+				if ($tz == $key) {
+					$time = date("d-m-Y H:i:s", strtotime($aData['datetime']) + ((int) $tz) * 60 * 60);
+				} else {
+					$time = date("d-m-Y H:i:s", strtotime($aData['datetime']) - ((int) $tz) * 60 * 60);
+				}
+
+				$date1 = html_escaped_output(date("d-m-Y", strtotime($aData['datetime1'])));
+				$time1 = html_escaped_output(date("H:i:s", strtotime($aData['datetime1'])));
+				echo "<tr><td width='100px'>" . $date1 . "</td><td>" . $time1 . "</td><td>" . $aData['country'] . "</td><td>" . $aData['city'] . "</td><td>" . $aData['ip_address'] . "</td><td>" . $aData['page_name'] . "</td><td>" . minifiedAnchor($aData['page_referer']) . "</td></tr>";
+			}
+		} else {
+			echo "<tr><td colspan='7' align='Center'>No analytics found</td></tr>";
+		}
+		echo "</tbody></table>";
+		?>
+
+	</div>
+	<?php
+		include ("common/footer.html");
+	?>
+</div>
+<script>
+$(document).ready(function() {
+<?php if($count > 0){ ?>
+    $('#example').dataTable({
+		"sPaginationType": "full_numbers"
+	});
+<?php } ?>   
+});
+
+</script>
+<script>
+ function exportExcel() {
+        document.searchby.action = "analytics_bymonth_excel.php?selectedmonth="+<?php echo $selectedmonth; ?>+"&selectedyear="+<?php echo $selectedyear; ?>;
+        document.searchby.target = "_blank";
+        document.searchby.submit();
+        document.searchby.target = "";
+        document.searchby.action = "analytics_bymonthclicks.php";
+        return false;
+    }
+	function makepdf() {
+        document.searchby.action = "analytics_bymonth_pdf.php?selectedmonth="+<?php echo $selectedmonth; ?>+"&selectedyear="+<?php echo $selectedyear; ?>;
+        document.searchby.target = "_blank";
+        document.searchby.submit();
+		return false;
+    }
+	
+	/*function paging(pageid){		
+		document.selectbymonth.action = "analytics_bymonthclicks.php?page="+pageid;
+        document.selectbymonth.submit();
+	}*/
+</script>
+<?php
+if(!($count > 0)){
+?>
+	<script>
+	$(document).ready(function() {
+	   $('#excelpdfDiv').hide();
+	});
+	</script>
+<?php
+}
+?>

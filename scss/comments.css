@@ -1,0 +1,80 @@
+/*------------------------------------------------------
+     Comments
+------------------------------------------------------*/
+/* ----------------------------------------------------------------------
+	Base Colors
+-------------------------------------------------------------------------*/
+/*Colors*/
+/*Typography*/
+/*Header*/
+/*Side Panel*/
+/*Margins*/
+/*Transitions*/
+.comments {
+  margin: 0; }
+  .comments .comment_number {
+    font-size: 18px;
+    margin: 0 0 30px; }
+    .comments .comment_number span {
+      color: #1abc9c; }
+  .comments .comment {
+    padding: 10px 0;
+    background-color: #fff; }
+    .comments .comment .image {
+      border-radius: 65px;
+      display: block;
+      float: left;
+      height: 65px;
+      overflow: hidden;
+      width: 65px; }
+    .comments .comment .text {
+      padding: 0 0 0 86px;
+      min-height: 80px;
+      position: relative; }
+      .comments .comment .text .name {
+        display: block;
+        color: #303030;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: -4px; }
+    .comments .comment .comment_date {
+      color: #888;
+      font-size: 12px; }
+    .comments .comment .text .comment-reply-link {
+      color: #1abc9c;
+      font-size: 9px;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0 0 0 5px; }
+    .comments .comment .text .text_holder {
+      display: block;
+      margin: 3px 0 0 0; }
+    .comments .comment .comment {
+      margin-left: 90px; }
+
+.post-item .comments {
+  padding: 40px 0;
+  border-top: 1px solid #eee; }
+
+.respond-form {
+  padding-top: 40px; }
+
+.respond-comment {
+  font-size: 18px;
+  margin: 0 0 30px; }
+  .respond-comment span {
+    color: #1abc9c; }
+
+@media (max-width: 991px) {
+  .comments {
+    padding: 22px 0 30px;
+    margin: 0; }
+    .comments .comment .image {
+      border-radius: 48px;
+      height: 48px;
+      width: 48px;
+      margin-right: 14px; }
+    .comments .comment .text {
+      padding: 0; }
+    .comments .comment .comment {
+      margin-left: 30px; } }

@@ -1,0 +1,12 @@
+/* ----------------------------------------------------------------------
+	Base Colors
+-------------------------------------------------------------------------*/
+/*Colors*/
+/*Typography*/
+/*Header*/
+/*Side Panel*/
+/*Margins*/
+/*Transitions*/
+.list-icon-colored > li:before,
+.list-icon-colored > li > i {
+  color: #1abc9c !important; }

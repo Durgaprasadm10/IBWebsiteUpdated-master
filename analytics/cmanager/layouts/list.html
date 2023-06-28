@@ -1,0 +1,71 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Pradeep G                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Pradeep G     Date : 21/04/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("common/header.html");
+
+?>
+<link rel="stylesheet" href="layouts/css/table.css">
+
+<div class="body3">
+
+    <div class="main zerogrid">
+        <br>
+        <?php
+        if(isset($sMsg) && ($sMsg != "")){
+        echo $sMsg;
+        }
+        ?>
+        <!-- content -->
+        <article id="content">
+            <div class="CSSTableGenerator" >
+                <table>
+                    <?php
+                    echo "<tr>";
+                    echo "<td>Sno</td>";
+                    echo "<td>List Name</td>";
+                    echo "<td>Actions</td>";
+                    echo "</tr>";
+                    if(@$count > 0){
+                    $iSno = (($page-1) * ROW_PER_PAGE) + 1;
+                    foreach($eventList  as $data){
+                    echo "<tr><td style='text-align:center'>".$iSno."</td>";        
+                    echo "<td style='text-align:center'><a href='listuser.php?action=view&list=".$data['id']."'>".$data['listname']."</a></td>";
+                    echo "<td align='right' style='width:65px;'><a href='listmanagement.php?id=".$data['id']."&action=editForm&page=".$page.">'>
+                    <img src='layouts/images/user_edit.png' alt='' title='' border='0' /></a>
+                    <a href='listmanagement.php?id=".$data['id']."&action=delete&page=".$page."' class='ask'><img src='layouts/images/trash.png' alt='' title='' border='0'/></a></td></tr>";
+                    $iSno++;
+                    }
+                    }else{
+                    echo "<tr><td colspan='3' align='center'><center>No List Found</center></td></tr>";
+                    }
+                    ?>
+                </table>
+            </div>
+            <br>
+            <?php
+            //Display pagging
+            if(@$count > 0){
+            echo doPages(ROW_PER_PAGE, 'listmanagement.php', $searchstring, $count);
+            }
+            ?>
+            <form action="#" class="camp-form">			
+                <button type="button" onclick="window.location.href = 'dashboard.php'" class="button2">Back</button>
+                <button type="button" onclick="window.location.href = 'listmanagement.php?action=addForm&page=<?php echo ceil($count/ROW_PER_PAGE);?>'" class="button2">Add List</button>	
+            </form>
+            <br>
+        </article>
+        <!-- content end -->
+    </div>
+</div>
+
+<?php
+include("common/footer.html");
+?>

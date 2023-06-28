@@ -1,0 +1,102 @@
+<?php
+/*************************************************************************
+ * Ideabytes Software India Pvt Ltd.                        		     *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          		 *
+ * Created Date : 18/08/2014                                      		 *
+ * Created By : Sri Ravi Teja                                            *
+ * Vision : Project Visitortracking MVC                              	 *  
+ * Modified by : Sri Ravi Teja    Date : 02/09/2014  Version : 2.0   	 *
+ * Description : Displays no. of clicks within dates                     *
+ ************************************************************************/
+
+	include ("common/header1.html");
+	include ("search_date_range_filters.html");
+
+				if(isset($_POST['sbtn']))
+				{
+					
+					echo'<div class="table">				
+						<!-- Box Head -->
+					<div class="box-head" style="width:100%;">
+					<h3 class="left"><br>Date range wise Reports</h3>
+					</div>
+					<table width="50%" border="0" cellspacing="0" cellpadding="0">';
+					echo "<tr><th>Date</th><th>Views</th></tr>";
+					if($count > 0)
+					{
+						foreach($analyticsData as $aData)
+						{
+							echo "<tr><td>".$aData['dates']."</td><td><span style='color:red;'>".$aData['clicks']."</span></td></tr>";
+						}
+					}
+					else
+					{
+						echo "<tr><td colspan='3' align='center'>No analytics found</td></tr>";
+						?><script>
+						$(document).ready(function() {
+						$('#excelpdfDiv').hide();
+						});
+						</script>
+						<?php
+					} 
+					echo"</table> </div>";
+				}
+			
+		include ("common/footer.html");
+	?>
+	
+	<script>
+
+$(function() {
+
+$( "#fromdate" ).datepicker({
+
+changeMonth: true,
+
+numberOfMonths: 1,
+
+dateFormat: "yy-mm-dd",
+
+onClose: function( selectedDate ) {
+
+	$( "#todate" ).datepicker( "option", "minDate", selectedDate );
+
+}
+
+});
+
+$( "#todate" ).datepicker({
+
+changeMonth: true,
+
+numberOfMonths: 1,
+
+dateFormat: "yy-mm-dd",
+
+onClose: function( selectedDate ) {
+
+	$( "#fromdate" ).datepicker( "option", "maxDate", selectedDate );
+
+}
+
+});
+
+});
+
+</script>
+<script>
+ function exportExcel() {
+        document.searchby.action = "analytics_bydaterange_excel.php";
+        document.searchby.target = "_blank";
+        document.searchby.submit();
+        document.searchby.target = "";
+        document.searchby.action = "analytics_bydaterange.php";
+        return false;
+    }
+	function makepdf() {
+        document.searchby.action = "analytics_bydaterange_pdf.php";
+        document.searchby.target = "_blank";
+        document.searchby.submit();
+		return false;
+    }
+</script>

@@ -1,0 +1,197 @@
+<?php
+/******************************************************************
+ * Ideabytes Software India Pvt Ltd.                              *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          *
+ * Created Date : 14/08/2014                                      *
+ * Created By : Sri Ravi Teja                                     *
+ * Vision : Project Visitortracking MVC                           *  
+ * Modified by : Sri Ravi Teja Date : 14/08/2014   Version : 2.0  *
+ * Description : this page produce given country analytics        *
+ *****************************************************************/
+include ("common/header1.html");
+//include ("layouts/search_filters.html");
+$pageName =  substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+?>
+<div id="wrapper">
+            <div id="content">
+       			<div id="rightnow">
+                    <h3 class="reallynow">
+					<?php
+						@$country_name_input = (isset($_POST['country']) && ($_POST['country'] != "")) ? $_POST['country'] : $_GET['country'];
+							echo '<span>
+							<form name="searchby"  method="post">
+								<a href="" class="report" value="Export to EXCEL" onclick= "return makepdf()">Report</a>
+								<a href="" class="report_seo" value="Export to PDF" onclick="return exportExcel()">Report</a>';
+								echo '<input type="hidden" name="Countryhidden" id="Countryhidden" value="'.$country_name_input.'">';
+							echo '</form>
+							</span>';
+						
+					?>
+					<br />
+					</h3>				    
+			  </div>
+              
+<div id="content">
+	Order Type : <br>
+	<form name="searchfilter" action=<?php echo $actual_link; ?> method="post">
+		<div id="itemRows1" style="float:left">
+			<?php
+			$oArray = array("DATE(vi.datetime)" => "Date", "vi.country" => "Country", "vi.city" => "City", "vi.ip_address" => "IPAddress", "p.page_name" => "Page");
+			$oArray1 = array("DESC" => "Des", "ASC" => "Asc");
+			if (count(@$_POST['order_type']) > 0) 
+			{
+				$oC = 0;
+				foreach(@$_POST['order_type'] as $value)
+				{
+					echo '
+					<div id="rowNum1'.$oC.'" style="float:left;">
+						<span>
+							<select name="order_type[]" id="order_type" class="field"> onchange="this.form.submit()"';							
+							foreach ($oArray as $order => $val) 
+							{
+								$selectedO = ($order == $value) ? "selected" : "";
+								echo '<option ' . $selectedO . ' value="' . $order . '">' . $val . '</option>';
+							}
+							echo '		</select><select name="order_by[]" id="order_by" class="field" onchange="this.form.submit()">';
+							foreach ($oArray1 as $order1 => $val1) 
+							{
+								$selectedO1 = ($order1 == $_POST['order_by'][$oC]) ? "selected" : "";
+								echo '<option ' . $selectedO1 . ' value="' . $order1 . '">' . $val1 . '</option>';
+							}
+							echo '</select>
+						</span>
+						<span>';
+								
+								if($oC == 0)
+								{
+									echo '<span onclick="addRow1(this.form);" class="designadd">Add</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+								}
+								else
+								{
+									echo '<span onclick="removeRow1('.$oC.');" class="designremove">Remove</span>';
+								}
+								echo '
+						</span> 
+					</div>';
+					$oC++;
+				}
+			}
+			else
+			{
+				echo '<div id="rowNum10" style="float:left;">
+						<span>
+							<select name="order_type[]" id="order_type" class="field">';							
+						foreach ($oArray as $order => $val) 
+						{
+							echo '<option ' . @$selectedO . ' value="' . $order . '">' . $val . '</option>';
+						}
+						echo '		</select><select name="order_by[]" id="order_by" class="field">';
+						foreach ($oArray1 as $order1 => $val1) 
+						{
+							@$selectedO1 = ($order1 == $value1) ? "selected" : "";
+							echo '<option ' . $selectedO1 . ' value="' . $order1 . '">' . $val1 . '</option>';
+						}
+						echo '</select></span><span><span onclick="addRow1(this.form);" class="designadd">Add</span></span> 
+					</div>';
+			}
+			$final_query = '';
+			$selectedO = "DESC";
+			?>
+		</div>
+		<br>
+		<div class="tejago">
+			<span style="float:right;margin-right:700px;"><input type="submit" name="sbtn12" value="GO"></span>
+		</div>
+	</form>
+</div>
+	<?php
+		echo "<h2 style='font-size:18px;'>Detailed Reports For Country <span style='color:red;'>".$Country."</span></h2><br>";
+		echo "<span style='font-size:13px;'>( Total Visit Count for the Country = <span style='color:red;'>".$no_of_rows_for_count."</span>)</span><br><br>";
+		//echo "<br><br>";
+	?>
+	
+ <div id="box">
+                	<table width="90%">
+						<thead>
+							<tr>
+                            	<th><a href="#">Date<img src="layouts/images/icons/arrow_down_mini.gif" width="16" height="16" align="absmiddle" /></a></th>
+                            	<th><a href="#">Time</a></th>
+                                <th><a href="#">IP Address</a></th>
+                                <th width="10%"><a href="#">City</a></th>
+                                <th width="10%"><a href="#">Country</a></th>
+                                <th width="15%"><a href="#">Visited Page</a></th>
+                                <th><a href="#">Referring Page</a></th>
+                            </tr>
+						</thead>
+						<tbody>
+							
+								<?php
+										if ($no_of_rows_for_count > 0) 
+										{
+											
+											foreach ($analyticsData as $aData) 
+											{
+												$datetime = date("d-m-Y H:i:s", strtotime($aData['dtTimezone']));
+												$date = html_escaped_output(date("d-m-Y", strtotime($datetime)));
+												$time = html_escaped_output(date("H:i:s", strtotime($datetime)));
+												echo "<tr><td>" . $date . "</td><td>" . $time . "</td><td>" . $aData['ip_address'] . "</td><td>" . $aData['city'] . "</td><td>" . $aData['country'] . "</td><td>" . $aData['page_name'] . "</td><td>" . minifiedAnchor($aData['page_referer']) . "</td></tr>";
+											}
+										}
+										else
+										{
+											echo "<tr><td colspan='7' align='Center'>No analytics found</td></tr>";
+										}
+							
+								?>
+                            	
+						</tbody>
+					</table>
+					<div id="pager">
+					<?php
+					//Display pagging
+					if($no_of_rows_for_count > 0){
+						echo doPages(ROW_PER_PAGE, 'analytics_bycountry.php', $searchstring,$no_of_rows_for_count);
+					}
+					?>
+					</div>
+					
+            
+<?php
+include ("common/footer.html");
+?>
+
+<script>
+ function exportExcel() {
+        document.searchby.action = "country_analytics_excel.php";
+        document.searchby.target = "_blank";
+        document.searchby.submit();
+        document.searchby.target = "";
+        document.searchby.action = "page_analytics.php";
+        return false;
+    }
+	 function makepdf() {
+        document.searchby.action = "country_analytics_pdf.php";
+        document.searchby.target = "_blank";
+        document.searchby.submit();
+        document.searchby.target = "";
+        return false;
+    }
+</script>
+<script>
+$(document).ready(function() {
+   $('#DropDownTimezone1').hide();
+});
+</script>
+
+<?php
+/*
+if (!($stmt->rowCount() > 0)){
+?>
+	<script>
+	$(document).ready(function() {
+	   $('#excelpdfDiv').hide();
+	});
+	</script>
+<?php
+}
+*/?>

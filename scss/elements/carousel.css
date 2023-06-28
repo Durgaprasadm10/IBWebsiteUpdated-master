@@ -1,0 +1,228 @@
+/* ----------------------------------------------------------------
+Carousels
+-----------------------------------------------------------------*/
+/* ----------------------------------------------------------------------
+	Base Colors
+-------------------------------------------------------------------------*/
+/*Colors*/
+/*Typography*/
+/*Header*/
+/*Side Panel*/
+/*Margins*/
+/*Transitions*/
+/* Owl Carousel - Controls
+-----------------------------------------------------------------*/
+.owl-carousel .owl-dots,
+.owl-carousel .owl-nav {
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1; }
+.owl-carousel .owl-nav [class*="owl-"] {
+  width: 42px;
+  height: 42px;
+  line-height: 42px;
+  margin: -23px 0 0;
+  display: block;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  cursor: pointer;
+  text-align: center;
+  transition: all .2s ease 0s;
+  color: #262626;
+  background-color: #ffffff;
+  text-align: center;
+  z-index: 200;
+  border: 2px solid #ffffff;
+  box-sizing: initial;
+  opacity: 0;
+  border-radius: 50%; }
+  .owl-carousel .owl-nav [class*="owl-"] i {
+    line-height: 42px;
+    color: #262626;
+    font-size: 22px; }
+  .owl-carousel .owl-nav [class*="owl-"]:hover {
+    background-color: #1abc9c;
+    border-color: #1abc9c; }
+    .owl-carousel .owl-nav [class*="owl-"]:hover i {
+      color: #ffffff; }
+.owl-carousel .owl-nav .owl-next {
+  right: 0px; }
+  .owl-carousel .owl-nav .owl-next .fa-angle-right {
+    margin-right: -2px; }
+.owl-carousel .owl-nav .owl-prev {
+  left: 0px; }
+  .owl-carousel .owl-nav .owl-prev .fa-angle-left {
+    margin-left: -2px; }
+.owl-carousel:hover .owl-next {
+  left: auto;
+  right: 10px;
+  opacity: 1; }
+.owl-carousel:hover .owl-prev {
+  right: auto;
+  left: 10px;
+  opacity: 1; }
+.owl-carousel.arrows-visibile .owl-next {
+  left: auto;
+  right: 10px;
+  opacity: 1; }
+.owl-carousel.arrows-visibile .owl-prev {
+  right: auto;
+  left: 10px;
+  opacity: 1; }
+.owl-carousel.arrows-dark .owl-nav [class*="owl-"] {
+  color: #ffffff;
+  border-color: #252525;
+  background-color: #252525; }
+  .owl-carousel.arrows-dark .owl-nav [class*="owl-"] i {
+    color: #ffffff; }
+  .owl-carousel.arrows-dark .owl-nav [class*="owl-"]:hover {
+    background-color: #252525; }
+    .owl-carousel.arrows-dark .owl-nav [class*="owl-"]:hover i {
+      color: #ffffff; }
+.owl-carousel.arrows-grey .owl-nav [class*="owl-"] {
+  color: #252525;
+  border: 2px solid #9d9d9d;
+  background-color: #9d9d9d; }
+  .owl-carousel.arrows-grey .owl-nav [class*="owl-"] i {
+    color: #9d9d9d; }
+  .owl-carousel.arrows-grey .owl-nav [class*="owl-"]:hover {
+    background-color: #9d9d9d; }
+    .owl-carousel.arrows-grey .owl-nav [class*="owl-"]:hover i {
+      color: #252525; }
+.owl-carousel.arrows-large .owl-nav [class*="owl-"] {
+  width: 78px;
+  height: 78px;
+  line-height: 78px; }
+  .owl-carousel.arrows-large .owl-nav [class*="owl-"] i {
+    line-height: 78px;
+    font-size: 28px; }
+.owl-carousel.arrows-creative .owl-nav [class*="owl-"] {
+  background-color: transparent;
+  border: 0; }
+  .owl-carousel.arrows-creative .owl-nav [class*="owl-"] i {
+    color: #ffffff; }
+  .owl-carousel.arrows-creative .owl-nav [class*="owl-"]:hover {
+    color: #262626;
+    background-color: #1abc9c; }
+.owl-carousel.arrows-only .owl-nav [class*="owl-"] {
+  border: 0; }
+  .owl-carousel.arrows-only .owl-nav [class*="owl-"] i {
+    font-size: 28px; }
+
+@media (max-width: 991px) {
+  .owl-carousel .owl-nav [class*="owl-"] {
+    width: 32px;
+    height: 32px;
+    line-height: 32px; }
+    .owl-carousel .owl-nav [class*="owl-"] i {
+      line-height: 32px;
+      font-size: 18px; } }
+/* Carousel dots */
+.owl-carousel {
+  /* dots inside */
+  /* dots top */
+  /* dots dark */
+  /* dots dark */ }
+  .owl-carousel .owl-controls .owl-dots {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    position: relative; }
+    .owl-carousel .owl-controls .owl-dots .owl-dot {
+      display: inline-block;
+      zoom: 1;
+      *display: inline; }
+      .owl-carousel .owl-controls .owl-dots .owl-dot span {
+        position: relative;
+        display: block;
+        float: left;
+        margin: 0 4px;
+        width: 10px;
+        height: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: transparent;
+        box-shadow: inset 0 0 0 2px #cccccc;
+        transition: background 0.3s ease; }
+        .owl-carousel .owl-controls .owl-dots .owl-dot span:after {
+          outline: medium none;
+          text-indent: -999em;
+          border-radius: 50%;
+          overflow: hidden;
+          content: '';
+          position: absolute;
+          bottom: 0;
+          height: 0;
+          left: 0;
+          width: 100%;
+          background-color: #cccccc;
+          box-shadow: 0 0 1px #cccccc;
+          transition: height 0.3s ease; }
+      .owl-carousel .owl-controls .owl-dots .owl-dot.active span:after {
+        height: 100%; }
+  .owl-carousel.dots-inside .owl-controls {
+    height: 0; }
+  .owl-carousel.dots-inside .owl-dots {
+    bottom: 30px;
+    margin-bottom: 0;
+    margin-top: 0; }
+  .owl-carousel.dots-inside-top .owl-dots {
+    position: absolute;
+    right: 20px;
+    top: 20px; }
+  .owl-carousel.dots-outside-top .owl-dots {
+    position: absolute;
+    right: 0;
+    top: -46px; }
+  .owl-carousel.dots-dark .owl-dots .owl-dot span {
+    box-shadow: inset 0 0 0 2px #252525; }
+    .owl-carousel.dots-dark .owl-dots .owl-dot span:after {
+      background-color: #252525; }
+  .owl-carousel.dots-dark .owl-dots .owl-dot.active span:after {
+    height: 100%; }
+  .owl-carousel.dots-grey .owl-dots .owl-dot span {
+    box-shadow: inset 0 0 0 2px #9d9d9d; }
+    .owl-carousel.dots-grey .owl-dots .owl-dot span:after {
+      background-color: #9d9d9d; }
+  .owl-carousel.dots-grey .owl-dots .owl-dot.active span:after {
+    height: 100%; }
+  .owl-carousel.dots-creative .owl-controls {
+    height: 0; }
+  .owl-carousel.dots-creative .owl-dots {
+    bottom: 30px;
+    margin-bottom: 0;
+    margin-top: 0; }
+    .owl-carousel.dots-creative .owl-dots .owl-dot span {
+      opacity: 0.5;
+      box-shadow: none;
+      border-radius: 0;
+      background-color: #ffffff;
+      height: 4px;
+      width: 30px; }
+      .owl-carousel.dots-creative .owl-dots .owl-dot span:after {
+        border-radius: 0;
+        background-color: #ffffff; }
+    .owl-carousel.dots-creative .owl-dots .owl-dot.active span {
+      opacity: 1; }
+
+.carousel-promotion .owl-stage-outer {
+  overflow: unset !important; }
+  .carousel-promotion .owl-stage-outer .owl-item {
+    opacity: .3;
+    transition: opacity 400ms ease; }
+    .carousel-promotion .owl-stage-outer .owl-item.active {
+      opacity: 1; }
+
+/* Owl Carousel - Settings
+-----------------------------------------------------------------*/
+.carousel {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease; }
+  .carousel.carousel-loaded {
+    opacity: 1;
+    visibility: visible; }
+
+.item-video {
+  height: 420px; }

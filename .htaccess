@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond "%{HTTP_HOST}" "ideabytes\.com" [NC]
+RewriteRule "(.*)" "https://www.ideabytes.com/$1" [L,R=301]
+
+

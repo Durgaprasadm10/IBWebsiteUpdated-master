@@ -1,0 +1,72 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 21/05/2014                                  *
+* Created By : Mahendra                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Maendra A     Date : 21/05/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("common/header.html");
+
+?>
+<link rel="stylesheet" href="layouts/css/table.css" />
+<div class="body3">
+    <div class="main zerogrid">
+        <br>
+        <?php 
+        if(isset($sMsg) && ($sMsg != "")){
+        echo $sMsg;
+        }
+        ?>
+        <!-- content -->
+        <article id="content">
+
+            <!--            <h2>Manage Campaign</h2>-->
+            <div class="CSSTableGenerator">
+                <table id="rounded-corner" class="responsive" width="100%">
+                    <?php
+                    echo "<tr>";
+                    echo "<td>Sno</td>";
+                    echo "<td>Campaign Name</td>";
+                    echo "<td>Action</td>";
+                    echo "</tr>";
+                     $iSno = ((@$page-1) * ROW_PER_PAGE) + 1;
+                    if($count > 0){
+                    foreach($campaignList as $data){
+                    echo "<tr ><td style='text-align:center'>$iSno</td><td style='text-align:center'>".$data['campaign_name']."</td>";
+                    echo "<td align='right' style='width:65px;'>
+                    <a href='unprocessedcampaigns.php?action=delete&id=".$data['id']."&page=".$page."' class='ask'><img src='layouts/images/trash.png' alt='' title='' border='0' /></a></td></tr>";
+                    $iSno++;
+                    }
+                    }
+                    if(@$iSno == 1){                    
+                    echo "<tr>";
+                    echo "<td colspan='3' style='text-align:center'>No Unprocessed Campaigns</td>";
+                    echo "</tr>";
+                    }
+                    ?>
+                </table>
+            </div>
+            <br/>
+            <?php
+            //Display pagging
+            if(@$count > 0){
+            echo doPages(ROW_PER_PAGE, 'unprocessedcampaigns.php', $searchstring, $count);
+            }
+            ?>
+            <form  method="post" class="camp-form" enctype="multipart/form-data">
+                <button type = "button" class="button2" onclick="window.location.href = 'managecampaign.php'" >Back</button>
+                <button type = "button" class="button2" onclick="window.location.href = 'dashboard.php'" >Home</button>
+            </form>
+            <br>
+        </article>
+    </div>
+    <!-- content end -->
+</div>
+
+<?php
+include("common/footer.html");
+?>

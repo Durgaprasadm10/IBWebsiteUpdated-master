@@ -1,0 +1,88 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Pradeep G                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Mahendra A    Date : 04/06/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("common/header.html");
+?>
+<link rel="stylesheet" href="layouts/css/table.css" />
+<style>
+    .camp-form {
+        margin: 0;
+        outline: none;
+        box-shadow: 0 0 0 rgba(0,0,0,0);
+        font: 13px/1.55 'Open Sans', Helvetica, Arial, sans-serif;
+        color: #666;
+    }
+</style>
+<div class="body3">
+    <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+
+            <form action="createeditcampaign.php" method="post" class="camp-form" id="create_campaign_action" enctype="multipart/form-data">
+                <div class="CSSTableGenerator" >
+                    <table width="100%" class="responsive">
+                        <tr>
+                            <td>CampaignId</td>
+                            <td>Campaign Name</td>
+                            <td>Short Description</td>
+                            <td>Long Description</td>
+                        </tr>
+                        <?php
+                        if($count > 0){
+                        $iSno = (($page-1) * ROW_PER_PAGE) + 1;
+                        foreach($campaignList as $data){
+
+                        echo "<tr id='".$data['id']."' onClick='enableSelect(this);'><td>"."CID".$data['id']."</td>";
+                        echo "<td>".$data['campaign_name']."</td>";
+                        echo "<td>".$data['short_description']."</td>";
+                        echo "<td>".$data['long_description']."</td>";
+                        echo "</tr>";
+                        $iSno++;
+                        }
+
+                        }else{
+                        echo "<tr><td colspan='4' align='center'><center>No Campign Available</center></td></tr>";
+                        }
+                        ?>
+                    </table>
+                </div>
+                <button class='button2' name='action' id='select' value='select' type='submit' style='display:none;' >Select</button>&nbsp;&nbsp;&nbsp;
+                <button type = 'button' class='button2' onclick="window.location.href = 'createeditcampaign.php'" >Back</button>
+
+                <input type='hidden' name='selectedID' id='selectedID' />
+            </form>
+            <?php
+            //Display pagging
+            if(@$count > 0){
+            echo doPages(ROW_PER_PAGE, 'selectcampaign.php', $searchstring, $count);
+            }
+            ?>
+        </article>
+        <!-- content end -->
+    </div>
+</div>
+<script>
+    function enableSelect(val)
+    {
+        var selectedID = 0;
+        selectedID = val.id;
+        document.getElementById('select').style.display = 'inline';
+        document.getElementById('selectedID').value = selectedID;
+    }
+    $("table tr").click(function() {
+        $("table tr").css("background", ""); //reset to original color
+        $(this).css("background", "#FF6A33"); //apply the new color
+    });
+</script>
+
+<?php
+include("common/footer.html");
+?>

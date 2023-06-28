@@ -1,0 +1,254 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 16/06/2014                                      *
+* Created By : Mahendra Akula                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Maendra A     Date : 16/06/2014    Version : V1  *
+* Description : MapCampaign page - content area                         *
+*****************************************************************/
+include("common/header.html");
+
+?>
+<link rel="stylesheet" href="layouts/css/table.css" />
+<style>
+    .CSSTableGenerator tr:nth-child(2n+1) {
+        background-color: #FFF;
+    }
+    .CSSTableGenerator td {
+        border-style: none;
+        border-top-style: none;
+        border-right-style-value: none;
+        border-bottom-style: none;
+        border-left-style-value: none;
+        border-left-style-ltr-source: physical;
+        border-left-style-rtl-source: physical;
+        border-right-style-ltr-source: physical;
+        border-right-style-rtl-source: physical;
+    }
+    .camp-form {
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    }
+    .CSSTableGenerator {
+        box-shadow: 0px 0px 0px #FFF;
+        border: 1px none #000;
+        border-top-width: 1px;
+        border-right-width-value: 1px;
+        border-right-width-ltr-source: physical;
+        border-right-width-rtl-source: physical;
+        border-bottom-width: 1px;
+        border-left-width-value: 1px;
+        border-left-width-ltr-source: physical;
+        border-left-width-rtl-source: physical;
+        border-top-style: none;
+        border-right-style-value: none;
+        border-right-style-ltr-source: physical;
+        border-right-style-rtl-source: physical;
+        border-bottom-style: none;
+        border-left-style-value: none;
+        border-left-style-ltr-source: physical;
+        border-left-style-rtl-source: physical;
+        border-top-color: #000;
+        border-right-color-value: #000;
+        border-right-color-ltr-source: physical;
+        border-right-color-rtl-source: physical;
+        border-bottom-color: #000;
+        border-left-color-value: #000;
+        border-left-color-ltr-source: physical;
+        border-left-color-rtl-source: physical;
+        -moz-border-top-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-bottom-colors: none;
+        -moz-border-left-colors: none;
+        border-image-source: none;
+        border-image-slice: 100% 100% 100% 100%;
+        border-image-width: 1 1 1 1;
+        border-image-outset: 0 0 0 0;
+        border-image-repeat: stretch stretch;
+    }
+</style>
+<div class="body3">
+    <div class="main zerogrid">
+        <?php
+        if(isset($sMsg) && ($sMsg != "")){
+        echo $sMsg;
+        }
+        ?>
+        <!-- content -->
+        <article id="content">
+            <h2>Map Campaign</h2>
+            <form action="mapcampaign.php" method="post" class="niceform1" id="f1" enctype="multipart/form-data">
+                <fieldset>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">Process ID <span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <input type = "text" name="process_id" id="process_id" value="<?php echo $aCampaignDetails['pid']; ?>" style="width:300px;" readOnly>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">Campaign Name <span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <input type = "text" name="campaign_name" id="campaign_name" value="<?php echo @$campaignContent[0]['campaign_name']; ?>" style="width:300px;" readOnly>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">Start Date <span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <input type = "text" name="startdate" id="startdate" value="<?php echo $aCampaignDetails['start_date']; ?>" style="width:300px;" readOnly>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">End Date <span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <input type = "text" name="enddate" id="enddate" value="<?php echo $aCampaignDetails['end_date']; ?>" style="width:300px;" readOnly>
+                        </dd>
+                    </dl>
+                </fieldset>
+
+                <div class="CSSTableGenerator">
+                    <table class="responsive">
+                        <tr>
+                            <td>Identifier</td>
+                            <td>Map To</td>
+                        </tr>
+                        <?php
+                        $mapEnable = 0;
+                        if($mapping_status == 0)
+                        {
+                        if(sizeof($identifiersCM)>0)
+                        {
+                        $map = 0;
+                        foreach($identifiersCM as $data)
+                        {
+                        $identi = $data[0];
+                        if(strlen($identi)>4 && (substr_compare($identi,"_CM_",0,4) === 0))
+                        {
+                        echo "<tr><td><input type='text' name='identifiers[]' value=".$identi." style='width:100%;' readOnly /></td>";
+                        echo "<td><select name='mapValues[]' id='user_list' style='width:100%;' required>";
+                        echo "<option value=''>Select Mapping</option>";
+                        foreach($columnNames as $column)
+                        {
+                        if($column != 'ID' && $column != 'Subscription')
+                        echo "<option value=$column>$column</option>";
+                        }
+                        echo "</select></td></tr>"; 
+                        }
+                        if(strlen($identi)>4 && (substr_compare($identi,"http",0,4) === 0))
+                        {
+                        if(strpos($identi,'unsubscribe.php') == false)
+                        {
+                        try
+                        {
+                        echo "<tr><td><input type='text' name='identifiers[]' value=#".$identi." style='width:100%;' readOnly></td>";
+                        echo "<td><input type='text' value='#".$identi."' name='urlMapValues".$map."'  style='width:100%;' onchange='validateURL(this.name)' required /></td></tr>";
+                        }
+                        catch(Exception $e)
+                        {
+                        echo $e;
+                        }
+                        }else{
+                        echo "<tr><td><input type='hidden' name='identifiers[]' value=#".$identi." style='width:100%;' readOnly></td>";
+                        echo "<td><input type='hidden' value='#".$identi."' name='urlMapValues".$map."'  style='width:100%;' onchange='validateURL(this.name)' required /></td></tr>";
+                        }
+                        $map = $map+1;
+                        }
+
+                        }
+                        }
+                        else
+                        {
+                        echo "<tr><td colspan='2'>No Identifiers</td></tr>";
+                        $mapEnable = 1;
+                        }
+                        }
+                        else
+                        {
+                        echo "<tr><td colspan='2'>Already Mapping has done !!</td></tr>";
+                        $mapEnable = 1;
+                        }
+                        ?>
+                    </table>
+                </div>
+                <div class="camp-form">
+                    <dl class="submit" style="width:315px;">
+                        <?php
+                        if($tablename == "")
+                        $mapEnable = 1;
+                        if($mapEnable == 0)
+                        echo "<button class='button2' name='action' type='submit' value='map'>Map</button>&nbsp;&nbsp;&nbsp;&nbsp;";
+                        ?>
+                        <button type = "button" class="button2" onclick="window.location.href = 'managecampaign.php'" >Back</button>
+                        <input type='hidden' name='tn' value=<?php echo $tablename; ?> >
+                    </dl>
+                </div>
+            </form>
+        </article>
+    </div>
+    <!-- content end -->
+</div>
+<script>
+    function validateURL(urlName)
+    {
+        var urlVal = document.getElementsByName(urlName)[0].value;
+        var newUrlVal = urlVal.substr(0, 1);
+        var isURL;
+        if (newUrlVal == "#" && urlVal.length > 2)
+        {
+            isURL = isURLValid(urlVal);
+            if (!isURL)
+            {
+                document.getElementsByName(urlName)[0].value = "";
+            }
+            else
+            {
+                document.getElementsByName(urlName)[0].value = urlVal;
+            }
+        }
+        else
+        {
+            if (urlVal.length > 2)
+            {
+                isURL = isURLValid(urlVal);
+                if (!isURL)
+                {
+                    document.getElementsByName(urlName)[0].value = "";
+                }
+                else
+                {
+                    document.getElementsByName(urlName)[0].value = "#".concat(urlVal);
+                }
+            }
+            else
+            {
+                document.getElementsByName(urlName)[0].value = "";
+            }
+        }
+    }
+    function isURLValid(urlVal)
+    {
+        var myRegExp = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i;
+        var message;
+        if (!myRegExp.test(urlVal))
+        {
+            message = "Not a valid URL.";
+            return false;
+        }
+        else
+        {
+            message = "Its a valid URL.";
+            return true;
+        }
+    }
+</script>
+<?php
+include("common/footer.html");
+?>

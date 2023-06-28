@@ -1,0 +1,362 @@
+/* ----------------------------------------------------------------------
+	Base Colors
+-------------------------------------------------------------------------*/
+/*Colors*/
+/*Typography*/
+/*Header*/
+/*Side Panel*/
+/*Margins*/
+/*Transitions*/
+/* ----------------------------------------------------------------
+	Grid Layout
+-----------------------------------------------------------------*/
+.grid-layout,
+.portfolioo,
+.posts {
+  position: relative;
+  display: block;
+  clear: both;
+  padding: 0; }
+
+.grid-layout {
+  opacity: 0;
+  margin-bottom: -2px !important; }
+
+.grid-layout.grid-loaded {
+  opacity: 1; }
+
+.grid-mix-size .portfolio-item:nth-child(2n) .new-badge {
+  right: 70px !important; }
+.grid-mix-size .portfolio-item:nth-child(2n) > .portfolio-item-wrap {
+  -webkit-transform: scale(0.75);
+  transform: scale(0.8); }
+
+/*Grid columns: 5*/
+.grid-6-columns .grid-item,
+.post-6-columns .post-item,
+.portfolio-6-columns .portfolio-item {
+  width: 16.6666666666%; }
+  .grid-6-columns .grid-item.large-width,
+  .post-6-columns .post-item.large-width,
+  .portfolio-6-columns .portfolio-item.large-width {
+    width: 33.333333333%; }
+
+/*Grid columns: 5*/
+.grid-5-columns .grid-item,
+.post-5-columns .post-item,
+.portfolio-5-columns .portfolio-item {
+  width: 20%; }
+  .grid-5-columns .grid-item.large-width,
+  .post-5-columns .post-item.large-width,
+  .portfolio-5-columns .portfolio-item.large-width {
+    width: 40%; }
+
+/*Grid columns: 4*/
+.grid-4-columns .grid-item,
+.post-4-columns .post-item,
+.portfolio-4-columns .portfolio-item {
+  width: 25%; }
+  .grid-4-columns .grid-item.large-width,
+  .post-4-columns .post-item.large-width,
+  .portfolio-4-columns .portfolio-item.large-width {
+    width: 50%; }
+
+/*Grid columns: 3*/
+.grid-3-columns .grid-item,
+.post-3-columns .post-item,
+.portfolio-3-columns .portfolio-item {
+  width: 33.333333333%; }
+  .grid-3-columns .grid-item.large-width,
+  .post-3-columns .post-item.large-width,
+  .portfolio-3-columns .portfolio-item.large-width {
+    width: 66.6666666666%; }
+
+/*Grid columns: 2*/
+.grid-2-columns .grid-item,
+.post-2-columns .post-item,
+.portfolio-2-columns .portfolio-item {
+  width: 50.00%; }
+  .grid-2-columns .grid-item.large-width,
+  .post-2-columns .post-item.large-width,
+  .portfolio-2-columns .portfolio-item.large-width {
+    width: 100%; }
+
+/*Grid columns: 1*/
+.grid-1-columns .grid-item,
+.post-1-columns .post-item,
+.portfolio-1-columns .portfolio-item {
+  width: 100%; }
+  .grid-1-columns .grid-item.large-width,
+  .post-1-columns .post-item.large-width,
+  .portfolio-1-columns .portfolio-item.large-width {
+    width: 100%; }
+
+@media (max-width: 1380px) {
+  .grid-5-columns .grid-item,
+  .post-5-columns .post-item,
+  .portfolio-5-columns .portfolio-item {
+    width: 25%; }
+    .grid-5-columns .grid-item.large-width,
+    .post-5-columns .post-item.large-width,
+    .portfolio-5-columns .portfolio-item.large-width {
+      width: 50%; } }
+/*Tablet Landscape*/
+@media (max-width: 991px) {
+  /*Grid columns: 5,4*/
+  .grid-5-columns .grid-item,
+  .post-5-columns .post-item,
+  .portfolio-5-columns .portfolio-item,
+  .grid-4-columns .grid-item,
+  .post-4-columns .post-item,
+  .portfolio-4-columns .portfolio-item {
+    width: 33.3333333333%; }
+    .grid-5-columns .grid-item.large-width,
+    .post-5-columns .post-item.large-width,
+    .portfolio-5-columns .portfolio-item.large-width,
+    .grid-4-columns .grid-item.large-width,
+    .post-4-columns .post-item.large-width,
+    .portfolio-4-columns .portfolio-item.large-width {
+      width: 66.6666666666%; }
+
+  /*Grid columns: 3,2*/
+  .grid-3-columns .grid-item,
+  .post-3-columns .post-item,
+  .portfolio-3-columns .portfolio-item,
+  .grid-2-columns .grid-item,
+  .post-2-columns .post-item,
+  .portfolio-2-columns .portfolio-item {
+    width: 50%; }
+    .grid-3-columns .grid-item.large-width,
+    .post-3-columns .post-item.large-width,
+    .portfolio-3-columns .portfolio-item.large-width,
+    .grid-2-columns .grid-item.large-width,
+    .post-2-columns .post-item.large-width,
+    .portfolio-2-columns .portfolio-item.large-width {
+      width: 100%; } }
+/*Tablet Portrait*/
+@media (max-width: 767px) {
+  /*Grid columns: 5,4*/
+  .grid-5-columns .grid-item,
+  .post-5-columns .post-item,
+  .portfolio-5-columns .portfolio-item,
+  .grid-4-columns .grid-item,
+  .post-4-columns .post-item,
+  .portfolio-4-columns .portfolio-item {
+    width: 50%; }
+    .grid-5-columns .grid-item.large-width,
+    .post-5-columns .post-item.large-width,
+    .portfolio-5-columns .portfolio-item.large-width,
+    .grid-4-columns .grid-item.large-width,
+    .post-4-columns .post-item.large-width,
+    .portfolio-4-columns .portfolio-item.large-width {
+      width: 100%; }
+
+  /*Grid columns: 3,2*/
+  .grid-3-columns .grid-item,
+  .post-3-columns .post-item,
+  .portfolio-3-columns .portfolio-item,
+  .grid-2-columns .grid-item,
+  .post-2-columns .post-item,
+  .portfolio-2-columns .portfolio-item {
+    width: 50%; }
+    .grid-3-columns .grid-item.large-width,
+    .post-3-columns .post-item.large-width,
+    .portfolio-3-columns .portfolio-item.large-width,
+    .grid-2-columns .grid-item.large-width,
+    .post-2-columns .post-item.large-width,
+    .portfolio-2-columns .portfolio-item.large-width {
+      width: 100%; } }
+/*Tablet Portrait*/
+@media (max-width: 480px) {
+  /*Grid columns: 5,4,3,2*/
+  .grid-5-columns .grid-item,
+  .post-5-columns .post-item,
+  .portfolio-5-columns .portfolio-item,
+  .grid-4-columns .grid-item,
+  .post-4-columns .post-item,
+  .portfolio-4-columns .portfolio-item,
+  .grid-3-columns .grid-item,
+  .post-3-columns .post-item,
+  .portfolio-3-columns .portfolio-item,
+  .grid-2-columns .grid-item,
+  .post-2-columns .post-item,
+  .portfolio-2-columns .portfolio-item {
+    width: 100%; }
+    .grid-5-columns .grid-item.large-width,
+    .post-5-columns .post-item.large-width,
+    .portfolio-5-columns .portfolio-item.large-width,
+    .grid-4-columns .grid-item.large-width,
+    .post-4-columns .post-item.large-width,
+    .portfolio-4-columns .portfolio-item.large-width,
+    .grid-3-columns .grid-item.large-width,
+    .post-3-columns .post-item.large-width,
+    .portfolio-3-columns .portfolio-item.large-width,
+    .grid-2-columns .grid-item.large-width,
+    .post-2-columns .post-item.large-width,
+    .portfolio-2-columns .portfolio-item.large-width {
+      width: 100%; } }
+/*Grid item */
+.grid-item .post-item {
+  width: 100%;
+  padding: 0; }
+
+.grid-item > img,
+.grid-item > a > img {
+  width: 100%; }
+
+/* ----------------------------------------------------------------
+	Grid Filter
+-----------------------------------------------------------------*/
+.grid-filter {
+  clear: both;
+  display: block;
+  height: 34px;
+  width: 100%;
+  margin-bottom: 26px;
+  position: relative; }
+  .grid-filter ul {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    height: auto; }
+  .grid-filter li {
+    position: relative;
+    margin-right: 6px;
+    border: 0;
+    margin-bottom: -1px;
+    display: inline-block;
+    float: left; }
+    .grid-filter li a {
+      font-family: "Raleway", "Helvetica", "Arial", sans-serif;
+      font-weight: 600;
+      display: block;
+      position: relative;
+      padding: 8px 10px;
+      font-size: 13px;
+      line-height: 15px;
+      color: #565656;
+      border-radius: 50px;
+      transition: all .3s ease;
+      border-width: 2px;
+      border-style: solid;
+      border-color: transparent; }
+    .grid-filter li:hover a, .grid-filter li.active a {
+      color: #ffffff;
+      background-color: #1abc9c; }
+  .grid-filter.gf-outline li:hover a, .grid-filter.gf-outline li.active a {
+    border-color: #1abc9c;
+    color: #1abc9c;
+    background-color: transparent; }
+  .grid-filter.gf-lines li a {
+    border-radius: 0;
+    border: none;
+    background-color: transparent; }
+    .grid-filter.gf-lines li a:after {
+      content: '';
+      position: absolute;
+      top: auto;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      transition: all 0.3s ease; }
+  .grid-filter.gf-lines li:hover a, .grid-filter.gf-lines li.active a {
+    color: #1abc9c; }
+    .grid-filter.gf-lines li:hover a:after, .grid-filter.gf-lines li.active a:after {
+      width: 100%;
+      left: 0%;
+      background-color: #1abc9c; }
+  .grid-filter.gf-line-bottom {
+    border-bottom: 2px solid #ebebeb; }
+  .grid-filter.gf-classic li a {
+    color: #565656;
+    border-radius: 4px; }
+  .grid-filter.gf-classic li:hover a, .grid-filter.gf-classic li.active a {
+    background-color: #1abc9c;
+    color: #ffffff; }
+  .grid-filter.gf-light li a {
+    color: #ffffff;
+    background-color: transparent; }
+  .grid-filter.gf-light li:hover a, .grid-filter.gf-light li.active a {
+    color: #ffffff;
+    border-color: #ffffff; }
+  .grid-filter.gf-dark li a {
+    color: #252525;
+    background-color: transparent; }
+  .grid-filter.gf-dark li:hover a, .grid-filter.gf-dark li.active a {
+    border-color: #252525; }
+  .grid-filter.gf-default li a {
+    color: none;
+    border-radius: 0;
+    background-color: transparent; }
+  .grid-filter.gf-default li:hover a, .grid-filter.gf-default li.active a {
+    background-color: transparent;
+    color: #1abc9c; }
+  .grid-filter.gf-creative li a {
+    border-radius: 0;
+    border: none;
+    background-color: transparent; }
+    .grid-filter.gf-creative li a:after {
+      background: #252525;
+      content: "";
+      height: 2px;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 100%;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease 0s, transform 0.3s ease 0s;
+      width: 100%; }
+  .grid-filter.gf-creative li:hover a, .grid-filter.gf-creative li.active a {
+    color: #565656; }
+    .grid-filter.gf-creative li:hover a:after, .grid-filter.gf-creative li.active a:after {
+      opacity: 1;
+      transform: translateY(0px); }
+  .grid-filter.gf-list li {
+    clear: both;
+    margin-bottom: 3px; }
+  .grid-filter.center li {
+    text-align: center;
+    float: none; }
+
+.grid-active-title {
+  font-family: "Raleway", "Helvetica", "Arial", sans-serif;
+  font-size: 64px;
+  font-weight: 100;
+  opacity: 0.2;
+  position: absolute;
+  right: 0;
+  top: -6px; }
+
+.content .grid-active-title {
+  font-size: 42px; }
+
+.sidebar-both .grid-active-title {
+  display: none; }
+
+@media (max-width: 991px) {
+  .grid-active-title {
+    display: none; }
+
+  .grid-filter li {
+    width: 33.33%;
+    margin-right: 0;
+    margin-bottom: 4px; }
+    .grid-filter li a {
+      text-align: center;
+      transition: none; } }
+@media (max-width: 479px) {
+  .grid-filter li {
+    width: 50%;
+    margin-right: 0; } }
+/* ----------------------------------------------------------------
+	Extras
+-----------------------------------------------------------------*/
+.infinite-scroll-message,
+#showMore {
+  height: 80px;
+  padding-top: 36px;
+  text-align: center; }
+  .infinite-scroll-message p,
+  #showMore p {
+    margin: 0; }

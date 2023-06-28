@@ -1,0 +1,84 @@
+<?php
+/******************************************************************
+ * Ideabytes Software India Pvt Ltd.                              *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          *
+ * Created Date : 13/08/2014                                      *
+ * Created By : Sri Ravi Teja                                     *
+ * Vision : Project Visitortracking MVC                           *  
+ * Modified by : Sri Ravi Teja  Date : 13/08/2014   Version : 2.0 *
+ * Description : displays the filtered information			      *
+ *****************************************************************/
+
+include ("common/header1.html");
+include ("layouts/search_filters.html");
+?>
+
+	
+ <div id="box">
+                	<h3>All Visitors</h3>
+                	<table width="90%">
+						<thead>
+							<tr>
+                            	<th><a href="#">Date<img src="layouts/images/icons/arrow_down_mini.gif" width="16" height="16" align="absmiddle" /></a></th>
+                            	<th><a href="#">Time</a></th>
+                                <th><a href="#">IP Address</a></th>
+                                <th width="10%"><a href="#">City</a></th>
+                                <th width="10%"><a href="#">Country</a></th>
+                                <th width="15%"><a href="#">Visited Page</a></th>
+                                <th><a href="#">Referring Page</a></th>
+                            </tr>
+						</thead>
+						<tbody>
+							
+								<?php
+										if ($count > 0) 
+										{
+											foreach ($analyticsData as $aData) 
+											{
+												
+												$datetime = date("d-m-Y H:i:s", strtotime($aData['dtTimezone']));
+												$date = html_escaped_output(date("d-m-Y", strtotime($datetime)));
+												$time = html_escaped_output(date("H:i:s", strtotime($datetime)));
+												echo "<tr><td>" . $date . "</td><td>" . $time . "</td><td>" . $aData['ip_address'] . "</td><td>" . $aData['city'] . "</td><td>" . $aData['country'] . "</td><td>" . $aData['page_name'] . "</td><td>" . minifiedAnchor($aData['page_referer']). "</td></tr>";
+											}
+										}
+										else
+										{
+											echo "<tr><td colspan='7' align='Center'>No analytics found</td></tr>";
+										}
+							
+								?>
+                            	
+						</tbody>
+					</table>
+					<div id="pager">
+					<?php
+					//Display pagging
+					if($count > 0){
+						echo doPager(ROW_PER_PAGE, 'analytics_byfilter.php', $searchstring,$count);
+					}
+					?>
+					</div>
+					
+            
+<?php
+include ("common/footer.html");
+?>
+</div>
+<script>
+  function makepdf() {
+        document.searchby.action = "visitor_pdf.php";
+        document.searchby.target = "_blank";
+        document.searchby.submit();
+		document.searchby.target = "";
+		return false;
+    }
+    function exportExcel() {
+        document.searchby.action = "visitor_excel.php";
+        document.searchby.target = "_blank";
+        document.searchby.submit();
+        document.searchby.target = "";
+        document.searchby.action = "analytics_byfilter.php";
+        return false;
+    }
+	</script>

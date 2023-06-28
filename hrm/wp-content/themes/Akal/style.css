@@ -1,0 +1,68 @@
+/*
+Theme Name: Akal
+Description: A Multipurpose Business Wordpress Theme.
+Author: bradweb
+Theme URI: http://akal.bradweb.net
+Author URI: http://themeforest.net/user/bradweb
+Version: 2.0
+License: GNU General Public License version 3.0
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+
+*/
+
+
+.wp-caption-text,
+.sticky,
+.gallery-caption,
+.bypostauthor {}
+#titlebar .titlebar-wrapper { /*height : 22px !important;*/}
+.grid-category-post { display:none !important; }
+.hoverlay {
+    display: none !important;
+}
+
+#contents
+{
+width: 900px;
+margin: 0 auto;
+font-family:Arial, Helvetica, sans-serif;
+}
+.pages
+{
+float: right;
+margin: 0;
+padding: 0;
+}
+.pages li
+{
+list-style: none;
+display:inline-block;
+}
+.pages li a, .currents
+{
+display: block;
+padding: 5px;
+text-decoration: none;
+color: #8A8A8A;
+}
+.currents
+{
+font-weight:bold;
+color: #000;
+}
+.buttons
+{
+padding: 5px 15px;
+text-decoration: none;
+background: #333;
+color: #F3F3F3;
+font-size: 13PX;
+border-radius: 2PX;
+margin: 0 4PX;
+display: block;
+float: left;
+}
+.button, input[type="submit"] {
+    background-color: #af8a36 !important;
+    color: #ffffff !important;
+}

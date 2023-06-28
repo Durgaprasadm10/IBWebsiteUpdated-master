@@ -1,0 +1,107 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Pradeep G                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Pradeep G     Date : 21/04/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("common/header.html");
+
+?>
+<link rel="stylesheet" href="layouts/css/table.css">
+
+<div class="body3">
+    <div class="main zerogrid">
+        <!-- content -->
+        <br>
+        <?php
+        if(isset($sMsg) && ($sMsg != "")){
+        echo $sMsg;
+        }
+        ?>
+        <article id="content">
+            <div class="CSSTableGenerator" style="overflow: auto;width:100%;">
+                <table>
+                    <?php 
+                    if(isset($aListFields)){
+                    echo "<tr>";
+                    echo "<td>Sno</td>";
+                    $i=0;
+                    for($i=0;$i<sizeof($aListFields);$i++){
+                    if($i != 0){
+                    $sF = $aListFields[$i];
+                    echo "<td>".$sF."</td>";
+                    }
+                    }
+                    echo "<td>Action</td>";
+                    }else{
+					echo "<tr>";
+                    echo "<td>Sno</td>";
+					echo "<td>UserName</td>";
+					echo "<td>Action</td>";
+					}
+                    echo " </tr>";
+                    ?>
+                    <?php
+                    if(isset($aList)){
+                    if(count($aList)>0){
+                    $iSno = (($page-1) * ROW_PER_PAGE) + 1;
+                    foreach($aList  as $data){
+                    echo "<tr>";
+                    echo "<td>".$iSno."</td>";
+                    $i=0;
+                    foreach($data as $sV){
+                    if($i==0){
+                    $id = $sV;
+                    }
+                    if($i != 0){
+                    echo "<td>".$sV."</td>";
+                    }
+                    $i++;
+                    }
+                    $i=0;
+                    // $id = $data['id'];
+                    echo "<td>";
+                    echo "<a href='listuser.php?id=".$id."&action=editForm&list=".$list_id."&page=".$page."'>";
+                    echo "<img src='layouts/images/user_edit.png' alt='' title='' border='0' /></a>";
+                    echo "<a href='listuser.php?action=delete&list=".$list_id."&id=".$id."&page=".$page."' class='ask'>";
+                    echo "<img src='layouts/images/trash.png' alt='' title='' border='0'/></a>";
+                    echo "</td>";
+                    echo "</tr>";
+                    $iSno++;
+                    }
+                    }else{
+                    echo "<tr><td colspan=".(sizeof($aListFields)+2)." align='center'>No Data is Available</td></tr>";
+                    }
+                    }else{
+                    echo "<tr><td colspan='3'><center>No User Found</center></td></tr>";
+                    }
+                    ?>
+
+                </table>
+            </div>
+            <br>
+            <?php
+            //Display pagging
+            if(@$count > 0){
+            echo doPages(ROW_PER_PAGE, 'listuser.php', $searchstring, $count);
+            }
+            ?>
+            <form action="#" class="camp-form">			
+                <button type = "button" class="button2" onclick="window.location.href = 'listmanagement.php'" >Back</button>
+                <button type = "button" class="button2" onclick="window.location.href = 'listuser.php?action=addForm&list=<?php echo $list_id;?>&page=<?php echo ceil($count/ROW_PER_PAGE);?>'" >Add User</button>
+                <button type = "button" class="button2" onclick="window.location.href = 'dashboard.php'" >Home</button> 
+            </form>
+            <br>
+        </article>
+        <!-- content end -->
+    </div>
+</div>
+
+<?php
+include("common/footer.html");
+?>

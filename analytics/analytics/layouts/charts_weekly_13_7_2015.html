@@ -1,0 +1,92 @@
+<?php
+/*************************************************************************
+ * Ideabytes Software India Pvt Ltd.                        		     *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          		 *
+ * Created Date : 22/08/2014                                      		 *
+ * Created By : Sri Ravi Teja                                            *
+ * Vision : Project Visitortracking MVC                              	 *  
+ * Modified by : Sri Ravi Teja    Date : 22/08/2014  Version : 2.0   	 *
+ * Description : Displays statistics of charts_Weekly                     *
+ ************************************************************************/
+include "layouts/common/header.html";
+?>
+
+
+<div id="box">
+
+	<form action="charts_weekly.php" method="post">
+		Choose Date: <input type="text" name="date" id="date" value="<?php echo $get_date; ?>">
+		
+		Category : <select name="category" id="category">
+			<option value="Country" <?php echo ($get_category == "Country") ? "selected" : ""; ?>>Country</option>
+			<option value="Page" <?php echo ($get_category == "Page") ? "selected" : ""; ?>>Page</option>
+		</select>
+		<input type="hidden" name="customer_id" id="customer_id" value="<?php echo $logininfo["customer_id"];?>">
+		<input type="submit" name="sbtn" id="sbtn" value="submit">
+	</form>
+	<br><br>
+	<?php
+	if($stmt->rowCount() > 0)
+	{
+	?>
+	<table>
+		<tr>
+			
+			<td valign="top" style="padding-left:50px">
+				
+				<img src="<?php echo $fileName; ?>?<?php echo rand(); ?>">
+			</td>
+			<td valign="top" style="padding-top:20px;padding-left:0px">
+			
+			<table cellpadding="5" style="border:1px solid black;border-collapse:collapse;">
+			  <thead>
+				<th style='border:1px solid black;'>Code</th>
+				<th style='border:1px solid black;'><?php echo $get_category; ?></th>
+				<th style='border:1px solid black;'>Clicks</th>
+			  </thead>
+					<?php
+					foreach($code_display_array as $key=>$value){
+						echo "<tr><td style='border:1px solid black;'>".$value['short_name']."</td><td style='border:1px solid black;'>".$value['full_name']."</td><td style='border:1px solid black;'>".$value['clicks']."</td></tr>";
+					}
+					?>
+			</table>
+		 
+			</td>
+		</tr>
+	  
+	</table>
+	<?php
+	}else{
+		echo "<h2>No Reports for the date </h2>";
+	}
+	?>
+</div>
+<?php
+	include "layouts/common/footer.html";
+?>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+ <script>
+$(function() {
+	$( "#date" ).datepicker({
+
+	defaultDate: "+1w",
+
+	changeMonth: true,
+
+	numberOfMonths: 1,
+
+	dateFormat: "yy-mm-dd"
+	
+
+	});
+});
+</script>
+<script>
+$(document).ready(function() {
+   $('#DropDownTimezone1').hide();
+});
+</script>

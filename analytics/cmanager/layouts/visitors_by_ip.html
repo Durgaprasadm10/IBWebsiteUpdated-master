@@ -1,0 +1,84 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 27/08/2014                                     *
+* Created By : Mahendra Akula                                       *
+* Vision : Project Campaign manager                              *
+* Modified by : Mahendra a   Date : 02/09/2014    Version : V1  *
+* Description : Overal Statistics reports                        *
+*****************************************************************/
+
+include("common/header.html");
+
+?>
+<link rel="stylesheet" href="layouts/css/table.css">
+<div class="body3"> 
+    <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+            <!--			<img src='layouts/images/stats.png'/>-->
+            <form id="getTracking" name="getTracking" method="POST" action='overal_mail_statistics.php'>
+
+                <table border="1" id='example'>
+                    <!--                    View By :&nbsp;&nbsp; <select id="view_type" name="view_type" onchange='this.form.submit()' style="width: 120px">
+                                            <?php
+                                            if($sViewType == 'DATE'){
+                                            $day = 'selected';
+                                            }
+                                            if($sViewType == 'MONTH'){
+                                            $month = 'selected';
+                                            }
+                                            if($sViewType == 'WEEK'){
+                                            $week = 'selected';
+                                            }
+                                            ?>
+                                            <option value="DATE" <?php echo @$day;?>>Day</option>
+                                            <option value="MONTH" <?php echo @$month;?>>Month</option>
+                                            <option value="WEEK" <?php echo @$week;?>>Week</option>
+                                        </select>-->
+                    <thead>
+                        <?php 
+
+                        echo "<tr bgcolor='#CC3333'>";
+                        echo "<th width='10%'><font color='white'>IP Address</font></th>";
+                        echo "<th width='10%'><font color='white'>Hit Count</font></th>";
+                        echo "</tr>";
+
+                        ?>
+                    </thead>
+                    <tbody>				
+                        <?php
+                        if(@$count > 0){
+                        for($k=0;$k<sizeof($aIpList);$k++){
+                        echo "<tr><td align='center' valign='middle'>".$aIpList[$k]."</td>";
+                        echo "<td align='center' valign='middle'>".$aHitCount[$k]."</td>";
+                        }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </form>
+            <img src="<?php echo $fileName; ?>?<?php echo rand(); ?>" height="500" width="944">
+            <div class="camp-form">
+                <button type = "button" class="button2" onclick="window.location.href = 'dashboard.php'" >Home</button>
+                <button type = "button"  class="button2" onclick="window.location.href = 'view_statistics.php'">Back</button> 
+            </div>
+        </article>
+        <!-- content end -->
+    </div>
+</div>
+<link rel="stylesheet" type="text/css" href="http://www.ideabytestraining.com/CM/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<script>
+
+                    $(function() {
+                        $("#example").dataTable({
+                            "sPaginationType": "full_numbers"
+                        });
+                    })
+
+</script>
+<?php
+include("common/footer.html");
+?>

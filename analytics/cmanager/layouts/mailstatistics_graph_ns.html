@@ -1,0 +1,114 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 27/08/2014                                     *
+* Created By : Mahendra Akula                                       *
+* Vision : Project Campaign manager                              *
+* Modified by : Mahendra a   Date : 02/09/2014    Version : V1  *
+* Description : Overal Statistics reports                        *
+*****************************************************************/
+
+include("common/header_ns.html");
+//$cid = $logininfo['customer_id'];
+?>
+<link rel="stylesheet" href="layouts/css/table.css">
+<div class="body3"> 
+    <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+            <form id="getTracking" name="getTracking" method="POST" action='mailstatistics_graph_ns.php'>
+
+                <table border="1" id='example'>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Start Date: <input type = "text" name="start_date" id="from" onchange='this.form.submit()' value="<?php echo $sStartDate; ?>" required>
+                    &nbsp;&nbsp;&nbsp;&nbsp;End Date: <input type = "text" name="end_date" id="to" onchange='this.form.submit()' value="<?php echo $sEndDate; ?>" required>
+                    <!--                    View By :&nbsp;&nbsp; <select id="view_type" name="view_type" onchange='this.form.submit()' style="width: 120px">
+                                            <?php
+                                            if($sViewType == 'DATE'){
+                                            $day = 'selected';
+                                            }
+                                            if($sViewType == 'MONTH'){
+                                            $month = 'selected';
+                                            }
+                                            if($sViewType == 'WEEK'){
+                                            $week = 'selected';
+                                            }
+                                            ?>
+                                            <option value="DATE" <?php echo @$day;?>>Day</option>
+                                            <option value="MONTH" <?php echo @$month;?>>Month</option>
+                                            <option value="WEEK" <?php echo @$week;?>>Week</option>
+                                        </select>-->
+                    <thead>
+                        <?php 
+
+                        echo "<tr bgcolor='#CC3333'>";
+                        echo "<th width='10%'><font color='white'>Campaign Name</font></th>";
+                        echo "<th width='10%'><font color='white'>Sent Mails</font></th>";
+                        echo "<th width='10%'><font color='white'>Read Recepients</font></th>";
+                        echo "<th width='10%'><font color='white'>Undelivered Mails</font></th>";
+                        echo "</tr>";
+
+                        ?>
+                    </thead>
+                    <tbody>				
+                        <?php
+                        if(@$count > 0){
+                        for($k=0;$k<sizeof($aCmList);$k++){
+                        echo "<tr><td align='center' valign='middle'>".$aCmList[$k]."</td>";
+                        echo "<td align='center' valign='middle'>".$aSent[$k]."</td>";
+                        echo "<td align='center' valign='middle'>".$aReadRecepients[$k]."</td>";
+                        echo "<td align='center' valign='middle'>".$aUndelivered[$k]."</td></tr>";
+                        }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </form>
+            <img src="<?php echo $fileName; ?>?<?php echo rand(); ?>" height="500" width="944">
+        </article>
+        <!-- content end -->
+    </div>
+</div>
+<link rel="stylesheet" href="layouts/css/style_datepicker.css">
+<script src="layouts/js/js_datepicker.js"></script>
+<script>
+                        $(function() {
+                            $("#from").datepicker({
+                                defaultDate: "+1w",
+                                changeMonth: true,
+                                dateFormat: 'yy-mm-dd',
+                                numberOfMonths: 1,
+                                onClose: function(selectedDate) {
+                                    $("#to").datepicker("option", "minDate", selectedDate);
+                                }
+                            });
+                            $("#to").datepicker({
+                                defaultDate: "+1w",
+                                changeMonth: true,
+                                dateFormat: 'yy-mm-dd',
+                                numberOfMonths: 1,
+                                onClose: function(selectedDate) {
+                                    $("#from").datepicker("option", "maxDate", selectedDate);
+                                }
+                            });
+                        });
+</script>
+<link rel="stylesheet" type="text/css" href="http://www.ideabytestraining.com/CM/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<script>
+
+                        $(function() {
+                            $("#example").dataTable({
+                                "sPaginationType": "full_numbers"
+                            });
+                        })
+
+</script>
+<?php
+include("common/footer.html");
+?>
+<style>
+    .camp-form .button2{
+        margin: 10px 0 10px 20px;
+    }
+</style>

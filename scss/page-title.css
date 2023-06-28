@@ -1,0 +1,138 @@
+/* ----------------------------------------------------------------------
+	Base Colors
+-------------------------------------------------------------------------*/
+/*Colors*/
+/*Typography*/
+/*Header*/
+/*Side Panel*/
+/*Margins*/
+/*Transitions*/
+ /* ----------------------------------------------------------------------
+    Page title
+-------------------------------------------------------------------------*/
+#page-title {
+  clear: both;
+  padding: 160px 0;
+  background-color: #F2F2F4;
+  border-bottom: 1px solid #eeeeee;
+  border-top: 1px solid #eeeeee;
+  position: relative;
+     /*
+     min-height: 560px;
+     height: 1px;
+*/
+  background-color: #252525;
+  /* page title center*/
+  /* page header right*/ }
+  #page-title .container {
+  /*      position: relative;
+top: 50%;
+  transform: translateY(-50%);*/ }
+  #page-title .page-title {
+    width: 70%;
+    padding: 0;
+    float: left; }
+    #page-title .page-title > h1 {
+      font-family: "Montserrat", "Helvetica", "Arial", sans-serif;
+      font-size: 50px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 50px;
+      letter-spacing: -2px;
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 20px; }
+    #page-title .page-title > span {
+      color: #ffffff;
+      font-weight: 100;
+      font-size: 16px;
+      font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+      opacity: .7; }
+  #page-title .breadcrumb {
+    width: 30%;
+    opacity: .6;
+    float: right;
+    text-align: right; }
+    #page-title .breadcrumb ul li + li:before {
+      background-color: #ffffff; }
+    #page-title .breadcrumb ul li a {
+      color: #ffffff; }
+  #page-title.page-title-center .page-title {
+    float: none;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px; }
+  #page-title.page-title-center .breadcrumb {
+    float: none;
+    text-align: center;
+    width: 100%; }
+  #page-title.page-title-right .page-title {
+    float: right;
+    text-align: right; }
+  #page-title.page-title-right .breadcrumb {
+    float: left;
+    text-align: left; }
+  #page-title.page-title-classic {
+    background-color: #F2F2F4;
+    border-bottom: 1px solid #eeeeee;
+    border-top: 1px solid #eeeeee;
+    padding: 50px 0; }
+    #page-title.page-title-classic .page-title {
+      float: left;
+      width: 70%; }
+      #page-title.page-title-classic .page-title > h1 {
+        display: block;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 32px;
+        margin-bottom: 0;
+        margin-top: 0;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #555555;
+        letter-spacing: 0; }
+      #page-title.page-title-classic .page-title > span {
+        color: #252525;
+        font-weight: 100;
+        font-size: 16px;
+        font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+        opacity: .7; }
+    #page-title.page-title-classic .breadcrumb {
+      opacity: .6;
+      float: right;
+      width: 30%;
+      text-align: right; }
+      #page-title.page-title-classic .breadcrumb ul li + li:before {
+        background-color: #252525; }
+      #page-title.page-title-classic .breadcrumb ul li a {
+        color: #252525; }
+  #page-title.dark .page-title > h1 {
+    color: #252525; }
+  #page-title.dark .page-title > span {
+    color: #252525; }
+  #page-title.dark .breadcrumb ul li + li:before {
+    background-color: #252525; }
+  #page-title.dark .breadcrumb ul li a {
+    color: #252525; }
+
+@media (max-width: 991px) {
+  #page-title,
+  #page-title.page-title-classic {
+    padding: 50px 0 !important; }
+    #page-title .page-title,
+    #page-title.page-title-classic .page-title {
+      float: none;
+      width: 100%;
+      text-align: left;
+      display: block;
+      margin-bottom: 10px; }
+      #page-title .page-title > h1,
+      #page-title.page-title-classic .page-title > h1 {
+        font-size: 30px;
+        margin-bottom: 0; }
+    #page-title .breadcrumb,
+    #page-title.page-title-classic .breadcrumb {
+      float: none;
+      width: 100%;
+      text-align: left;
+      display: block; } }

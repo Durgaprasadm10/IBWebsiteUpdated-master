@@ -1,0 +1,65 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Pradeep G                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Pradeep G     Date : 21/04/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("common/header.html");
+?>
+<style>
+    .camp-form .button{
+        font-weight:bold;
+    }
+</style>
+<div class="body3">
+    <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+            <div class="box">				
+                <form action="#" class="camp-form">							
+                    <fieldset>					
+
+                        <div class="row">
+                            <section class="col col-6" align="center">
+                                <a class="button" href = "createeditcampaign.php" ><center>Create / Edit a Campaign</center></a>
+                            </section>
+                            <section class="col col-6" align="center">
+                                <a class="button" href = 'listmanagement.php'><center>User List Management</center></a>
+                            </section>
+                            <section class="col col-6" align="center">
+                                <a  class="button" href = 'processcampaign.php'><center>Process Campaign</center></a>
+                            </section>	
+                            <section class="col col-6" align="center">
+                                <a  class="button" href = 'managecampaign.php'><center>Manage Campaigns</center></a>
+                            </section>				
+                            <section class="col col-6" align="center">
+                                <a  class="button" href = 'view_campaign_statistics.php'><center>View Campaign Statistics</center></a>
+                            </section>
+                            <section class="col col-6" align="center">
+                                <button class="button" onclick="logout_exit();">Exit</button>				
+                            </section>
+
+                        </div>	
+                    </fieldset>
+                </form>
+            </div>		
+        </article>
+        <!-- content end -->
+    </div>
+</div>
+
+<?php
+include("common/footer.html");
+?>
+<script>
+    function logout_exit() {
+        if (confirm("Do you want to Exit !!!")) {
+            location.href = 'login.php?btnlogout=logout';
+        }
+    }
+</script>

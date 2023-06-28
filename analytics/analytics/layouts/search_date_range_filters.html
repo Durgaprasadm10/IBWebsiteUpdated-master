@@ -1,0 +1,146 @@
+<?php 
+/*************************************************************************
+ * Ideabytes Software India Pvt Ltd.                        		     *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          		 *
+ * Created Date : 28/08/2014                                      		 *
+ * Created By : Sri Ravi Teja                                            *
+ * Vision : Project Visitortracking MVC                              	 *  
+ * Modified by : Sri Ravi Teja    Date : 28/08/2014  Version : 2.0   	 *
+ * Description : Displays the filtering of Date Ranges                   *
+ ************************************************************************/
+?>
+<div id="wrapper">
+            <div id="content">
+       			<div id="rightnow">
+                    <h3 class="reallynow">
+					<?php  
+						if($count > 0)
+						{
+							echo '<span>
+							<form name="searchby"  method="post">
+								<a href="" class="report" value="Export to EXCEL" onclick= "return makepdf()">Report</a>
+								<a href="" class="report_seo" value="Export to PDF" onclick="return exportExcel()">Report</a>';
+									$searhCond = "";
+									$orderby = "ASC";
+									if(isset($_POST['sbtn']))
+									{
+										$searhCond = "";
+										if(isset($_POST['page_id']) && (@$_POST['page_id']!=""))
+										{
+											$searhCond .= " AND vi.page_id = ".$_POST['page_id'];
+										}
+										if(isset($_POST['country_name']) && (@$_POST['country_name']!=""))
+										{
+											$searhCond .= " AND vi.country = '".$_POST['country_name']."'";
+										}
+										if(isset($_POST['fromdate']) && isset($_POST['todate']) && (@$_POST['fromdate']!="") && (@$_POST['todate']!=""))
+										{
+											$searhCond .= " AND DATE(vi.datetime) BETWEEN '".$_POST['fromdate']."' AND '".$_POST['todate']."'";
+										}
+										$orderby = "ASC";
+										if(isset($_POST['order']) && (@$_POST['order']!=""))
+										{
+											$orderby = ($_POST['order'] == "Descending") ? "DESC" : "ASC";
+										}
+									}
+										
+										echo '<input type="hidden" name="searhCond" id="searhCond" value="'.$searhCond.'">';
+										echo '<input type="hidden" name="orderby" id="orderby" value="'.$orderby.'">';									
+							echo '</form>
+							</span>';
+						}
+						?>
+						<form name="f_timezone" action="" style="float:right;margin-top:-9px;">    
+							<select style="" name="timezone" id="DropDownTimezone1" onchange="this.form.submit();">
+								<option value="-12.0"<?php echo (@$coockie == "-12:00") ? "selected" : ""; ?>>(GMT -12:00) Eniwetok, Kwajalein</option>
+								<option value="-11.0"<?php echo (@$coockie == "-11:00") ? "selected" : ""; ?>>(GMT -11:00) Midway Island, Samoa</option>
+								<option value="-10.0"<?php echo (@$coockie == "-10:00") ? "selected" : ""; ?>>(GMT -10:00) Hawaii</option>
+								<option value="-9.0"<?php echo (@$coockie == "-09:00") ? "selected" : ""; ?>>(GMT -9:00) Alaska</option>
+								<option value="-8.0"<?php echo (@$coockie == "-08:00") ? "selected" : ""; ?>>(GMT -8:00) Pacific Time (US &amp; Canada)</option>
+								<option value="-7.0"<?php echo (@$coockie == "-07:00") ? "selected" : ""; ?>>(GMT -7:00) Mountain Time (US &amp; Canada)</option>
+								<option value="-6.0"<?php echo (@$coockie == "-06:00") ? "selected" : ""; ?>>(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
+								<option value="-5.0"<?php echo (@$coockie == "-05:00") ? "selected" : ""; ?>>(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+								<option value="-4.0"<?php echo (@$coockie == "-04:00") ? "selected" : ""; ?>>(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
+								<option value="-3.5"<?php echo (@$coockie == "-03:30") ? "selected" : ""; ?>>(GMT -3:30) Newfoundland</option>
+								<option value="-3.0"<?php echo (@$coockie == "-03:00") ? "selected" : ""; ?>>(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
+								<option value="-2.0"<?php echo (@$coockie == "-02:00") ? "selected" : ""; ?>>(GMT -2:00) Mid-Atlantic</option>
+								<option value="-1.0"<?php echo (@$coockie == "-01:00") ? "selected" : ""; ?>>(GMT -1:00 hour) Azores, Cape Verde Islands</option>
+								<option value="0.0"<?php echo (@$coockie == "+00:00") ? "selected" : ""; ?>>(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
+								<option value="1.0"<?php echo (@$coockie == "+01:00") ? "selected" : ""; ?>>(GMT +1:00 hour) Brussels, Copenhagen, Madrid, Paris</option>
+								<option value="2.0"<?php echo (@$coockie == "+02:00") ? "selected" : ""; ?>>(GMT +2:00) Kaliningrad, South Africa</option>
+								<option value="3.0"<?php echo (@$coockie == "+03:00") ? "selected" : ""; ?>>(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+								<option value="3.5"<?php echo (@$coockie == "+03:30") ? "selected" : ""; ?>>(GMT +3:30) Tehran</option>
+								<option value="4.0"<?php echo (@$coockie == "+04:00") ? "selected" : ""; ?>>(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>				
+								<option value="4.5"<?php echo (@$coockie == "+04:30") ? "selected" : ""; ?>>(GMT +4:30) Kabul</option>
+								<option value="5.0"<?php echo (@$coockie == "+05:00") ? "selected" : ""; ?>>(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+								<option value="5.5"<?php echo (@$coockie == "+05:30") ? "selected" : ""; ?>>(GMT +5:30) Bombay, Calcutta, Madras, New Delhi</option>
+								<option value="5.75"<?php echo (@$coockie == "+05:45") ? "selected" : ""; ?>>(GMT +5:45) Kathmandu</option>
+								<option value="6.0"<?php echo (@$coockie == "+06:00") ? "selected" : ""; ?>>(GMT +6:00) Almaty, Dhaka, Colombo</option>
+								<option value="7.0"<?php echo (@$coockie == "+07:00") ? "selected" : ""; ?>>(GMT +7:00) Bangkok, Hanoi, Jakarta</option>
+								<option value="8.0"<?php echo (@$coockie == "+08:00") ? "selected" : ""; ?>>(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</option>
+								<option value="9.0"<?php echo (@$coockie == "+09:00") ? "selected" : ""; ?>>(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+								<option value="9.5"<?php echo (@$coockie == "+09:30") ? "selected" : ""; ?>>(GMT +9:30) Adelaide, Darwin</option>
+								<option value="10.0"<?php echo (@$coockie == "+10:00") ? "selected" : ""; ?>>(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+								<option value="11.0"<?php echo (@$coockie == "+11:00") ? "selected" : ""; ?>>(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+								<option value="12.0"<?php echo (@$coockie == "+12:00") ? "selected" : ""; ?>>(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+							</select>
+						</form>
+						<br />
+					</h3>				    
+			  </div>
+			<div id="box">
+	<div class="cl">
+		<h3>Date Range Selection</h3>
+	</div> 
+		<div class="sort" style="padding:10px; background-color: #EEEEEE;">
+			<label><h4>Sort by</h4></label>
+			<form name="searchbydaterange" action="analytics_bydaterange.php" method="post">
+				Select Page : 
+				<select name="page_id" id="page_id" class="field">
+					<option value="">All</option>
+					<?php
+					if($stmtP->rowCount() >0)
+					{
+						foreach($analyticsDataP as $aData)
+						{
+							$selectedP = ($aData["id"] == @$_POST['page_id']) ? "selected" : "";
+							echo "<option ".$selectedP."  value='".$aData["id"]."'>".$aData["page_name"]."</option>";										
+						}
+					}
+					?>
+				</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Select Country : 
+				<select name="country_name" id="country_name" class="field">
+					<option value="">All</option>
+					<?php
+					if($stmtC->rowCount() >0)
+					{
+						foreach($analyticsDataC as $aData)
+						{
+							$selectedC = ($aData["country"] == @$_POST['country_name']) ? "selected" : "";
+							echo "<option ".$selectedC." value='".$aData["country"]."'>".$aData["country"]."</option>";										
+						}													
+					}							
+					?>
+				</select> 
+				<br><br>
+				Select Order : 
+				<select name="order" id="order" class="field">
+					<?php
+					$oArray = array("Ascending","Descending");
+					foreach($oArray as $order)
+					{
+						$selectedO = ($order == @$_POST['order']) ? "selected" : "";
+						echo '<option '.$selectedO .' value="'.$order.'">'.$order.'</option>';
+					}
+					?>	
+				</select>
+				<br><br><br>
+				From : <input type="text" name="fromdate" id="fromdate" value="<?php echo @$_POST['fromdate'];?>" required  class="field">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				To : <input type="text" value="<?php echo @$_POST['todate'];?>" required name="todate" id="todate" value=""  class="field">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+				<input type="submit" name="sbtn" id="sbtn" value="Submit">
+			</form>
+		</div>

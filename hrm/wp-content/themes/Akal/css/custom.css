@@ -1,0 +1,26 @@
+
+/* Tabs custom code to align horizental tabs in center */
+.tabset.horizental-tabset{
+	text-align: center;
+}
+.tabset.horizental-tabset > ul.tabs > li {
+	display: inline-block;
+	margin: 0 5px;
+	float:none;
+}
+.tabset.horizental-tabset > ul.tabs > li > a {
+	-webkit-border-radius: 4px!important;
+	-webkit-border-radius: 4px!important;
+	border-radius: 4px!important;
+	border-color: #ddd!important;
+}
+.tabset.horizental-tabset > ul.tabs > li > a:hover {
+	background-color: #000;
+	color: #fff
+}
+.tabset.horizental-tabset > ul.tabs > li > a.selected {
+	background-color: #888!important;
+	color: #fff!important;
+}
+
+

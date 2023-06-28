@@ -1,0 +1,70 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Pradeep G                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Mahendra A    Date : 09/05/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("layouts/common/header.html");
+
+$actionLable = (($action == 'editForm') || ($action == 'Edit')) ? "Edit" : "Add"; 
+$actionLable1 = (($action == 'editForm') || ($action == 'Edit')) ? "Update" : "Add";
+
+
+if(isset($sMsg) && ($sMsg != "")){
+echo $sMsg;
+}
+?>
+<div class="body3">
+    <div class="main zerogrid">
+        <!-- content -->
+        <?php
+        if(isset($sMsg) && ($sMsg != "")){
+        echo $sMsg;
+        }
+        ?>
+        <article id="content">
+            <div class="form">
+                <form action="listuser.php" method="post" class="niceform" enctype="multipart/form-data" id="f1">
+                    <fieldset>
+                        <?php 
+                        for($i=0;$i<sizeof($aFields);$i++){
+                        echo "<dl>";
+                        echo "<dt>";
+                        echo "<label >".$aFields[$i].":</label>";
+                        echo "</dt>";
+                        echo "<dd>";
+                        echo "<input type = \"text\" name=".$aFields[$i]." id=".$aFields[$i]." style=\"width:250px;\" value=".$aData[$i]." >";
+                        echo "</dd>";
+                        echo "</dl>";
+                        }
+                        ?>
+                    </fieldset>
+                    <div class="camp-form">
+                        <input type="hidden" name="id" id = "id" value = "<?php echo $id; ?>">
+                        <input type="hidden" name="list" id = "id" value = "<?php echo $list_id; ?>">
+                        <input type="hidden" name="page" id = "id" value = "<?php echo $page; ?>">
+                        <button name="action" type="submit" class="button2" value="view">Back</button>
+                        <button name="action" type="submit" class="button2" value="<?php echo $actionLable;?>">Done</button>
+                        <button name="action" type = "button" class="button2" onclick='formReset();'>Clear</button>
+                        <button type = "button" class="button2" onclick="window.location.href = 'dashboard.php'" >Home</button> 
+                    </div>
+                </form>	
+            </div>
+        </article>
+    </div>
+    <!-- content end -->
+</div>
+
+<?php
+include("layouts/common/footer.html");
+?>
+<script>
+    function formReset() {
+        document.getElementById('f1').reset();
+    }
+</script>

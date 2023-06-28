@@ -1,0 +1,160 @@
+<?php
+/******************************************************************
+ * Ideabytes Software India Pvt Ltd.                              *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          *
+ * Created Date : 04/02/2014                                      *
+ * Created By : Pradeep G                                         *
+ * Vision : Project Sparkle                                       *
+ * Modified by : Pradeep G     Date : 05/02/2014    Version : V1  *
+ * Description : Home page - content area                         *
+ *****************************************************************/
+
+/* Include template header file */
+include("layouts/common/header.html");
+
+
+$aState = ($customerData['analytics_status']) ? "5":"2";
+$cState = ($customerData['campaignmanager_status']) ? "5":"2";
+
+$logo = ($customerData['logo_image']!="") ? "<img height='100px;' width='150px;' src='".CUSTOMER_LOGO_PATH.$customerData['logo_image']."'>" :"";
+
+$aSelected = "Active";;
+if($customerData['active_status'] == "0"){
+	$aSelected = "InActive";
+}
+?>
+<style>
+a.icon-5{
+    padding-right:8px;;
+}
+</style>
+<div id="content-outer">
+<!-- start content -->
+<div id="content">
+
+<!--  start page-heading -->
+<div id="page-heading">
+    <h2>Customer Management</h2>
+</div>
+<!-- end page-heading -->
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+<tr>
+    <th rowspan="3" class="sized"><img src="layouts/images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+    <th class="topleft"></th>
+    <td id="tbl-border-top">&nbsp;</td>
+    <th class="topright"></th>
+    <th rowspan="3" class="sized"><img src="layouts/images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+</tr>
+<tr>
+<td id="tbl-border-left"></td>
+<td>
+    <!--  start content-table-inner ...................................................................... START -->
+    <div id="content-table-inner">
+
+        <!--  start table-content  -->
+        <div id="table-content">
+            <span id ='msgplace'>
+            <?php echo $sMsg; ?>
+            </span>
+
+            <!--  start product-table ..................................................................................... -->
+            <form id="mainform" method="post" action="customermanagement.php" enctype="multipart/form-data">
+                <table border="0" cellpadding="0" cellspacing="0"  id="id-form">
+					<tr>
+						<td colspan="5"><div><h2>Contact info</h2></div></td>
+					</tr>
+					<tr>
+						<th valign="top">Name:</th>
+						<td>: <?php echo $customerData['name']; ?></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<th valign="top">Customer ID</th>
+						<td>: <span id="customer_id"><?php echo $customerData['customer_id']; ?></span></td>
+					</tr>
+					<tr>
+						<th valign="top">Email</th>
+						<td>: <?php echo $customerData['email']; ?></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<th valign="top">Phone No</th>
+						<td>: <?php echo $customerData['phone']; ?></td>
+					</tr>
+					<tr>
+						<th>Logo</th>
+						<td width="400px;"><?php echo $logo; ?></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>			
+						<th valign="top">Active Status</th>
+						<td valign="top" style="padding-top:7px;">: <?php echo $aSelected; ?></td>
+					</tr>
+					<tr><td>&nbsp;</td></tr>					
+					<tr>
+						<td colspan="5"><div><h2>Admin account info</h2></div></td>
+					</tr>
+					<tr>
+						<th valign="top">Username</th>
+						<td>: <?php echo $customerData['cu_username']; ?></td>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<th valign="top"><span style="cursor:pointer;color:blue;" id="clickpassword">Reset Password</span></th>
+						<td><div id="passwordarea" style="display:none;"><input style="float:left;" type="password" id="userpassword" class="inp-form"/><input class="form-submit" id="submit" name="btncontact" value="Submit"/></div></td>
+					</tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td colspan="5"><div><h2>Access Privillages</h2></div></td>
+					</tr>
+					<tr>
+						<th colspan="2" valign="top"> <?php echo '<a class="icon-'.$aState.' info-tooltip"></a>'; ?>Website Analytics</th>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<th colspan="2" valign="top"><?php  echo '<a class="icon-'.$cState.' info-tooltip"></a>'; ?>Campaign Manager</th>
+					</tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr>
+						<td valign="top">
+							<a href="customermanagement.php"><input type="button" class="form-back"  id="submit" name="btncontact"/></a>
+						</td>
+					</tr>
+				</table>
+                <!--  end product-table................................... -->
+            </form>
+        </div>
+        <!--  end content-table  -->
+        <div class="clear"></div>
+    </div>
+    <!--  end content-table-inner ............................................END  -->
+</td>
+<td id="tbl-border-right"></td>
+</tr>
+<tr>
+    <th class="sized bottomleft"></th>
+    <td id="tbl-border-bottom">&nbsp;</td>
+    <th class="sized bottomright"></th>
+</tr>
+</table>
+<div class="clear">&nbsp;</div>
+
+</div>
+<!--  end content -->
+<div class="clear">&nbsp;</div>
+</div>
+<script>
+jQuery("#clickpassword").click(function(){
+	jQuery("#passwordarea").slideToggle();
+});
+
+jQuery("#submit").click(function(){
+	var pass = jQuery("#userpassword").val();	
+	if(pass == ""){
+		alert("Enter password");
+	}else{		
+		var customer_id = jQuery("#customer_id").html();	
+		jQuery.ajax({url:"customermanagement.php?action=Updatepassword&customer_id="+customer_id+"&password="+pass,success:function(result){
+		}});
+		jQuery("#passwordarea").slideToggle();
+		jQuery("#userpassword").val("");
+		alert("Password sucessfully updated");
+	}
+});
+</script>
+<!--  end content-outer........................................................END -->
+<?php
+/* Include template header file */
+include("layouts/common/footer.html");
+?>

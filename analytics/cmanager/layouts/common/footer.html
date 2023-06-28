@@ -1,0 +1,42 @@
+<?php
+/******************************************************************
+ * Ideabytes Software India Pvt Ltd.                              *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          *
+ * Created Date : 04/02/2014                                      *
+ * Created By : Pradeep G                                         *
+ * Vision : Project Campaign manager                              *
+ * Modified by : Pradeep G     Date : 21/04/2014    Version : V1  *
+ * Description : Home page - content area                         *
+ *****************************************************************/
+?>
+		<div class="main zerogrid">
+			<!-- footer -->
+			<footer>
+				<div id="copyright">
+					<img src="layouts/images/logo.png" alt="logo" width="150" height="63"><span>&copy; Ideabytes 2014 </span>
+				</div>
+				<div id="time">
+					<span id='ct' ></span>
+				</div>
+			</footer>
+			<!-- footer end -->
+		</div>
+
+
+		<script type="text/javascript">
+		function display_c(){
+			var refresh=1000; // Refresh rate in milli seconds
+			mytime=setTimeout('display_ct()',refresh)
+		}
+		 
+		function display_ct() {
+			var strcount
+			var x = new Date()
+			document.getElementById('ct').innerHTML = x;
+			tt=display_c();
+		}
+                display_ct();
+		</script>
+
+	</body>
+</html>

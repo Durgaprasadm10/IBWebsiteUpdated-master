@@ -1,0 +1,68 @@
+<?php
+/*************************************************************************
+ * Ideabytes Software India Pvt Ltd.                        		     *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          		 *
+ * Created Date : 18/08/2014                                      		 *
+ * Created By : Sri Ravi Teja                                            *
+ * Vision : Project Visitortracking MVC                              	 *  
+ * Modified by : Sri Ravi Teja    Date : 18/08/2014  Version : 2.0   	 *
+ * Description : Displays Friendly Websites			                     *
+ ************************************************************************/
+
+	include ("common/header.html");
+?>
+
+<div id="box">
+	<div class="cl">
+		<h3>Friendly Websites List</h3>
+	</div> 
+	<div class="shell">
+		<div id="main">
+			<div class="table">
+				<table width="80%" border="0" cellspacing="0" cellpadding="0">
+				<?php
+				echo "<thead><tr><th>websites</th><th>Actions</th></thead><tbody>";
+                    if ($stmt->rowCount() > 0) 
+					{
+                        foreach ($analyticsData as $aData) 
+						{
+                            echo "<tr ><td width='50%'>" . $aData['site_name'] . "</td>";
+                            echo '<td width="30%"><a href="javascript:;" onclick="deleteitem(\'' . $aData['id'] . '\');"><img src="layouts/images/icons/delete.png" width="16" height="16"></a>';
+                            if ($aData['active_status'] == 1) 
+							{
+                                echo '&nbsp;&nbsp;<a href="manage_friendly_website.php?action=Change&id=' . $aData['id'] . '&status=0"><img src="layouts/images/icons/active.png" width="16" height="16"></td>';
+                            }
+							else 
+							{
+                                echo '&nbsp;&nbsp;<a href="manage_friendly_website.php?action=Change&id=' . $aData['id'] . '&status=1"><img src="layouts/images/icons/disable.png" width="16" height="16"></td>';
+                            }
+                        }
+                    }
+					else 
+					{
+                        echo "<tr><td colspan='2' class='dataTables_empty'>No analytics found</td></tr>";
+                    }
+                echo "</tbody></table>";
+                ?>
+            </div>
+			<br><br>
+			<form name="friendlyip" action="manage_friendly_website.php" method="post" >
+				website <input type="text" name="site_name" id="site_name" required  />
+				<input type="hidden" name="action" value="add" />
+				<input type="submit" class="button" value="Add" />
+			</form>
+		</div>
+	</div>
+	<?php
+		include ("common/footer.html");
+	?>
+<script>
+    function deleteitem(ip) {
+        var ans = confirm("Do you want to delete this item '" + ip + "'");
+        if (ans) {
+            window.location.href = "manage_friendly_website.php?action=delete&id=" + ip;
+        }
+        return false;
+    }
+</script>
+	

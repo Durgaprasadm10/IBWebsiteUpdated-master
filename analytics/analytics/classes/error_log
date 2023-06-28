@@ -1,0 +1,1 @@
+[07-Jul-2016 07:37:07 UTC] PHP Parse error:  syntax error, unexpected '$page_code_display_array' (T_VARIABLE) in /home/cmadmin/public_html/analytics/classes/DailyReports.class.php on line 133

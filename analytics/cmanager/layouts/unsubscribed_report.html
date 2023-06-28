@@ -1,0 +1,69 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 24/08/2014                                      *
+* Created By : Mahendra Akula                                        *
+* Vision : Project Campaign manager                              *
+* Modified by : Mahendra A    Date : 24/08/2014    Version : V1  *
+* Description : unsubscribed Usrs Report                       *
+*****************************************************************/
+
+include("common/header.html");
+
+?>
+<link rel="stylesheet" href="layouts/css/table.css">
+
+<div class="body3">
+
+    <div class="main zerogrid">
+        <br>
+        <?php
+        if(isset($sMsg) && ($sMsg != "")){
+        echo $sMsg;
+        }
+        ?>
+        <!-- content -->
+        <article id="content">
+            <div class="CSSTableGenerator" >
+                <table>
+                    <?php
+                    echo "<tr>";
+                    echo "<td>Sno</td>";
+                    echo "<td>Unsubscribed Emails</td>";
+                    echo "<td>Actions</td>";
+                    echo "</tr>";
+                    if(@$count > 0){
+                    $iSno = (($page-1) * ROW_PER_PAGE) + 1;
+                    foreach($aUnSubList  as $data){
+                    echo "<tr><td style='text-align:center'>".$iSno."</td>";        
+                    echo "<td style='text-align:center'>".$data['mail_id']."</td>";
+                    echo "<td align='right' style='width:65px;'>
+                    <a href='unsubscribed_report.php?id=".$data['id']."&action=delete&page=".$page."' class='ask'><img src='layouts/images/trash.png' alt='' title='' border='0'/></a></td></tr>";
+                    $iSno++;
+                    }
+                    }else{
+                    echo "<tr><td colspan='3' align='center'><center>No records found</center></td></tr>";
+                    }
+                    ?>
+                </table>
+            </div>
+            <br>
+            <?php
+            //Display pagging
+            if(@$count > 0){
+            echo doPages(ROW_PER_PAGE, 'unsubscribed_report.php', $searchstring, $count);
+            }
+            ?>
+            <form action="#" class="camp-form">			
+                <button type="button" onclick="window.location.href = 'view_campaign_statistics.php'" class="button2">Back</button>
+            </form>
+            <br>
+        </article>
+        <!-- content end -->
+    </div>
+</div>
+
+<?php
+include("common/footer.html");
+?>

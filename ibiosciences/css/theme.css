@@ -1,0 +1,802 @@
+.btn.xplus-btn,
+a.btn.xplus-btn.pricing:hover,
+a.btn.xplus-btn.pricing.active,
+.slider-content.classic .btn.hero_btn:hover,
+.cd-headline.loading-bar .cd-words-wrapper::after,
+.service_icon_info .service-overlay,
+.service_icon_info_top .service-overlay,
+.service-4 .service_content:hover,
+.skill.blod .custom_progress_bar,
+.testimonial_area.testimonial-2 .owl-dot.active,
+.pagination>li a:hover,
+.call-to-action,
+.btn.xplus-btn.transparent:hover,
+.btn.xplus-btn.hero-slider_btn_outline:hover,
+.features_icon,
+.testimonial_area,
+.team_carousel .owl-dot.active,
+a.play-btn i,
+.member_social li a:hover,
+.package-price,
+a.btn.xplus-btn.pricing.active,
+input.wid-signup,
+.wpcf7-form-control.wpcf7-submit,
+.contact_area.contact-2 i,
+.footer_left_icon li a:hover,
+span.scroll_top_up {
+	background: #be1e2d
+}
+
+.dark-skin .menuzord .menuzord-menu>li.active>a,
+.servie_area-2 i,
+.slider-content.static i,
+.imageblock_content a,
+.imageblock_content_img.video i.zmdi.zmdi-play-circle:hover,
+.facts-headding strong,
+.grid figure figcaption i:hover,
+.grid-gallery figcaption h3 a:hover,
+.grid-gallery figcaption h3:hover,
+.p-hover-white .grid figure .action-btn i,
+.p-hover-white .grid-gallery figcaption i,
+.p-hover-white .grid-gallery figcaption h3 a:hover,
+.pricing-2 .currency-symbol,
+.pricing-2 .price,
+.grid figure .action-btn i:hover,
+.blog_details a:hover,
+.team-close-icon a,
+a.read-more:hover,
+.contact_area i,
+.load-more:hover,
+.blog_content h4:hover,
+.footer_menu li a:hover,
+.blog-body a:hover {
+	color: #be1e2d
+}
+
+.section_title-2 hr,
+.btn.xplus-btn.transparent:hover,
+a.btn.xplus-btn.pricing:hover,
+a.btn.xplus-btn.pricing.active,
+.service-4 .service_content:hover,
+.service-4.hover-border .service_content:hover,
+.pricing-2 .pricing_table.active,
+.contact-2 input.wpcf7-form-control:focus,
+.contact-2 .wpcf7-textarea:focus,
+.pagination li:first-child a {
+	border: 1px solid #be1e2d
+}
+
+.btn.xplus-btn.hero-slider_btn_outline:hover {
+	border-color: #be1e2d
+}
+
+.faq-section .panel-body,
+.faq-section .panel-group .panel-heading+.panel-collapse>.panel-body {
+	border-top: 2px solid #be1e2d !important
+}
+
+.btn.xplus-btn.transparent:hover,
+.section-image-slider .owl-dot.active,
+.team_carousel .owl-dot.active {
+	border: 3px solid #be1e2d
+}
+
+.our_goals_area {
+	border-left: 7px solid #be1e2d
+}
+
+.color_change {
+	background: #fff;
+	height: 100%;
+	padding: 130px 30px;
+	-webkit-transition: .5s;
+	transition: .5s;
+	position: fixed;
+	z-index: 9999;
+	width: 300px;
+	right: -301px;
+	box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08)
+}
+
+.color_change p {
+	text-align: center;
+	margin: 0 auto;
+	padding: 5px 0 40px;
+	font-size: 13px;
+	line-height: 22px
+}
+
+.color_change h3 {
+	font-size: 18px;
+	font-weight: 700;
+	text-align: center
+}
+
+.color_change_bg {
+	left: 0
+}
+
+.color_change ul {
+	text-align: center;
+	padding: 0
+}
+
+.color_change li {
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+	line-height: 45px;
+	border-radius: 3px;
+	font-size: 15px;
+	background: #467 none repeat scroll 0 0;
+	margin: 5px 3px;
+	cursor: pointer;
+	color: #fff;
+	text-align: center;
+	list-style-type: none
+}
+
+#color_box {
+	position: absolute;
+	left: -57px;
+	top: 250px;
+	color: #fff;
+	padding: 15px 20px;
+	cursor: pointer;
+	font-size: 20px;
+	background: linear-gradient(to bottom, #be1e2d, #283fe5);
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px
+}
+
+@media only screen and (min-width: 300px) and (max-width: 500px) {
+#color_box {
+    left: -46px;
+    padding: 12px 16px;
+    font-size: 16px;
+	}
+}
+
+.color_box_fix {
+	right: 0
+}
+
+.switcher_btn {
+	text-align: center
+}
+
+a.btn.xplus-btn.switcher_button {
+	color: white;
+	font-size: 13px;
+	padding: 0 30px;
+	margin-top: 50px;
+	height: 50px;
+	line-height: 50px
+}
+
+a.btn.xplus-btn.rtl_button {
+	background: #2f2f35;
+	color: white;
+	font-size: 13px;
+	padding: 0 30px;
+	margin-top: 25px;
+	height: 50px;
+	line-height: 50px
+}
+
+a.btn.xplus-btn.rtl_button:hover {
+	background: #222
+}
+
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('../fonts/fontawesome-webfont93e3.eot?v=4.4.0');
+	src: url('../fonts/fontawesome-webfontd41d.eot?#iefix&v=4.4.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont93e3.woff2?v=4.4.0') format('woff2'), url('../fonts/fontawesome-webfont93e3.woff?v=4.4.0') format('woff'), url('../fonts/fontawesome-webfont93e3.ttf?v=4.4.0') format('truetype'), url('../fonts/fontawesome-webfont93e3.svg?v=4.4.0#fontawesomeregular') format('svg');
+	font-weight: normal;
+	font-style: normal
+}
+
+.fa {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale
+}
+
+.fa-spin {
+	-webkit-animation: fa-spin 2s infinite linear;
+	animation: fa-spin 2s infinite linear
+}
+
+.fa-gear:before,
+.fa-cog:before {
+	content: "\f013"
+}
+
+@-webkit-keyframes "fa-spin" {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg);
+	}
+}
+
+@keyframes "fa-spin" {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg);
+	}
+}
+
+.color_change li.style_1 {
+	background: #be1e2d
+}
+
+.color_change li.style_2 {
+	background: #1E79F2
+}
+
+.style_2 .menuzord-menu>li.active>a,
+.style_2 .menuzord-menu>li:hover>a,
+.style_2 .dark-skin .menuzord .menuzord-menu>li.active>a,
+.style_2 .dark-skin .menuzord .menuzord-menu>li.active>a>i,
+.style_2 .dark-skin .menuzord .menuzord-menu>li:hover>a,
+.style_2 .dark-skin .menuzord .menuzord-menu>li:hover>a>i,
+.style_2 .servie_area-2 i,
+.style_2 .slider-content.static i,
+.style_2 .imageblock_content a,
+.style_2 .about-video a,
+.style_2 .imageblock_content_img.video i.zmdi.zmdi-play-circle:hover,
+.style_2 .facts-headding strong,
+.style_2 .grid figure figcaption i:hover,
+.style_2 .grid-gallery figcaption h3 a:hover,
+.style_2 .grid-gallery figcaption h3:hover,
+.style_2 .p-hover-white .grid figure .action-btn i,
+.style_2 .p-hover-white .grid-gallery figcaption i,
+.style_2 .p-hover-white .grid-gallery figcaption h3 a:hover,
+.style_2 .pricing-2 .currency-symbol,
+.style_2 .pricing-2 .price,
+.style_2 .grid figure .action-btn i:hover,
+.style_2 .blog_details a:hover,
+.style_2 .team-close-icon a,
+.style_2 a.read-more:hover,
+.style_2 .contact_area i,
+.style_2 .load-more:hover,
+.style_2 .blog_content h4:hover,
+.style_2 .footer_menu li a:hover,
+.style_2 .blog-body a:hover {
+	color: #1E79F2
+}
+
+.style_2 a.btn.xplus-btn.switcher_button:hover,
+.style_2 .btn.xplus-btn,
+.style_2 a.btn.xplus-btn.pricing:hover,
+.style_2 a.btn.xplus-btn.pricing.active,
+.style_2 .slider-content.classic .btn.hero_btn:hover,
+.style_2 .cd-headline.loading-bar .cd-words-wrapper::after,
+.style_2 .service_icon_info .service-overlay,
+.style_2 .service_icon_info_top .service-overlay,
+.style_2 .service-4 .service_content:hover,
+.style_2 .skill.blod .custom_progress_bar,
+.style_2 .testimonial_area.testimonial-2 .owl-dot.active,
+.style_2 .pagination>li a:hover,
+.style_2 .call-to-action,
+.style_2 .btn.xplus-btn.transparent:hover,
+.style_2 .btn.xplus-btn.hero-slider_btn_outline:hover,
+.style_2 .features_icon,
+.style_2 .testimonial_area,
+.style_2 .team_carousel .owl-dot.active,
+.style_2 a.play-btn i,
+.style_2 .member_social li a:hover,
+.style_2 .package-price,
+.style_2 a.btn.xplus-btn.pricing.active,
+.style_2 input.wid-signup,
+.style_2 .wpcf7-form-control.wpcf7-submit,
+.style_2 .contact_area.contact-2 i,
+.style_2 .footer_left_icon li a:hover,
+.style_2 span.scroll_top_up,
+.style_2 .pagination li:first-child a {
+	background: #1E79F2
+}
+
+.style_2 .section_title-2 hr,
+.style_2 .btn.xplus-btn.transparent:hover,
+.style_2 a.btn.xplus-btn.pricing:hover,
+.style_2 a.btn.xplus-btn.pricing.active,
+.style_2 .service-4 .service_content:hover,
+.style_2 .service-4.hover-border .service_content:hover,
+.style_2 .pricing-2 .pricing_table.active,
+.style_2 .contact-2 input.wpcf7-form-control:focus,
+.style_2 .contact-2 .wpcf7-textarea:focus,
+.style_2 .pagination li:first-child a {
+	border: 1px solid #1E79F2
+}
+
+.style_2 .btn.xplus-btn.hero-slider_btn_outline:hover {
+	border-color: #1E79F2
+}
+
+.style_2 .faq-section .panel-body,
+.style_2 .faq-section .panel-group .panel-heading+.panel-collapse>.panel-body {
+	border-top: 2px solid #1E79F2 !important
+}
+
+.style_2 .section-image-slider .owl-dot.active,
+.style_2 .btn.xplus-btn.transparent:hover,
+.style_2 .section-image-slider .owl-dot.active,
+.style_2 .team_carousel .owl-dot.active {
+	border: 3px solid #1E79F2
+}
+
+.style_2 a.btn.xplus-btn.pricing.active:hover {
+	background: #136ce2;
+	border-color: #136ce2
+}
+
+.style_2 .wpcf7-submit:hover,
+.style_2 .cta .cta-button,
+.style_2 .cta .cta-button:hover {
+	background: #333
+}
+
+.color_change li.style_3 {
+	background: #7d4cb4
+}
+
+.style_3 .menuzord-menu>li.active>a,
+.style_3 .menuzord-menu>li:hover>a,
+.style_3 .dark-skin .menuzord .menuzord-menu>li.active>a,
+.style_3 .dark-skin .menuzord .menuzord-menu>li.active>a>i,
+.style_3 .dark-skin .menuzord .menuzord-menu>li:hover>a,
+.style_3 .dark-skin .menuzord .menuzord-menu>li:hover>a>i,
+.style_3 .servie_area-2 i,
+.style_3 .slider-content.static i,
+.style_3 .imageblock_content a,
+.style_3 .about-video a,
+.style_3 .imageblock_content_img.video i.zmdi.zmdi-play-circle:hover,
+.style_3 .facts-headding strong,
+.style_3 .grid figure figcaption i:hover,
+.style_3 .grid-gallery figcaption h3 a:hover,
+.style_3 .grid-gallery figcaption h3:hover,
+.style_3 .p-hover-white .grid figure .action-btn i,
+.style_3 .p-hover-white .grid-gallery figcaption i,
+.style_3 .p-hover-white .grid-gallery figcaption h3 a:hover,
+.style_3 .pricing-2 .currency-symbol,
+.style_3 .pricing-2 .price,
+.style_3 .grid figure .action-btn i:hover,
+.style_3 .blog_details a:hover,
+.style_3 .team-close-icon a,
+.style_3 a.read-more:hover,
+.style_3 .contact_area i,
+.style_3 .load-more:hover,
+.style_3 .blog_content h4:hover,
+.style_3 .footer_menu li a:hover,
+.style_3 .blog-body a:hover {
+	color: #7d4cb4
+}
+
+.style_3 a.btn.xplus-btn.switcher_button:hover,
+.style_3 .btn.xplus-btn,
+.style_3 a.btn.xplus-btn.pricing:hover,
+.style_3 a.btn.xplus-btn.pricing.active,
+.style_3 .slider-content.classic .btn.hero_btn:hover,
+.style_3 .cd-headline.loading-bar .cd-words-wrapper::after,
+.style_3 .service_icon_info .service-overlay,
+.style_3 .service_icon_info_top .service-overlay,
+.style_3 .service-4 .service_content:hover,
+.style_3 .skill.blod .custom_progress_bar,
+.style_3 .testimonial_area.testimonial-2 .owl-dot.active,
+.style_3 .testimonial_area,
+.style_3 .pagination>li a:hover,
+.style_3 .call-to-action,
+.style_3 .btn.xplus-btn.transparent:hover,
+.style_3 .btn.xplus-btn.hero-slider_btn_outline:hover,
+.style_3 .features_icon,
+.style_3 .team_carousel .owl-dot.active,
+.style_3 a.play-btn i,
+.style_3 .member_social li a:hover,
+.style_3 .package-price,
+.style_3 a.btn.xplus-btn.pricing.active,
+.style_3 input.wid-signup,
+.style_3 .wpcf7-form-control.wpcf7-submit,
+.style_3 .contact_area.contact-2 i,
+.style_3 .footer_left_icon li a:hover,
+.style_3 span.scroll_top_up,
+.style_3 .pagination li:first-child a {
+	background: #7d4cb4
+}
+
+.style_3 .section_title-2 hr,
+.style_3 .btn.xplus-btn.transparent:hover,
+.style_3 a.btn.xplus-btn.pricing:hover,
+.style_3 a.btn.xplus-btn.pricing.active,
+.style_3 .service-4 .service_content:hover,
+.style_3 .service-4.hover-border .service_content:hover,
+.style_3 .pricing-2 .pricing_table.active,
+.style_3 .contact-2 input.wpcf7-form-control:focus,
+.style_3 .contact-2 .wpcf7-textarea:focus,
+.style_3 .pagination li:first-child a {
+	border: 1px solid #7d4cb4
+}
+
+.style_3 .btn.xplus-btn.hero-slider_btn_outline:hover {
+	border-color: #7d4cb4
+}
+
+.style_3 .faq-section .panel-body,
+.style_3 .faq-section .panel-group .panel-heading+.panel-collapse>.panel-body {
+	border-top: 2px solid #7d4cb4 !important
+}
+
+.style_3 .section-image-slider .owl-dot.active,
+.style_3 .btn.xplus-btn.transparent:hover,
+.style_3 .section-image-slider .owl-dot.active,
+.style_3 .team_carousel .owl-dot.active {
+	border: 3px solid #7d4cb4
+}
+
+.style_3 a.btn.xplus-btn.pricing.active:hover {
+	background: #905dca;
+	border-color: #905dca
+}
+
+.style_3 .wpcf7-submit:hover,
+.style_3 .cta .cta-button,
+.style_3 .cta .cta-button:hover {
+	background: #333
+}
+
+.color_change li.style_4 {
+	background: #FF5252
+}
+
+.style_4 .menuzord-menu>li.active>a,
+.style_4 .menuzord-menu>li:hover>a,
+.style_4 .dark-skin .menuzord .menuzord-menu>li.active>a,
+.style_4 .dark-skin .menuzord .menuzord-menu>li.active>a>i,
+.style_4 .dark-skin .menuzord .menuzord-menu>li:hover>a,
+.style_4 .dark-skin .menuzord .menuzord-menu>li:hover>a>i,
+.style_4 .servie_area-2 i,
+.style_4 .slider-content.static i,
+.style_4 .imageblock_content a,
+.style_4 .about-video a,
+.style_4 .imageblock_content_img.video i.zmdi.zmdi-play-circle:hover,
+.style_4 .facts-headding strong,
+.style_4 .grid figure figcaption i:hover,
+.style_4 .grid-gallery figcaption h3 a:hover,
+.style_4 .grid-gallery figcaption h3:hover,
+.style_4 .p-hover-white .grid figure .action-btn i,
+.style_4 .p-hover-white .grid-gallery figcaption i,
+.style_4 .p-hover-white .grid-gallery figcaption h3 a:hover,
+.style_4 .pricing-2 .currency-symbol,
+.style_4 .pricing-2 .price,
+.style_4 .grid figure .action-btn i:hover,
+.style_4 .blog_details a:hover,
+.style_4 .team-close-icon a,
+.style_4 a.read-more:hover,
+.style_4 .contact_area i,
+.style_4 .load-more:hover,
+.style_4 .blog_content h4:hover,
+.style_4 .footer_menu li a:hover,
+.style_4 .blog-body a:hover {
+	color: #FF5252
+}
+
+.style_4 a.btn.xplus-btn.switcher_button:hover,
+.style_4 .btn.xplus-btn,
+.style_4 a.btn.xplus-btn.pricing:hover,
+.style_4 a.btn.xplus-btn.pricing.active,
+.style_4 .slider-content.classic .btn.hero_btn:hover,
+.style_4 .cd-headline.loading-bar .cd-words-wrapper::after,
+.style_4 .service_icon_info .service-overlay,
+.style_4 .service_icon_info_top .service-overlay,
+.style_4 .service-4 .service_content:hover,
+.style_4 .skill.blod .custom_progress_bar,
+.style_4 .testimonial_area.testimonial-2 .owl-dot.active,
+.style_4 .testimonial_area,
+.style_4 .pagination>li a:hover,
+.style_4 .call-to-action,
+.style_4 .btn.xplus-btn.transparent:hover,
+.style_4 .btn.xplus-btn.hero-slider_btn_outline:hover,
+.style_4 .features_icon,
+.style_4 .team_carousel .owl-dot.active,
+.style_4 a.play-btn i,
+.style_4 .member_social li a:hover,
+.style_4 .package-price,
+.style_4 a.btn.xplus-btn.pricing.active,
+.style_4 input.wid-signup,
+.style_4 .wpcf7-form-control.wpcf7-submit,
+.style_4 .contact_area.contact-2 i,
+.style_4 .footer_left_icon li a:hover,
+.style_4 span.scroll_top_up,
+.style_4 .pagination li:first-child a {
+	background: #FF5252
+}
+
+.style_4 .section_title-2 hr,
+.style_4 .btn.xplus-btn.transparent:hover,
+.style_4 a.btn.xplus-btn.pricing:hover,
+.style_4 a.btn.xplus-btn.pricing.active,
+.style_4 .service-4 .service_content:hover,
+.style_4 .service-4.hover-border .service_content:hover,
+.style_4 .pricing-2 .pricing_table.active,
+.style_4 .contact-2 input.wpcf7-form-control:focus,
+.style_4 .contact-2 .wpcf7-textarea:focus,
+.style_4 .pagination li:first-child a {
+	border: 1px solid #FF5252
+}
+
+.style_4 .btn.xplus-btn.hero-slider_btn_outline:hover {
+	border-color: #FF5252
+}
+
+.style_4 .faq-section .panel-body,
+.style_4 .faq-section .panel-group .panel-heading+.panel-collapse>.panel-body {
+	border-top: 2px solid #FF5252 !important
+}
+
+.style_4 .section-image-slider .owl-dot.active,
+.style_4 .btn.xplus-btn.transparent:hover,
+.style_4 .section-image-slider .owl-dot.active,
+.style_4 .team_carousel .owl-dot.active {
+	border: 3px solid #FF5252
+}
+
+.style_4 a.btn.xplus-btn.pricing.active:hover {
+	background: #f13b3b;
+	border-color: #f13b3b
+}
+
+.style_4 .wpcf7-submit:hover,
+.style_4 .cta .cta-button,
+.style_4 .cta .cta-button:hover {
+	background: #333
+}
+
+.color_change li.style_5 {
+	background: #00BCD4
+}
+
+.style_5 .menuzord-menu>li.active>a,
+.style_5 .menuzord-menu>li:hover>a,
+.style_5 .dark-skin .menuzord .menuzord-menu>li.active>a,
+.style_5 .dark-skin .menuzord .menuzord-menu>li.active>a>i,
+.style_5 .dark-skin .menuzord .menuzord-menu>li:hover>a,
+.style_5 .dark-skin .menuzord .menuzord-menu>li:hover>a>i,
+.style_5 .servie_area-2 i,
+.style_5 .slider-content.static i,
+.style_5 .imageblock_content a,
+.style_5 .about-video a,
+.style_5 .imageblock_content_img.video i.zmdi.zmdi-play-circle:hover,
+.style_5 .facts-headding strong,
+.style_5 .grid figure figcaption i:hover,
+.style_5 .grid-gallery figcaption h3 a:hover,
+.style_5 .grid-gallery figcaption h3:hover,
+.style_5 .p-hover-white .grid figure .action-btn i,
+.style_5 .p-hover-white .grid-gallery figcaption i,
+.style_5 .p-hover-white .grid-gallery figcaption h3 a:hover,
+.style_5 .pricing-2 .currency-symbol,
+.style_5 .pricing-2 .price,
+.style_5 .grid figure .action-btn i:hover,
+.style_5 .blog_details a:hover,
+.style_5 .team-close-icon a,
+.style_5 a.read-more:hover,
+.style_5 .contact_area i,
+.style_5 .load-more:hover,
+.style_5 .blog_content h4:hover,
+.style_5 .footer_menu li a:hover,
+.style_5 .blog-body a:hover {
+	color: #00BCD4
+}
+
+.style_5 a.btn.xplus-btn.switcher_button:hover,
+.style_5 .btn.xplus-btn,
+.style_5 a.btn.xplus-btn.pricing:hover,
+.style_5 a.btn.xplus-btn.pricing.active,
+.style_5 .slider-content.classic .btn.hero_btn:hover,
+.style_5 .cd-headline.loading-bar .cd-words-wrapper::after,
+.style_5 .service_icon_info .service-overlay,
+.style_5 .service_icon_info_top .service-overlay,
+.style_5 .service-4 .service_content:hover,
+.style_5 .skill.blod .custom_progress_bar,
+.style_5 .testimonial_area.testimonial-2 .owl-dot.active,
+.style_5 .testimonial_area,
+.style_5 .pagination>li a:hover,
+.style_5 .call-to-action,
+.style_5 .btn.xplus-btn.transparent:hover,
+.style_5 .btn.xplus-btn.hero-slider_btn_outline:hover,
+.style_5 .features_icon,
+.style_5 .team_carousel .owl-dot.active,
+.style_5 a.play-btn i,
+.style_5 .member_social li a:hover,
+.style_5 .package-price,
+.style_5 a.btn.xplus-btn.pricing.active,
+.style_5 input.wid-signup,
+.style_5 .wpcf7-form-control.wpcf7-submit,
+.style_5 .contact_area.contact-2 i,
+.style_5 .footer_left_icon li a:hover,
+.style_5 span.scroll_top_up,
+.style_5 .pagination li:first-child a {
+	background: #00BCD4
+}
+
+.style_5 .section_title-2 hr,
+.style_5 .btn.xplus-btn.transparent:hover,
+.style_5 a.btn.xplus-btn.pricing:hover,
+.style_5 a.btn.xplus-btn.pricing.active,
+.style_5 .service-4 .service_content:hover,
+.style_5 .service-4.hover-border .service_content:hover,
+.style_5 .pricing-2 .pricing_table.active,
+.style_5 .contact-2 input.wpcf7-form-control:focus,
+.style_5 .contact-2 .wpcf7-textarea:focus,
+.style_5 .pagination li:first-child a {
+	border: 1px solid #00BCD4
+}
+
+.style_5 .btn.xplus-btn.hero-slider_btn_outline:hover {
+	border-color: #00BCD4
+}
+
+.style_5 .faq-section .panel-body,
+.style_5 .faq-section .panel-group .panel-heading+.panel-collapse>.panel-body {
+	border-top: 2px solid #00BCD4 !important
+}
+
+.style_5 .section-image-slider .owl-dot.active,
+.style_5 .btn.xplus-btn.transparent:hover,
+.style_5 .section-image-slider .owl-dot.active,
+.style_5 .team_carousel .owl-dot.active {
+	border: 3px solid #00BCD4
+}
+
+.style_5 a.btn.xplus-btn.pricing.active:hover {
+	background: #00a7bc;
+	border-color: #00a7bc
+}
+
+.style_5 .wpcf7-submit:hover,
+.style_5 .cta .cta-button,
+.style_5 .cta .cta-button:hover {
+	background: #333
+}
+
+.color_change li.style_6 {
+	background: #2CC185
+}
+
+.style_6 .menuzord-menu>li.active>a,
+.style_6 .menuzord-menu>li:hover>a,
+.style_6 .dark-skin .menuzord .menuzord-menu>li.active>a,
+.style_6 .dark-skin .menuzord .menuzord-menu>li.active>a>i,
+.style_6 .dark-skin .menuzord .menuzord-menu>li:hover>a,
+.style_6 .dark-skin .menuzord .menuzord-menu>li:hover>a>i,
+.style_6 .servie_area-2 i,
+.style_6 .slider-content.static i,
+.style_6 .imageblock_content a,
+.style_6 .about-video a,
+.style_6 .imageblock_content_img.video i.zmdi.zmdi-play-circle:hover,
+.style_6 .facts-headding strong,
+.style_6 .grid figure figcaption i:hover,
+.style_6 .grid-gallery figcaption h3 a:hover,
+.style_6 .grid-gallery figcaption h3:hover,
+.style_6 .p-hover-white .grid figure .action-btn i,
+.style_6 .p-hover-white .grid-gallery figcaption i,
+.style_6 .p-hover-white .grid-gallery figcaption h3 a:hover,
+.style_6 .pricing-2 .currency-symbol,
+.style_6 .pricing-2 .price,
+.style_6 .grid figure .action-btn i:hover,
+.style_6 .blog_details a:hover,
+.style_6 .team-close-icon a,
+.style_6 a.read-more:hover,
+.style_6 .contact_area i,
+.style_6 .load-more:hover,
+.style_6 .blog_content h4:hover,
+.style_6 .footer_menu li a:hover,
+.style_6 .blog-body a:hover {
+	color: #2CC185
+}
+
+.style_6 a.btn.xplus-btn.switcher_button:hover,
+.style_6 .btn.xplus-btn,
+.style_6 a.btn.xplus-btn.pricing:hover,
+.style_6 a.btn.xplus-btn.pricing.active,
+.style_6 .slider-content.classic .btn.hero_btn:hover,
+.style_6 .cd-headline.loading-bar .cd-words-wrapper::after,
+.style_6 .service_icon_info .service-overlay,
+.style_6 .service_icon_info_top .service-overlay,
+.style_6 .service-4 .service_content:hover,
+.style_6 .skill.blod .custom_progress_bar,
+.style_6 .testimonial_area.testimonial-2 .owl-dot.active,
+.style_6 .testimonial_area,
+.style_6 .pagination>li a:hover,
+.style_6 .call-to-action,
+.style_6 .btn.xplus-btn.transparent:hover,
+.style_6 .btn.xplus-btn.hero-slider_btn_outline:hover,
+.style_6 .features_icon,
+.style_6 .team_carousel .owl-dot.active,
+.style_6 a.play-btn i,
+.style_6 .member_social li a:hover,
+.style_6 .package-price,
+.style_6 a.btn.xplus-btn.pricing.active,
+.style_6 input.wid-signup,
+.style_6 .wpcf7-form-control.wpcf7-submit,
+.style_6 .contact_area.contact-2 i,
+.style_6 .footer_left_icon li a:hover,
+.style_6 span.scroll_top_up,
+.style_6 .pagination li:first-child a {
+	background: #2CC185
+}
+
+.style_6 .section_title-2 hr,
+.style_6 .btn.xplus-btn.transparent:hover,
+.style_6 a.btn.xplus-btn.pricing:hover,
+.style_6 a.btn.xplus-btn.pricing.active,
+.style_6 .service-4 .service_content:hover,
+.style_6 .service-4.hover-border .service_content:hover,
+.style_6 .pricing-2 .pricing_table.active,
+.style_6 .contact-2 input.wpcf7-form-control:focus,
+.style_6 .contact-2 .wpcf7-textarea:focus,
+.style_6 .pagination li:first-child a {
+	border: 1px solid #2CC185
+}
+
+.style_6 .btn.xplus-btn.hero-slider_btn_outline:hover {
+	border-color: #2CC185
+}
+
+.style_6 .faq-section .panel-body,
+.style_6 .faq-section .panel-group .panel-heading+.panel-collapse>.panel-body {
+	border-top: 2px solid #2CC185 !important
+}
+
+.style_6 .section-image-slider .owl-dot.active,
+.style_6 .btn.xplus-btn.transparent:hover,
+.style_6 .section-image-slider .owl-dot.active,
+.style_6 .team_carousel .owl-dot.active {
+	border: 3px solid #2CC185
+}
+
+.style_6 a.btn.xplus-btn.pricing.active:hover {
+	background: #0fa769;
+	border-color: #0fa769
+}
+
+.style_6 .wpcf7-submit:hover,
+.style_6 .cta .cta-button,
+.style_6 .cta .cta-button:hover {
+	background: #333
+}
+
+.style_6 input.wpcf7-form-control:focus,
+.style_6 .wpcf7-textarea:focus {
+	box-shadow: 0 2px 0px 0px rgb(44, 193, 129)
+}
+
+.style_5 input.wpcf7-form-control:focus,
+.style_5 .wpcf7-textarea:focus {
+	box-shadow: 0 2px 0px 0px rgb(0, 188, 212)
+}
+
+.style_4 input.wpcf7-form-control:focus,
+.style_4 .wpcf7-textarea:focus {
+	box-shadow: 0 2px 0px 0px rgb(255, 82, 82)
+}
+
+.style_3 input.wpcf7-form-control:focus,
+.style_3 .wpcf7-textarea:focus {
+	box-shadow: 0 2px 0px 0px rgb(175, 76, 180)
+}
+
+.style_2 input.wpcf7-form-control:focus,
+.style_2 .wpcf7-textarea:focus {
+	box-shadow: 0 2px 0px 0px rgb(30, 121, 242)
+}

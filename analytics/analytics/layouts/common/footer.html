@@ -1,0 +1,113 @@
+<?php
+/*************************************************************************
+ * Ideabytes Software India Pvt Ltd.                        		     *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          		 *
+ * Created Date : 13/08/2014                                      		 *
+ * Created By : Sri Ravi Teja                                            *
+ * Vision : Project Visitortracking MVC                              	 *  
+ * Modified by : Sri Ravi Teja    Date : 14/08/2014  Version : 2.0   	 *
+* Description : Footer of the template                         			 *
+*************************************************************************/
+?>
+	</div>
+    </div> <!-- container close -->    
+		<!-- footer -->
+			<footer>
+				<div id="copyright"><span>Designed by </span> <a href="http://www.ideabytes.com" target="_blank"><img src="layouts/images/logo.png" alt="Ideabytes" width="100" height="31"></a>
+							</div>
+                      
+			</footer>
+<!-- footer end -->
+	</div>
+	</body>
+</html>
+<script>
+$('#country_name').change(createSelect2);
+
+function createSelect2(){
+    var option = $(this).find(':selected').val();
+	//alert(option);
+    dataString = "option="+option;
+    if(option != '')
+    {
+        $.ajax({
+            type     : 'GET',
+            //url      : 'http://www.mitilini-trans.gr/demo/test.php',
+			url      : 'get_cities_ajax.php',
+            data     : dataString,
+            dataType : 'JSON',
+            cache: false,
+            success  : function(data) {            
+                //var output = '<option value="">Select Sth</option>';
+				var output = '<option value="">All</option>';
+                $.each(data.data, function(i,s){
+						var newOption = s;
+						var splitArray = newOption.split(":::");
+                    output += '<option value="' + splitArray[0] + '">' + splitArray[1] + '</option>';
+                });
+
+                $('#city_name').empty().append(output);
+            },
+            error: function(){
+                console.log("Ajax failed");
+            }
+        }); 
+    }
+    else
+    {
+        console.log("You have to select at least sth");
+    }
+}
+</script>
+<script>
+var rowNum1 = 0;
+var noOfFields = 1;
+function addRow1(frm) {
+	
+	var selectBox = '<select class="field" id="order_type" name="order_type[]" onchange="document.searchfilter.submit();">';
+	<?php	
+	foreach ($oArray as $order => $val) {		
+		echo 'selectBox += \'<option ' . $selectedO . ' value="' . $order . '">' . $val . '</option>\';';
+	}
+	?>
+	selectBox += '</select>';
+	var selectBox1 = '<select class="field" id="order_by" name="order_by[]" onchange="document.searchfilter.submit();">';
+	
+	<?php	
+	foreach ($oArray1 as $order1 => $val1) {		
+		echo 'selectBox1 += \'<option ' . $selectedO . ' value="' . $order1 . '">' . $val1 . '</option>\';';
+	}
+	?>
+	selectBox1 += '</select>';
+	rowNum1++;	
+	
+	var row1 = '<div id="rowNum1'+rowNum1+'" style="float:left;"><span>'+selectBox+selectBox1+'</span><span><span onclick="removeRow1('+rowNum1+');" class="designremove">Remove</span></span></div>';
+	
+	noOfFields = noOfFields +1;
+	if(noOfFields <= 5){
+		
+		jQuery('#itemRows1').append(row1);
+	}
+}
+
+function removeRow1(rnum1) {
+	
+	jQuery('#rowNum1'+rnum1).remove();
+	noOfFields = noOfFields - 1;
+}
+
+function paging(pageid){		
+		document.searchfilter.action = "<?php echo $pageName; ?>?page="+pageid;
+        document.searchfilter.submit();
+	}
+</script>
+<script>
+$(document).ready(function(){ 
+ 
+ $('input[name="date_radio_type"]').click(function() {
+  var test = $(this).val();
+  $(".dateRangeRadio").hide();
+  $("#type"+test).show();
+ }); 
+});
+</script>

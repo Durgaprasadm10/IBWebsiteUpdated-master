@@ -1,0 +1,100 @@
+.mandatory{
+    color :red;
+    font-size: 17px;
+    padding-right: 5px;
+}
+
+#ui-datepicker-div{
+    z-index:100 !important;
+}
+.hidden {
+    display:none;
+}
+.visible {
+    display:block;
+}
+.eventTypehide {
+    display:none;
+}
+.content_category_wrapper{
+    border:2px solid #a1a1a1 !important;
+    padding:10px 15px; 
+    background:#dddddd;
+    border-radius:25px;
+}
+.btn_small{
+    width:30px;
+}
+.showInRed{
+    color:red;
+}
+.main_content{
+    width:950px;
+}
+
+/* for nice form */
+
+.question {
+    background: url("../images/bubble.png") no-repeat scroll left top rgba(0, 0, 0, 0);
+    display: inline;
+    font-size: 13px;
+    height: 78px;
+    line-height: 1.5em;
+    margin-left: -7em;
+    margin-top: -6em;
+    opacity: 0;
+    padding: 10px 0 0;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
+    width: 174px;
+}
+
+.yes {
+    background: url("../images/buttony.png") no-repeat scroll left top rgba(0, 0, 0, 0);
+    color: #434D17;
+    cursor: pointer;
+    display: inline-block;
+    height: 21px;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    text-shadow: 0 1px 0 #FFFFFF;
+    width: 63px;
+}
+
+
+.cancel {
+    background: url("../images/buttonn.png") no-repeat scroll left top rgba(0, 0, 0, 0);
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    height: 21px;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    text-shadow: 0 1px 0 #000000;
+    width: 63px;
+}
+a.tooltip {
+    outline: medium none;
+}
+a.tooltip {
+    outline:none;
+}
+a.tooltip strong {
+    line-height:30px;
+} 
+a.tooltip:hover {
+    text-decoration:none;
+} 
+a.tooltip span { 
+    z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:240px; line-height:16px; 
+} 
+a.tooltip:hover span{ 
+    display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;
+} 
+.callout {
+    z-index:20;position:absolute;top:30px;border:0;left:-12px;
+} /*CSS3 extras*/
+a.tooltip span {
+    border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; 
+}

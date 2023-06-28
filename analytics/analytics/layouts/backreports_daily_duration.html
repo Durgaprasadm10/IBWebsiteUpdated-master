@@ -1,0 +1,64 @@
+<?php
+/*************************************************************************
+ * Ideabytes Software India Pvt Ltd.                        		     *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          		 *
+ * Created Date : 25/08/2014                                      		 *
+ * Created By : Sri Ravi Teja                                            *
+ * Vision : Project Visitortracking MVC                              	 *  
+ * Modified by : Sri Ravi Teja    Date : 25/08/2014  Version : 2.0   	 *
+ * Description : Displays Daily Reports 			                     *
+ ************************************************************************/
+
+ echo "AA".$stmt2->rowCount();
+ 
+if( ($stmt2->rowCount() > 0) && ($stmt2->rowCount() > 0)){
+?>
+<table>
+	<tr>
+		
+		<td valign="top">
+		    <!--a href="<?php echo MAIN_URL;?>/charts_daily.php?date=<?php echo $date_for_web; ?>&category=Country&source=mail&customer_id=<?php echo $logininfo["customer_id"];?>">Click to view on web</a><br!-->
+			<img src="<?php echo $fileName; ?>">
+		</td>
+		<td valign="top" style="padding-top:20px;padding-left:20px">
+		
+        <table cellpadding="5" style="border:1px solid black;border-collapse:collapse;">
+          <thead><th style='border:1px solid black;'>Channel Code</th><th style='border:1px solid black;'>Channel</th><th style='border:1px solid black;'>Duration(in seconds)</th></thead>
+    			<?php
+    			foreach($channel_display_array as $value){
+    				echo "<tr><td style='border:1px solid black;'>".$value['short_name']."</td><td style='border:1px solid black;'>".$value['page_name']."</td><td style='border:1px solid black;'>".$value['durations']."</td></tr>";
+    			}
+    			?>
+        </table>
+     
+		</td>
+	</tr>  
+</table>
+<?php
+}
+if( ($stmt3->rowCount() > 0) && ($stmt3->rowCount() > 0)){
+?>
+<table>
+	<tr>
+		
+		<td valign="top">
+		    <!--a href="<?php echo MAIN_URL;?>/charts_daily.php?date=<?php echo $date_for_web; ?>&category=Country&source=mail&customer_id=<?php echo $logininfo["customer_id"];?>">Click to view on web</a><br!-->
+			<img src="<?php echo $fileName; ?>">
+		</td>
+		<td valign="top" style="padding-top:20px;padding-left:20px">
+		
+        <table cellpadding="5" style="border:1px solid black;border-collapse:collapse;">
+          <thead><th style='border:1px solid black;'>Page Code</th><th style='border:1px solid black;'>Page</th><th style='border:1px solid black;'>Duration(in seconds)</th></thead>
+    			<?php
+    			foreach($page_display_array as $value){
+    				echo "<tr><td style='border:1px solid black;'>".$value['short_name']."</td><td style='border:1px solid black;'>".$value['page_name']."</td><td style='border:1px solid black;'>".$value['durations']."</td></tr>";
+    			}
+    			?>
+        </table>
+     
+		</td>
+	</tr>  
+</table>
+<?php
+}
+?>

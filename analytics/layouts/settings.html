@@ -1,0 +1,189 @@
+<?php
+/******************************************************************
+ * Ideabytes Software India Pvt Ltd.                              *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          *
+ * Created Date : 04/02/2014                                      *
+ * Created By : Pradeep G                                         *
+ * Vision : Project Sparkle                                       *
+ * Modified by : Pradeep G     Date : 05/02/2014    Version : V1  *
+ * Description : Home page - content area                         *
+ *****************************************************************/
+
+/* Include template header file */
+include("layouts/common/header.html");
+
+$aSitename = ($analyticsData['site_name']!="") ? $analyticsData['site_name'] : "";
+$aSiteurl = ($analyticsData['site_url']!="") ? $analyticsData['site_url'] : "";
+$aTo = ($analyticsData['receipient_to']!="") ? $analyticsData['receipient_to'] : "";
+$aCc = ($analyticsData['receipient_cc']!="") ? $analyticsData['receipient_cc'] : "";
+
+$cTo = ($cmData['default_receipient']!="") ? $cmData['default_receipient'] : "";
+$cReplyEmail = ($cmData['reply_email']!="") ? $cmData['reply_email'] : "";
+
+?>
+<script src="layouts/js/jquery-1.10.2.js"></script>
+<script src="layouts/js/jquery-ui.js"></script>
+<link rel="stylesheet" href="layouts/css/jquery-ui.css">
+<script>
+$(function() {
+$( "#tabs" ).tabs();
+});
+</script>
+<script src="layouts/js/jquery.selectbox-0.5_style_2.js" type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8">
+$(function() {
+	$('.styledselect_form_1').selectbox({ inputClass: "styledselect_form_1",onselect :true});
+	
+	<?php	
+	if(count($customerList) > 0){
+		foreach($customerList as $customer){  		
+			if($customer['id'] == $customerid){
+				echo '$("#customer_id_input").val("'.$customer['name'].'");';
+				break;
+			}
+		}
+	} 
+	?>
+	
+});
+
+function callbackDropdown(selectedvalue){
+	window.location.href = '?customerid='+selectedvalue;
+}
+</script>
+<style>
+#customer_id_container{
+	z-index:1000;
+}
+</style>
+<div id="content-outer">
+<!-- start content -->
+<div id="content">
+
+<!--  start page-heading -->
+<div id="page-heading">
+    <h2>Settings</h2>
+</div>
+<!-- end page-heading -->
+
+<table border="0" width="100%" cellpadding="0" cellspacing="0" id="content-table">
+<tr>
+    <th rowspan="3" class="sized"><img src="layouts/images/shared/side_shadowleft.jpg" width="20" height="300" alt="" /></th>
+    <th class="topleft"></th>
+    <td id="tbl-border-top">&nbsp;</td>
+    <th class="topright"></th>
+    <th rowspan="3" class="sized"><img src="layouts/images/shared/side_shadowright.jpg" width="20" height="300" alt="" /></th>
+</tr>
+<tr>
+<td id="tbl-border-left"></td>
+<td>
+    <!--  start content-table-inner ...................................................................... START -->
+    <div id="content-table-inner">
+
+        <!--  start table-content  -->
+        <div id="table-content">
+            <span id ='msgplace'>
+            <?php echo $sMsg; ?>
+            </span>
+			<?php if($logininfo['admin_type']=="1"){ ?>
+			<select class="styledselect_form_1" name="customer_id" id="customer_id">
+				<option value=""> - Select Customer - </option>				
+				<?php
+				if(count($customerList) > 0){
+					foreach($customerList as $customer){  
+						echo '<option value="'.$customer['id'].'">'.$customer['name'].'</option>';
+					}
+				}
+				?>
+			</select> 		
+			<?php } ?>
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Website Analytics</a></li>
+					<li><a href="#tabs-2">Campaign Manager</a></li>
+				</ul>
+				<div id="tabs-1">
+					<p>
+						<form id="analytics" action="" method="post">
+							<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
+								<tr>
+									<th colspan="2" valign="top">Site Name :</th>
+									<td> <input required value="<?php echo $aSitename; ?>" type="text" class="inp-form" name="site_name"></td>
+								</tr>
+								<tr>
+									<th colspan="2" valign="top">Site Base URL :</th>
+									<td> <input required value="<?php echo $aSiteurl; ?>" type="text" class="inp-form" name="site_url"></td>
+								</tr>
+								<tr>
+									<th colspan="2" valign="top">Email Receipients (To) :</th>
+									<td> <input required value="<?php echo $aTo; ?>" type="text" class="inp-form" name="receipient_to"></td>
+								</tr>
+								<tr>
+									<th colspan="2" valign="top">Email Receipients (CC) :</th>
+									<td> <input required value="<?php echo $aCc; ?>" type="text" class="inp-form" name="receipient_cc"></td>
+								</tr>								
+								<tr><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th></tr>
+								<tr>
+									<td valign="top">
+										<input type="submit" class="form-submit"  id="submit" name="btncontact" value="Submit"/>										
+										<input type="hidden" value="UpdateAnalytics" name="action"/>
+									</td>
+								</tr>
+							</table>
+							<input type="hidden" value="<?php echo $customer_id; ?>" name="customer_id" id="customer_id"/>
+						</form>
+					</p>
+				</div>
+				<div id="tabs-2">
+					<p>
+						<form id="login" method="post">
+							<table border="0" cellpadding="0" cellspacing="0"  id="id-form">
+								<tr>
+									<th valign="top">Default Campaign Users :</th>
+									<td> <input required value="<?php echo $cTo; ?>" type="text" class="inp-form" name="default_receipient"></td>
+								</tr>	
+								<tr>
+									<th valign="top">Reply Email :</th>
+									<td> <input required value="<?php echo $cReplyEmail; ?>" type="email" class="inp-form" name="reply_email"></td>
+								</tr>								
+								<tr><th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th></tr>
+								<tr>
+									<td valign="top">
+										<input type="submit" class="form-submit"  id="submit" name="btncontact" value="Submit"/>										
+										<input type="hidden" value="UpdateCm" name="action"/>
+									</td>
+								</tr>
+							</table>
+							<input type="hidden" value="<?php echo $customer_id; ?>" name="customer_id" id="customer_id"/>
+						</form>
+					</p>
+				</div>
+			</div>
+			<br><br>
+            <!--  start product-table ..................................................................................... -->
+           
+        </div>
+        <!--  end content-table  -->
+        <div class="clear"></div>
+    </div>
+    <!--  end content-table-inner ............................................END  -->
+</td>
+<td id="tbl-border-right"></td>
+</tr>
+<tr>
+    <th class="sized bottomleft"></th>
+    <td id="tbl-border-bottom">&nbsp;</td>
+    <th class="sized bottomright"></th>
+</tr>
+</table>
+<div class="clear">&nbsp;</div>
+
+</div>
+<!--  end content -->
+<div class="clear">&nbsp;</div>
+</div>
+<!--  end content-outer........................................................END -->
+<?php
+/* Include template header file */
+include("layouts/common/footer.html");
+?>

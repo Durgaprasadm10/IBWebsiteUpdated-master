@@ -1,0 +1,121 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Pradeep G                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Mahendra Akula     Date : 19/05/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("common/header.html");
+?>
+<link rel="stylesheet" href="layouts/css/table.css">
+<div class="body3">
+    <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+            <!--			<img src='layouts/images/stats.png'/>-->
+            <form id="getTracking" name="getTracking" method="POST" action=''>
+                <table align="right">
+                    <tr>
+                        <td>
+                            <select id="pid" name="pid" onchange='this.form.submit()'">
+                                <option value="">Select Campaign *</option>
+                                <?php
+                                foreach($aPMList as $data)
+                                {
+                                @$id =$_REQUEST['pid'];
+                                ?>
+                                <option value="<?php echo $data['pid'];?>" <?php if(@$id==$data['pid']) echo 'selected';else echo ''; ?>><?php echo $data['campaign_name'].'('.$data['pid'].')';?></option>
+                                <?php   }
+                                ?>
+                            </select>
+                        </td>
+                        <td>
+
+                            <div class="camp-form">	
+                                <?php
+                                if($count > 0){
+                                ?>							
+                                <button type = "button" class="button2" onclick="window.location.href = 'viewGraph.php?pid=<?php echo $id; ?>'" >View Hit Graph</button> 
+                                <?php   }
+                                ?>                           
+                            </div>
+
+                        </td>
+                    </tr>
+                </table>
+                <br/><br/><br/>
+                <table border="1" id='example'>
+                    <thead>
+                        <?php 
+
+                        echo "<tr bgcolor='#CC3333'>";
+                        echo "<th width='10%'><font color='white'>User EmailID</font></th>";
+                        echo "<th width='10%'><font color='white'>Campaign Name</font></th>";
+                        echo "<th width='10%'><font color='white'>Link Name</font></th>";
+                        //echo "<th width='10%'><font color='white'>IP</font></th>";
+                        echo "<th width='10%'><font color='white'>Visited On</font></th>";
+                        //echo "<th width='10%'><font color='white'>Device</font></th>";
+                        // echo "<th width='10%'><font color='white'>Location</font></th>";
+                        echo "</tr>";
+
+                        ?>
+                    </thead>
+                    <tbody>				
+                        <?php
+                        if($count > 0){
+                        $aDefaultGroup = explode(',', DEFAULT_GROUP);
+                        foreach ($aDefaultGroup as $sUserDetails) {
+                        $aUserDetails = explode('#', $sUserDetails);
+                        $aEmailId[] = $aUserDetails[1];
+                        }
+                       // print_r($aEmailId);
+                        $oCMList = new CList();
+                        foreach($visitorDetails as $data){
+                        // echo "<pre>";
+                        // print_r($data);
+                        $aUEmail = $oCMList->getEmailBy_UID_PID($data['user_id'], $data['process_id']);
+                        if(!in_array($aUEmail['user_email'],$aEmailId)){
+                        echo "<tr>";
+                        echo "<td>".$aUEmail['user_email']."</td>";
+                        echo "<td>".$sCmName['campaign_name']."</td>";
+                        //echo "<td>".$data['link_name']."</td>";
+                        echo "<td><a href=\"#\" class=\"tooltip\">".$data['link_name']."<span><img class=\"callout\" src=\"layouts/images/callout.gif\" /><strong> IP Address : ".$data['ip_address']." <br /> Visitor Device : ".$data['visitor_device']."<br /> Visitor Location : ".$data['visitor_location']."<br /></strong></span></a></td>";
+                        // echo "<td>".$data['ip_address']."</td>";
+                        echo "<td>".$data['visited_on']."</td>";
+                        // echo "<td>".$data['visitor_device']."</td>";
+                        // echo "<td>".$data['visitor_location']."</td></tr>";
+                        }
+                        }
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </form>
+            <br/>
+            <div class="camp-form">
+                <button type = "button" class="button2" onclick="window.location.href = 'mailstatistics.php'" >View Mail Statistics</button>
+                <button type = "button"  class="button2" onclick="window.location.href = 'view_campaign_statistics.php'">Back</button> 
+            </div>
+            <br>
+        </article>
+        <!-- content end -->
+    </div>
+</div>
+<link rel="stylesheet" type="text/css" href="http://www.ideabytestraining.com/CM/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<script>
+
+                    $(function() {
+                        $("#example").dataTable({
+                            "sPaginationType": "full_numbers"
+                        });
+                    })
+
+</script>
+<?php
+include("common/footer.html");
+?>

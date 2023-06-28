@@ -1,0 +1,69 @@
+<?php
+/******************************************************************
+ * Ideabytes Software India Pvt Ltd.                              *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          *
+ * Created Date : 13/04/2014                                      *
+ * Created By : Sri Ravi Teja                                     *
+ * Vision : Project Visitortracking MVC                           *  
+ * Modified by : Sri Ravi Teja Date : 13/08/2014   Version : 2.0  *
+ * Description : this page will displays analytics for individual     *
+				 pages.                                           *
+ *****************************************************************/
+
+include ("common/header.html");
+?>
+
+<div id="box">
+            <h3>Page Wise Reports</h3>
+			<?php
+			echo "<table id = 'example1' class='display'>";
+			echo "<thead class='th_class'><tr><th>Page Name</th><th>Clicks</th><th>View Details</th></tr></thead><tbody>";
+
+
+			if($count>0)
+			{
+				foreach($analyticsData as $aData)
+				{	
+					echo "<tr><td>".$aData['page_name']."</td>";
+					echo "<td>".$aData['clicks']."</td>";
+					echo "<td><a href='analytics_bypage.php?page_id=".$aData['page_id']."&action=view_details' target='_blank'>View Details</td></tr>";
+				}
+			}else{
+				echo "<tr><td colspan='4' class='dataTables_empty'>No analytics found</td></tr>";
+			}
+			echo "</tbody></table>";
+			?>
+
+<?php
+include ("common/footer.html");
+?>
+</div>
+<script>
+$(document).ready(function() {
+<?php if($count > 0){ ?>
+    $('#example1').dataTable( {
+
+	     "bStateSave": true,
+
+         "sPaginationType": "full_numbers"
+    } );
+<?php } ?>    
+} );
+</script>
+<script>
+ function exportExcel() {
+        document.searchby.action = "analytics_bypage_excel.php";
+        document.searchby.target = "_blank";
+        document.searchby.submit();
+        document.searchby.target = "";
+        document.searchby.action = "analytics_bypage.php";
+        return false;
+    }
+	 function makepdf() {
+        document.searchby.action = "analytics_bypage_pdf.php";
+        document.searchby.target = "_blank";
+        document.searchby.submit();
+		document.searchby.target = "";
+		return false;
+    }
+</script>

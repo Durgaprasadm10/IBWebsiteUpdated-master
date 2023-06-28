@@ -1,0 +1,249 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Pradeep G                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Mahendra A     Date : 22/07/2014    Version : V1  *
+* Description : Create Edit Capaign page - content area                         *
+*****************************************************************/
+
+include("common/header.html");
+?>
+<div class="body3">
+    <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+            <!--            <img src='layouts/images/create.png'/>
+                        <br/>
+                        <br/>-->
+            <form action="createeditcampaign.php" method="post" class="niceform1" id="create_campaign_action" enctype="multipart/form-data">
+                <fieldset>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">Campaign Name <span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input maxlength = '40' type = 'text' name='campaign_name' id='campaign_name' value='<?php if($selectedID != "") echo $campaignDetails[0]['campaign_name']; else echo "";?>' style='width:300px;' onChange='getCampaignDetails()' required />
+                                    </td>
+                                    <td>
+                                        <a href="selectcampaign.php?action=select"><img src="layouts/images/Folder.png" alt="" title="" border="0" /></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">Short Description: <span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <input type = "text" name="campaign_shortDesc" id="campaign_shortDesc" value="<?php if($selectedID != "") echo $campaignDetails[0]['short_description']; else echo "";?>" style="width:300px;" required />
+                        </dd> 
+                    </dl>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">Long Description: <span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <textarea name="campaign_longDesc" id="campaign_longDesc" style="width:310px;" required ><?php if($selectedID != "") echo $campaignDetails[0]['long_description']; else echo "";?></textarea>
+                        </dd> 
+                    </dl>
+                    <div id="contentPart" style='display:none;'>
+                        <dl>
+                            <dt style="width:900px;text-align: left;">
+                            <label for="">Select Type of Campaign Creation:</label>
+                            </dt>
+                            <dd style="width:900px;">
+                                <input type="radio" name="campaign_tab_type" id="campaign_tab_type_1" value="1" checked>
+                                Create New
+                                <input type="radio" name="campaign_tab_type" id="campaign_tab_type_1" value="2">
+                                Select From File
+                                <input type="radio" name="campaign_tab_type" id="campaign_tab_type_1" value="3">
+                                Create From Existing Template
+                            </dd>
+                        </dl>
+                        <dl style="width:900px;">
+                            <div class="content_category_wrapper">					
+                                <div id="type1" class="eventTypehide" style="display:block;">
+                                    <label for="">Content</label>
+                                </div>
+
+                                <div id="type2" class="eventTypehide">
+                                    <label for="">Select File:</label>
+                                    <input type="file" name="template_file" id="template_file" size="40"/>
+                                </div>
+                                <div id="type3" class="eventTypehide">
+                                    <label for="">Select Existing Template:</label>
+                                    <select name="campaign_list" id="campaign_list" style="width:250px;" onChange='getContent(this.id);'>
+                                        <option value='Select Campaign'>Select Campaign</option>
+                                        <?php 
+                                        if($count > 0)
+                                        {
+                                        foreach($campaignList as $data)
+                                        {
+                                        $campaign_id = $data['id']; 
+                                        $campaign_name = $data['campaign_name']; ?>
+                                        <option value=<?php echo $campaign_id; ?>><?php echo $campaign_name;?></option>
+                                        <?php }
+                                        } ?>
+                                    </select>
+                                </div>
+                                <textarea name="create_new" id="create_new" class="ckeditor"><?php if($id == "") echo ""; else echo $displayContent;?></textarea>
+                            </div>
+                        </dl>
+                    </div>
+                </fieldset>
+                <div class="camp-form">
+                    <dl class="submit" style="width:315px;">
+                        <dd>
+                            <button class='button2' id='saveOrUpdate' type='button' onClick='return enableEditContent();'>Save</button>
+                            <button class='button2' id='updateContent' value='updateContent' type='button' style='display:none;' onClick='getContenteditor();'>Edit Content</button>
+                            <button class='button2' name='action' id='add' value='add' type='submit' style='display:none;'>Save Campaign</button>
+                            <button type = "button" class="button2" onclick="window.location.href = 'dashboard.php'" >Back</button> 
+
+                        </dd>
+                    </dl>
+                </div>
+                <br>
+            </form>
+    </div>
+</article>
+<!-- content end -->
+</div>
+</div>
+<script src="lib/ckeditor/ckeditor.js">
+</script>
+<script>
+    $(document).ready(function() {
+
+        $('input[name="campaign_tab_type"]').click(function() {
+
+            var editor = CKEDITOR.instances.create_new;
+            var campaignValue = $(this).val();
+            $("div.eventTypehide").hide();
+            $("#type" + campaignValue).show();
+            editor.setData("");
+        });
+
+        $("#template_file").change(function(event)
+        {
+            var editor = CKEDITOR.instances.create_new;
+
+            files = event.target.files;
+            var content = '';
+            if (files)
+            {
+                for (var i = 0, f; f = files[i]; i++)
+                {
+                    var r = new FileReader();
+                    r.onload = (function(f) {
+                        return function(e)
+                        {
+                            content = e.target.result;
+                            editor.setData(content);
+                        };
+                    })(f);
+
+                    r.readAsBinaryString(f);
+                }
+            }
+            else
+            {
+                alert("Failed to load files");
+            }
+        });
+    });
+    function getContent(id)
+    {
+        var editor = CKEDITOR.instances.create_new;
+        var cm_id = document.getElementById(id).value;
+        var dataString = "cm_id=" + cm_id;
+        jQuery.ajax({
+            url: "get_cmContect.php",
+            type: "post",
+            data: dataString,
+            async: true,
+            success: function(msg)
+            {
+                editor.setData(msg);
+            }
+        });
+    }
+
+</script>
+<script>
+    function formReset() {
+        document.getElementById('create_campaign_action').reset();
+        var editor = CKEDITOR.instances.create_new;
+        editor.setData();
+    }
+</script>
+<script>
+    function getCampaignDetails()
+    {
+        var cm_name = document.getElementById('campaign_name').value;
+        
+        var dataString = "campaign_name=" + cm_name;
+        jQuery.ajax({
+            url: "get_cmDetails.php",
+            type: "post",
+            data: dataString,
+            async: true,
+            success: function(msg)
+            {
+                if (msg == "N")
+                {
+                    document.getElementById('campaign_shortDesc').value = "";
+                    document.getElementById('campaign_longDesc').value = "";
+                    document.getElementById('saveOrUpdate').innerHTML = "Save";
+                    document.getElementById('saveOrUpdate').value = "save";
+                }
+                else
+                {
+                    var cm_details = msg.split("##");
+                    document.getElementById('campaign_shortDesc').value = cm_details[0];
+                    document.getElementById('campaign_longDesc').value = cm_details[1];
+                    document.getElementById('saveOrUpdate').innerHTML = "Update";
+                    document.getElementById('saveOrUpdate').value = "update";
+                }
+            }
+
+        });
+    }
+</script>
+<script>
+    function getContenteditor()
+    {
+        document.getElementById('contentPart').style.display = 'inline';
+        document.getElementById('add').style.display = 'inline';
+        document.getElementById('updateContent').style.display = 'none';
+    }
+    function enableEditContent()
+    {
+        if (document.getElementById('campaign_shortDesc').value != "" && document.getElementById('campaign_longDesc').value != "" && document.getElementById('campaign_name').value != "")
+        {
+            document.getElementById('campaign_name').readOnly = true;
+            document.getElementById('campaign_shortDesc').readOnly = true;
+            document.getElementById('campaign_longDesc').readOnly = true;
+            document.getElementById('saveOrUpdate').style.display = 'none';
+            document.getElementById('updateContent').style.display = 'inline';
+            return true;
+        }
+        else
+        {
+            document.getElementById('campaign_name').value = "";
+            document.getElementById('campaign_shortDesc').value = "";
+            document.getElementById('campaign_longDesc').value = "";
+            return false;
+        }
+
+    }
+</script>
+<?php
+include("common/footer.html");
+?>

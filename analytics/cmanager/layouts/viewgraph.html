@@ -1,0 +1,130 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Pradeep G                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Pradeep G     Date : 21/04/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("common/header.html");
+
+?>
+<link rel="stylesheet" href="layouts/css/table.css">
+
+<div class="body3">
+    <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+            <!--            <img src='layouts/images/stats.png'/>-->
+            <form id="getTracking" name="getTracking" method="POST" action='viewGraph.php'>
+                <table align="right">
+                    <tr>
+                        <td>
+                            <select id="pid" name="pid" onchange='this.form.submit()'">
+                                <option value="">Select Campaign *</option>
+                                <?php
+                                foreach($aPMList as $data)
+                                {
+                               
+                                ?>
+                                <option value="<?php echo $data['pid'];?>" <?php if(@$pid==$data['pid']) echo 'selected';else echo ''; ?>><?php echo $data['campaign_name'].'('.$data['pid'].')';?></option>
+                                <?php   }
+                                ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="month" name="month" style="width:200px;height:25px" selected onchange="document.getTracking.submit();"><?php echo $row['month']; ?>
+                                <option value="All">All</option>
+                                <?php
+                                $oArray1 = array("1" => "Jan", "2" => "Feb","3" => "Mar","4" => "Apr","5" => "May","6" => "Jun","7" => "Jul","8" => "Aug","9" => "Sep","10" => "Oct","11" => "Nov","12" => "Dec");
+                                foreach ($oArray1 as $month => $val1) {
+                                $selected = ($month == @$_POST['month']) ? "selected" : "";
+
+                                echo '<option ' . $selected . ' value="' . $month . '">' . $val1 . '</option>';
+
+                                }
+                                ?>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="camp-form">	
+                                <input type="hidden"  value="viewGraph" name='action'> 
+                                <button type = "button" class="button2" onclick="window.location.href = 'dashboard.php'" >Home</button> 
+                                <button type = "button" class="button2" onclick="window.location.href = 'statistics.php'">Back</button> 
+
+                            </div>
+
+
+                        </td>
+                    </tr>
+
+
+                </table>
+               
+                <?php 
+                $bImg = false;
+                 
+                $count = $objCList->countVisitorTrackByPid(@$pid);               
+               
+                if($count > 0){                
+                    if(@$_POST['month'] == 'All' || @$_POST['month'] == ''){
+                        $HitCount = $objCList->getHitCountAll(@$pid);
+                         
+                            if (sizeof($HitCount) == 0) {
+                            $bImg = true;
+                            }
+                    
+                      }else{
+                          $HitCount = $objCList->getHitCount(@$pid, @$_POST['month']);
+                          
+                          if (sizeof($HitCount) == 0) {
+                            $bImg = true;
+                          }
+                      }
+                 }else{
+                 $bImg = true;
+                 }
+                ?>
+                <?php
+                if($bImg){
+                 $bImg = false;
+                
+                echo '<img src="layouts/images/nodata.png">';
+                
+                }else{
+                
+                echo '<img src="processvgraph.php?month='.@$_POST["month"].'&pid='.$pid.'">';
+               
+                }
+                ?>
+            </form>
+        </article>
+        <!-- content end -->
+    </div>
+
+</div>
+
+<meta http-equiv="refresh" content="1800" >
+<link rel="stylesheet" type="text/css" href="http://www.ideabytestraining.com/CM/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<?php
+include("common/footer.html");
+?>
+<script>
+
+                                    $('#cm_id').change(createSelect2);
+
+                                    function createSelect2() {
+                                        $("select#month")[0].selectedIndex = 0;
+                                    }
+</script>
+
+

@@ -1,0 +1,111 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Pradeep G                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Mahendra A    Date : 09/05/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("layouts/common/header.html");
+
+
+$actionLable = (($action == 'editForm') || ($action == 'Edit')) ? "Edit" : "Add"; 
+$actionLable1 = (($action == 'editForm') || ($action == 'Edit')) ? "Update" : "Add";
+
+$l_id = isset($eventData['id']) ? $eventData['id'] : "";
+$l_name = isset($eventData['listname']) ? $eventData['listname'] : "";
+$l_active_status = isset($eventData['active_status']) ? $eventData['active_status'] : "";
+$l_created_date = isset($eventData['created_date']) ? $eventData['created_date'] : "";
+
+$checked1 = " checked"; $checked2= "";
+if(isset($eventData["active_status"])){
+if($eventData["active_status"] == 0){
+$checked2=" checked";
+$checked1="";
+}	
+}
+
+?>
+<div class="body3">
+    <div class="main zerogrid">
+        <!-- content -->
+        <?php
+        if(isset($sMsg) && ($sMsg != "")){
+        echo $sMsg;
+        }
+        ?>
+        <article id="content">
+            <div class="form">
+                <!--                <h2><?php echo $actionLable; ?> List</h2>-->
+                <form action="listmanagement.php" method="post" class="niceform" enctype="multipart/form-data" id="f1">
+                    <fieldset>
+
+                        <dl>
+                            <dt>
+                            <label for="">List Name <span class="mandatory">*</span>:</label>
+                            </dt>
+                            <dd>
+                                <input type = "text" name="list_name" onkeypress="return alpha(event)" id="eventname" style="width:300px;" value="<?php echo $l_name; ?>" required>
+                            </dd> 
+                        </dl>
+                        <?php 
+                        if(empty($l_name)){
+                        echo " <dl>";
+                        echo "<dt>";
+                        echo "<label>Upload File <span class=\"mandatory\"></span>:</label>";
+                        echo "</dt>";
+                        echo "<dd>";
+                        echo "<input name=\"userfile\"  id=\"userfile\" type=\"file\" >";   
+                        echo "</dd>"; 
+                        echo "</dl>";
+                        };
+                        ?>
+                        <dl>
+                            <dt><label for="color">Status </label></dt>
+                            <dd>
+                                <input type="radio"<?php echo $checked1; ?> name="status" id="" value="1">
+                                       <label class="check_label">Active</label>
+                                <input type="radio"<?php echo $checked2; ?> name="status" id="" value="0">
+                                       <label class="check_label">In active</label>                            
+                            </dd>
+                        </dl>
+                        <dl class="submit" style="width:315px;">
+                            <?php 
+                            if(!empty($l_name)){
+                            echo "<input type=\"hidden\" name=\"old_name\" id = \"old_name\" value = $l_name>";
+                            };
+                            ?>
+                        </dl>
+                        <br>
+                    </fieldset>
+                    <div class="camp-form">
+                        <input type="hidden" name="id" id = "id" value = "<?php echo $l_id; ?>">
+                        <input type="hidden" name="page" id = "id" value = "<?php echo $page; ?>">
+                        <button type = "button" class="button2" onclick="window.location.href = 'listmanagement.php'" >Back</button>
+                        <button name="action" type="submit" class="button2" value="<?php echo $actionLable;?>">Done</button>
+                        <button name="action" type = "button" class="button2" onclick='formReset();'>Clear</button>
+                        <button type = "button" class="button2" onclick="window.location.href = 'dashboard.php'" >Home</button>
+                    </div>
+                </form>	
+            </div>
+        </article>
+    </div>
+    <!-- content end -->
+</div>
+
+<?php
+include("layouts/common/footer.html");
+?>
+<script>
+    function formReset() {
+        document.getElementById('f1').reset();
+    }
+    function alpha(e) {
+        var k;
+        document.all ? k = e.keyCode : k = e.which;
+        return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 95 || k == 8 || (k >= 48 && k <= 57));
+    }
+</script>

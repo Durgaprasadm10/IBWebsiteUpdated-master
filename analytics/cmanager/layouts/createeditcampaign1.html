@@ -1,0 +1,46 @@
+<?php
+
+?>
+<div class="body3">
+    <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+<!--            <img src='layouts/images/create.png'/>
+            <br/>
+            <br/>-->
+            <form action="createeditcampaign1.php" method="post" class="niceform1" id="create_campaign_action" enctype="multipart/form-data">
+                <fieldset>
+                    
+                   
+                    <div id="contentPart" >
+                      
+                        <dl style="width:685px;">
+                            <div class="content_category_wrapper">					
+                                
+                               
+                                <textarea name="create_new" id="create_new" class="ckeditor"><?php if($id == "") echo ""; else echo $displayContent;?></textarea>
+                            </div>
+                        </dl>
+                    </div>
+                </fieldset>
+                <div class="camp-form">
+                    <dl class="submit" style="width:315px;">
+                        <dd>
+                            <button class='button2' name='action' id='add' value='add' type='submit' >Save Campaign</button>
+                            
+                        </dd>
+                    </dl>
+                </div>
+                <br>
+            </form>
+    </div>
+</article>
+<!-- content end -->
+</div>
+</div>
+<script src="lib/ckeditor/ckeditor.js">
+</script>
+
+<?php
+
+?>

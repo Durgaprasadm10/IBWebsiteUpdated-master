@@ -1,0 +1,170 @@
+<?php
+include("common/header.html");
+
+?>
+<link rel="stylesheet" href="layouts/css/table.css" />
+<style>
+    .CSSTableGenerator tr:nth-child(2n+1) {
+        background-color: #FFF;
+    }
+    .CSSTableGenerator td {
+        border-style: none;
+        border-top-style: none;
+        border-right-style-value: none;
+        border-bottom-style: none;
+        border-left-style-value: none;
+        border-left-style-ltr-source: physical;
+        border-left-style-rtl-source: physical;
+        border-right-style-ltr-source: physical;
+        border-right-style-rtl-source: physical;
+    }
+    .camp-form {
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    }
+    .CSSTableGenerator {
+        box-shadow: 0px 0px 0px #FFF;
+        border: 1px none #000;
+        border-top-width: 1px;
+        border-right-width-value: 1px;
+        border-right-width-ltr-source: physical;
+        border-right-width-rtl-source: physical;
+        border-bottom-width: 1px;
+        border-left-width-value: 1px;
+        border-left-width-ltr-source: physical;
+        border-left-width-rtl-source: physical;
+        border-top-style: none;
+        border-right-style-value: none;
+        border-right-style-ltr-source: physical;
+        border-right-style-rtl-source: physical;
+        border-bottom-style: none;
+        border-left-style-value: none;
+        border-left-style-ltr-source: physical;
+        border-left-style-rtl-source: physical;
+        border-top-color: #000;
+        border-right-color-value: #000;
+        border-right-color-ltr-source: physical;
+        border-right-color-rtl-source: physical;
+        border-bottom-color: #000;
+        border-left-color-value: #000;
+        border-left-color-ltr-source: physical;
+        border-left-color-rtl-source: physical;
+        -moz-border-top-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-bottom-colors: none;
+        -moz-border-left-colors: none;
+        border-image-source: none;
+        border-image-slice: 100% 100% 100% 100%;
+        border-image-width: 1 1 1 1;
+        border-image-outset: 0 0 0 0;
+        border-image-repeat: stretch stretch;
+    }
+</style>
+<div class="body3">
+    <div class="main zerogrid">
+        <br>
+        <?php
+        if(isset($sMsg) && ($sMsg != "")){
+        echo $sMsg;
+        }
+        //  print_r($aTable2);
+        ?>
+        <!-- content -->
+        <article id="content">
+            <form action="processcampaign.php" method="post" class="niceform1" id="f1" enctype="multipart/form-data">
+                <fieldset>
+                    <div class="CSSTableGenerator">
+                        <table class="responsive">
+                            <tr>
+                                <!--                                <td>Group <?php echo $sTable1;?> Fields</td>-->
+                                <td>Merge Group Fields</td>
+                                <td>Map To Group <?php echo $sTable2;?> Fields</td>
+                            </tr>
+                            <?php 
+                            if ((sizeof($aTable1) != 0) or (sizeof($aTable2) != 0)){
+                            if(sizeof($aTable1)>=sizeof($aTable2)){
+                            $size = sizeof($aTable1);
+                            }else{
+                            $size = sizeof($aTable2);
+                            }
+                            for($i=0;$i<$size;$i++){
+                            //foreach($aTable1 as $sField){
+                            $sField = isset($aTable1[$i])?$aTable1[$i]:'';
+                            $text = $sField."_text".$i;
+                            $select = $sField."_select".$i;
+                            if($sField!=''){
+                            $value = $sField;
+                            $input = "<input type = \"text\" name=$text id=$text style='width:100%;' value='".$value."' readOnly>";
+                            }else{
+                            $value = 'UserChoice'.$i;
+                            $input = "<input type = \"text\" name=$text id=$text style='width:100%;' value='".$value."' required>";
+                            }
+                            if($sField == 'Subscription'){
+                            echo"<tr style='display: none;'>";
+                            }else{
+                            if($sField == 'ID'){
+                            echo"<tr style='display: none;'>";
+                            }else{
+                            echo"<tr>";
+                            }
+                            }
+                            echo "<td>";
+                            echo $input;
+                            echo "</td>";
+                            echo "<td>";
+                            echo "<select name=$select id=$select style='width:100%;' onChange='' required>";
+                            echo "<option value='Select Field'>Select Field</option>";
+                            foreach($aTable2 as $sTableF){
+                            if($sTableF != "UserID"){
+                            echo "<option value = '".$sTableF."' >$sTableF</option>";
+                            }
+                            }
+                            echo "</select>";
+                            echo "</td>"; 
+                            echo "</tr>";
+                            }
+                            }else{
+                            echo"<tr>";
+                            echo " <td>";
+                            echo "No Tables Available";
+                            echo "</td>";
+                            echo"</tr>";
+                            }
+                            ?>
+                        </table>
+                    </div>
+                </fieldset>
+                <?php
+                //  print_r($aTable2);
+                ?>
+                <input type="hidden" name="table1" id = "table1" value=<?php echo $sTable1; ?>>
+                       <input type="hidden" name="table2" id = "table2" value=<?php echo $sTable2; ?>>
+                       <input type="hidden" name="campaign_name" id = "campaign_name" value=<?php echo $campaign_name; ?>>
+                       <input type="hidden" name="pm_id" id = "pm_id" value=<?php echo $sProcessCampaignMainID; ?>>
+                       <input type="hidden" name="campaign_id" id = "campaign_id" value=<?php echo $campaign_list; ?>>
+                       <input type="hidden" name="campaign_f_date" id = "campaign_f_date" value=<?php echo $campaign_from_date; ?>>
+                       <input type="hidden" name="campaign_t_date" id = "campaign_t_date" value=<?php echo $campaign_to_date; ?>>
+                       <input type="hidden" name="tablename" id = "tablename" value=<?php echo $sMainTableName; ?>>
+                       <!-- <input type="hidden" name="userlist" id = "tablename" value=<?php echo $sList; ?>>!-->
+                       <?php 
+                       $i=3;
+                       foreach(@$aListName as $sList){
+                       echo "<input type=\"hidden\" name=\"table$i\" id = \"table$i\" value=$sList>";
+                       $i++;
+                       }
+                       ?>
+                       <div class="camp-form">
+                    <dl class="submit" style="width:315px;">
+                        <button type = "submit" class="button2" onclick="window.location.href = 'processcampaign.php'" >Back</button> 
+                        <button class="button2" name="action" type="submit" value="merge_tables">Merge Tables</button>
+                    </dl>
+
+                </div>
+                <br>
+            </form>
+        </article>
+    </div>
+    <!-- content end -->
+</div>
+<?php
+include("common/footer.html");
+?>

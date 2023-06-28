@@ -1,0 +1,69 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 25/08/2014                                      *
+* Created By : Mahendra A                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Mahendra Akula     Date : 25/08/2014    Version : V1  *
+* Description : View Statistics                      *
+*****************************************************************/
+
+include("common/header.html");
+?>
+<style>
+    .camp-form .button3{
+        font-weight:bold;
+    }
+</style>
+<div class="body3">
+    <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+            <div class="box">				
+                <div class="camp-form">
+                    <center><header>Campaign Statistics</header></center>
+
+                    <fieldset>					
+
+                        <div class="row">
+                            <section class="col col-6" align="center">
+                                <a  class="button3" href = 'mailstatistics_graph.php'><center>Mail Statistics by Campaign</center></a>
+                            </section>
+
+                            <section class="col col-6">
+                                <a  class="button3" href = 'overal_mail_statistics.php'><center>Overal Mai Status Report</center></a>
+                            </section>
+
+                            <section class="col col-6">
+                                <a  class="button3" href = 'visitor_tracking_report.php'><center>Visitor statistics Report by Campaign</center></a>
+                            </section>
+                            <section class="col col-6">
+                                <a  class="button3" href = 'visitors_by_ip.php'><center>Visitor Tracking statistics by IP Address</center></a>
+                            </section>
+                            <section class="col col-6">
+                                <a  class="button3" href = 'view_campaign_statistics.php'><center>Go Back</center></a>
+                            </section>
+                        </div>				
+                    </fieldset>
+                </div>
+            </div>		
+        </article>
+        <!-- content end -->
+    </div>
+</div>
+<style>
+    .camp-form .button3 {
+        background-color: #660066;
+        opacity: 0.8;
+        transition: opacity 0.2s ease 0s;
+    }
+</style>
+<style>
+    .camp-form .col {
+        padding-left: 70px;
+    }
+</style>
+<?php
+include("common/footer.html");
+?>

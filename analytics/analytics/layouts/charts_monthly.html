@@ -1,0 +1,185 @@
+<?php
+/*************************************************************************
+ * Ideabytes Software India Pvt Ltd.                        		     *
+ * 50 Jayabheri Enclave, Gachibowli, HYD                          		 *
+ * Created Date : 22/08/2014                                      		 *
+ * Created By : Sri Ravi Teja                                            *
+ * Vision : Project Visitortracking MVC                              	 *  
+ * Modified by : Sri Ravi Teja    Date : 22/08/2014  Version : 2.0   	 *
+ * Description : Displays statistics of charts_monthly                   *
+ ************************************************************************/
+ include "layouts/common/header.html";
+ ?>
+ <head>
+    <!-- CSS3 Tooltip style begins -->
+	<style>
+			a.tooltip {
+				outline: none;
+				text-decoration: none;
+				//border-bottom: dotted 1px blue;
+				position: relative;
+			}
+
+			a.tooltip strong {
+				line-height: 30px;
+			}
+
+			a.tooltip > span {
+				width: 300px;
+				padding: 10px 20px;
+				margin-top: 0;
+				margin-left: -120px;
+				opacity: 0;
+				visibility: hidden;
+				z-index: 10;
+				position: absolute;
+				font-family: Arial;
+				font-size: 12px;
+				font-style: normal;
+				border-radius: 3px;
+				box-shadow: 2px 2px 2px #999;
+				-webkit-transition-property: opacity, margin-top, visibility, margin-left;
+				-webkit-transition-duration: 0.4s, 0.3s, 0.4s, 0.3s;
+				-webkit-transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+				transition-property: opacity, margin-top, visibility, margin-left;
+				transition-duration: 0.4s, 0.3s, 0.4s, 0.3s;
+				transition-timing-function: 
+					ease-in-out, ease-in-out, ease-in-out, ease-in-out;
+			}
+
+			/*a.tooltip > span:hover,*/
+			a.tooltip:hover > span {
+				opacity: 1;
+				text-decoration: none;
+				visibility: visible;
+				overflow: visible;
+				margin-top: 50px;
+				display: inline;
+				margin-left: -90px;
+			}
+
+			a.tooltip span b {
+				width: 15px;
+				height: 15px;
+				margin-left: 40px;
+				margin-top: -19px;
+				display: block;
+				position: absolute;
+				-webkit-transform: rotate(-45deg);
+				-moz-transform: rotate(-45deg);
+				-o-transform: rotate(-45deg);
+				transform: rotate(-45deg);
+				-webkit-box-shadow: inset -1px 1px 0 #fff;
+				-moz-box-shadow: inset 0 1px 0 #fff;
+				-o-box-shadow: inset 0 1px 0 #fff;
+				box-shadow: inset 0 1px 0 #fff;
+				display: none\0/;
+				*display: none;
+			}    
+
+			a.tooltip > span {
+				color: #000000; 
+				background: #FBF5E6;
+				background: -webkit-linear-gradient(top, #FBF5E6, #FFFFFF);
+				background: linear-gradient(top, #FBF5E6, #FFFFFF);	    
+				border: 1px solid #CFB57C;	     
+			}    
+				  
+			a.tooltip span b {
+				background: ##000000;
+				border-top: 1px solid #CFB57C;
+				border-right: 1px solid #CFB57C;
+			}
+		</style> 
+	<!-- CSS3 Tooltip style ends -->
+	</head>
+<div id="box">
+	<form action="charts_monthly.php" method="post">
+		Choose Date: <input type="text" name="date" id="date" value="<?php echo $get_date; ?>">
+		
+		Category : <select name="category" id="category">
+			<option value="Country" <?php echo ($get_category == "Country") ? "selected" : ""; ?>>Country</option>
+			<option value="Page" <?php echo ($get_category == "Page") ? "selected" : ""; ?>>Page</option>
+			<option value="Country-City" <?php echo ($get_category == "Country-City") ? "selected" : ""; ?>>Country-City</option>
+		</select>
+		<input type="hidden" name="customer_id" id="customer_id" value="<?php echo $logininfo["customer_id"];?>">
+		<input type="submit" name="sbtn" id="sbtn" value="submit">
+	</form>
+	<br><br>
+	<?php
+	if($stmt->rowCount() > 0)
+	{
+	?>
+	<table>
+		<tr>
+			
+			<td valign="top" align="center">
+				
+				<img src="<?php echo $fileName; ?>?<?php echo rand(); ?>">
+			</td>
+			<td valign="top" style="padding-top:20px;padding-left:0px">
+			
+			<table cellpadding="5" style="border:1px solid black;border-collapse:collapse;">
+			  <thead>
+				<th style='border:1px solid black;'>Code</th>
+			  	<th style='border:1px solid black;'><?php echo $get_category; ?></th>				
+				<th style='border:1px solid black;'>Clicks</th>
+			  </thead>
+					<?php 
+						
+					foreach($code_display_array as $value){
+								echo "<tr><td style='border:1px solid black;'>".$value['short_name']."</td><td style='border:1px solid black;'>".$value['full_name']."";
+								if(count($value['cityinfo']) > 0){
+									echo " <table cellpadding='5' width='100%' style='border:1px solid black;border-collapse:collapse;'><thead><th style='border:1px solid black;'>City</th><th style='border:1px solid black;'>Clicks</th></thead>";
+										foreach($value['cityinfo'] as $key1=>$value1){
+											echo "<tr><td style='border:1px solid black;'>".$value1['city']."</td><td style='border:1px solid black;'>".$value1['clicks']."</td></tr>";
+										}
+									echo "</table>";
+								}
+								echo "</td><td style='border:1px solid black;'>".$value['clicks']."</td></tr>";
+								
+							}
+					?>
+			</table>
+		 
+			</td>
+		</tr>
+	  
+	</table>
+	<?php
+	}else{
+		
+		echo "<h2>No Reports for the date </h2>";
+	}
+	?>
+</div>
+<?php
+include "layouts/common/footer.html";
+?>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+ <script>
+$(function() {
+	$( "#date" ).datepicker({
+
+	defaultDate: "+1w",
+
+	changeMonth: true,
+
+	numberOfMonths: 1,
+
+	dateFormat: "yy-mm-dd"
+	
+
+	});
+	
+});
+</script>
+<script>
+$(document).ready(function() {
+   $('#DropDownTimezone1').hide();   
+});
+</script>

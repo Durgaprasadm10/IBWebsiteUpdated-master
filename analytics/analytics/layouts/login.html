@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+	<head>
+	  <meta charset="utf-8" />
+	  
+	  <!-- Set the viewport width to device width for mobile -->
+	  <meta name="viewport" content="width=device-width" />
+	  
+	  <title>Dash Board Summury</title>
+	  
+	  <link rel="stylesheet" href="layouts/css/globals.css">
+	  <link rel="stylesheet" href="layouts/css/grid.css">
+	  <link rel="stylesheet" href="layouts/css/mobile.css">
+	  <link rel="stylesheet" href="layouts/css/formadm.css">
+	  <link href="layouts/css/modalPopLite1.3.0/modalPopLite1.3.0.css" rel="stylesheet" type="text/css" />
+	  <!--[if lt IE 9]>
+	  <link rel="stylesheet" href="layouts/css/ie.css">
+	  <![endif]-->
+	  <!-- IE Fix for HTML5 Tags -->
+	  <!--[if lt IE 9]>
+	  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	  <![endif]-->
+	  <script src="layouts/js/jquery.min.js"></script>
+	  <script src="layouts/css/modalPopLite1.3.0/modalPopLite1.3.0.min.js" type="text/javascript"></script>
+	  <script type="text/javascript">
+		$(function () {
+			$('#popup-wrapper').modalPopLite({ openButton: '#error', closeButton: '#close-btn', isModal: true });
+			$('#resetPwdSuccess').modalPopLite({ openButton: '#success', closeButton: '#close-btn', isModal: true });
+			$('#resetPwdTriggerDiv').modalPopLite({ openButton: '#resetPwdTrigger', closeButton: '#close-btn', isModal: true });
+		});
+	  </script>
+	  <style type="text/css">
+		/* CSS Reset */
+		    
+		#error
+			font-size:20px;
+			cursor:pointer;
+		} 
+		#error2
+		{
+			font-size:20px;
+			cursor:pointer;
+		}
+		#popup-wrapper
+		{
+			width:250px;
+			height:200px;
+			background-color:#ff6e72;
+			padding:5px;
+			text-align:center;
+			color:#ffffff;
+		}
+		#popup-wrapper3
+		{
+			width:250px;
+			height:140px;
+			background-color:#00FFCC;
+			padding:5px;
+			text-align:center;
+		}
+		#resetPwdTrigger
+		{
+			font-size:14px;
+			cursor:pointer;
+		}
+		#resetPwdTriggerDiv
+		{
+			width:400px;
+			height:185px;
+			background-color:#ff6e72;
+			padding:5px;
+			text-align:center;
+			color:#000000;
+			background: rgb(252,245,239); /* Old browsers */
+			background: -moz-linear-gradient(top, rgba(252,245,239,1) 22%, rgba(247,216,193,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(22%,rgba(252,245,239,1)), color-stop(100%,rgba(247,216,193,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, rgba(252,245,239,1) 22%,rgba(247,216,193,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, rgba(252,245,239,1) 22%,rgba(247,216,193,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, rgba(252,245,239,1) 22%,rgba(247,216,193,1) 100%); /* IE10+ */
+			background: linear-gradient(to bottom, rgba(252,245,239,1) 22%,rgba(247,216,193,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcf5ef', endColorstr='#f7d8c1',GradientType=0 ); /* IE6-9 */
+		}
+		#resetPwdSuccess{
+			width:400px;
+			height:170px;
+			background-color:#ff6e72;
+			padding:5px;
+			text-align:center;
+			color:#000000;
+			background: rgb(252,245,239); /* Old browsers */
+			background: -moz-linear-gradient(top, rgba(252,245,239,1) 22%, rgba(247,216,193,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(22%,rgba(252,245,239,1)), color-stop(100%,rgba(247,216,193,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, rgba(252,245,239,1) 22%,rgba(247,216,193,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, rgba(252,245,239,1) 22%,rgba(247,216,193,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, rgba(252,245,239,1) 22%,rgba(247,216,193,1) 100%); /* IE10+ */
+			background: linear-gradient(to bottom, rgba(252,245,239,1) 22%,rgba(247,216,193,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcf5ef', endColorstr='#f7d8c1',GradientType=0 ); /* IE6-9 */
+		}
+		#resetPwdTriggerDiv label {
+			padding-left:5px;
+			padding-top: 5px;
+			float:left;
+			color:#003;
+		}	
+		#resetPwdTriggerDiv input {
+			width:380px;
+			height:23px;
+			font-size:16px;
+			text-align:left;
+			float:right;
+		}
+
+		.button {
+			float: right;
+			height: 39px;
+			overflow: hidden;
+			margin-top:17px;
+			margin-right:11px;
+			padding: 0 25px;
+			outline: none;
+			border: 0;
+			font: 500 15px/39px 'Open Sans', Helvetica, Arial, sans-serif;
+			text-decoration: none;
+			color: #000000;
+			cursor: pointer;
+			background: rgb(255,255,255); /* Old browsers */
+			background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(219,219,219,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(219,219,219,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(219,219,219,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(219,219,219,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(219,219,219,1) 100%); /* IE10+ */
+			background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(219,219,219,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dbdbdb',GradientType=0 ); /* IE6-9 */
+			border: 1px solid;
+		}
+
+		#clear {
+			clear:both;
+		 }
+	</style>
+	</head>
+	<body>
+		<!-- container -->
+		<div class="container">
+			<div class="row">
+				<div class="twelve columns">
+					<header>
+						<div class="four columns">
+							<div id="logo">
+							<img src="layouts/images/qezy_tv.png" alt="Qezytv" width="176" height="100">
+							</div>
+						</div>
+						<div class="four columns">
+							<div id="hedtext">
+								<h3>ANALYTICS</h3>
+								<h4>Administration & Reporting</h4>
+							</div>
+						</div>
+						<div class="four columns">
+							<div id="version">
+								<span>Version No:IB-Qtv-1.1.0</span>
+							</div>
+						</div>
+				  </header>
+				</div>
+			</div>
+			<div class="row">
+				<div class="twelve columns" >
+				</div>
+			</div>
+			<div class="row">
+				<div class="twelve columns">
+					<form action="login.php" method="POST" class="dash-form" >
+						<fieldset>
+							<section>
+								<div class="row">
+									<label class="label">Please Enter Your Email</label>
+									<label class="input">
+										<i class="icon-append icon-user"></i>
+										<input type="email" name="username" id="username" value="" required>
+									</label>
+								</div>
+							</section>
+							<section>
+								<div class="row">
+									<label class="label">Please Enter your Password</label>
+									<label class="input">
+										<i class="icon-append icon-lock"></i>
+										<input type="password" name="userpass" id="userpass" value="" required>
+									</label>
+								</div>
+							</section>							
+							<section>
+								<div class="row">
+									<div class="note" id="resetPwdTrigger"><a href="#">Reset password</a></div>
+									<input type="hidden" name="action" id="action" value="login">
+									<button type="submit" class="button">Log in</button>
+								</div>
+							</section>
+							<section>
+								<div class="row">
+									
+								</div>
+							</section>
+						</fieldset>
+					</form>
+				
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="twelve columns">
+					<div id="copyright">
+						<img src="layouts/images/logo.png" alt="logo" width="150" height="63">
+					</div>
+				</div>
+			</div>
+		</div>	
+		<div id="error"></div>
+		<div id="popup-wrapper">
+			<a href="#" id="close-btn" style="float:right;"><img src="layouts/images/delete.png" alt="delete"></a>
+			<h2 style="color:#fff; margin-top:0px" >ERROR!</h2><br />
+			<p><?php echo $sMsg_for_error_box; ?></p>
+		</div>
+		<div class="six columns">
+			<div id="resetPwdTrigger"></div>
+			<div id="resetPwdTriggerDiv" class="">
+				<h5 style="color:#000000; margin-top:0px" >ANYLITICS PASSWORD RESET</h5><br />
+				<form action="login.php" method="POST">
+					<label class="label" >Please Enter Your Email</label>
+					<label class="input" >
+						<input type="email" name="femail" id="femail" value="" required>
+					</label>
+					<div id="clear"></div>
+				
+				<input type="hidden" name="action" id="action" value="resetPasseword">
+				<button type="close" id="close-btn" class="button">Close</button>
+				<button type="submit"  class="button">Reset Password</button>
+				</form>
+			</div>
+		</div>
+		<div class="six columns">
+			<div class="row">
+				<div id="success">
+					&nbsp;
+				</div>
+				<div id="resetPwdSuccess" >
+					<h5 style="color:#000000;margin-top:0px">ANYLITICS PASSWORD RESET</h5><br />
+					<p style="font-weight:bold">
+						Email with reset link has been sent to your email. <br>
+						It will be active for 5 Hr
+					</p>
+					<button type="close" id="close-btn" class="button">Ok</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+	<?php if(isset($sMsg)){
+		if(($sMsg == 2) || ($sMsg == 3) || ($sMsg == 4)){
+	?>
+		$(function () {
+			$("#error").click();
+		});
+	<?php
+		}else if($sMsg == 1){
+		?>
+		$(function () {
+			$("#success").click();
+		});
+		<?php
+		}
+	}
+	?>
+</script>

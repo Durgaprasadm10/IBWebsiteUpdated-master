@@ -1,0 +1,187 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Pradeep G                                         *
+* Vision : Project Campaign manager                              *
+* Modified by : Pradeep G     Date : 28/08/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("common/header.html");
+if(@$weekend == 1){
+$weeeke = 'checked';
+}else{
+$weeeke = '';
+}
+?>
+<div class="body3">
+    <div class="main zerogrid">
+        <?php
+        if(isset($sMsg) && ($sMsg != "")){
+        echo $sMsg;
+        }
+        ?>
+        <!-- content -->
+        <article id="content">
+
+            <!--            <h2>Process Campaign</h2>-->
+            <form action="processcampaign.php" method="post" class="niceform1" id="process_campaign_action" enctype="multipart/form-data">
+                <fieldset>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">Select Campaign Name <span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <select name="campaign_list" id="campaign_list" style="width:250px;" required>
+                                <option value=''>Select Campaign</option>
+                                <?php 
+                                if($count > 0)
+                                {
+
+                                foreach($campaignList as $data)
+                                {
+                                if (@$campaign_id == $data['id']) {
+                                $selected = 'selected';
+                                } else {
+                                $selected = '';
+                                }
+                                $campa_id = $data['id']; 
+                                $campa_name = $data['campaign_name']; ?>
+                                <option value="<?php echo $campa_id; ?>" <?php echo $selected; ?>><?php echo $campa_name;?></option>
+                                <?php }
+                                } ?>
+                            </select>
+                            <div class="camp-form">
+                                <button type = "button" class="button2" onclick="getCampaignValue();" >Preview Campaign</button> 
+                            </div>
+                            <!--                            <a href="#" id="campaign_preview" class="bt_green" onClick='getCampaignValue();'><span class="bt_green_lft"></span><strong>Preview Campaign</strong><span class="bt_green_r"></span></a>-->
+                        </dd> 
+                    </dl>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">Select User List <span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <select name="user_list[]" id="user_list" style="width:250px;" required multiple>
+                                <!-- <option value='Select UserList'>Select UserList</option> !-->
+                                <?php 
+                                if($usercount > 0)
+                                {
+                                foreach($userList as $data)
+                                {                                
+                                $list_id = $data['id']; 
+                                $list_name = $data['listname'];
+
+                                if(in_array($list_name,$user_list)){
+                                $selected = 'selected';
+                                }else{
+                                $selected = '';
+                                }
+                                ?>
+                                <option value=<?php echo $list_name; ?> <?php echo $selected; ?>><?php echo $list_name;?></option>
+                                <?php }
+                                } ?>
+                            </select>
+                            <!--<a href="#" id="view_userList" class="bt_green"><span class="bt_green_lft"></span><strong>View Users Details</strong><span class="bt_green_r"></span></a>!-->
+                        </dd> 
+                    </dl>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">Select Start Date <span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <input type = "text" name="campaign_from_date" id="from" value="<?php echo @$campaign_from_date;?>" style="width:250px;" required>
+                        </dd> 
+                    </dl>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">Select End Date <span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <input type = "text" name="campaign_to_date" id="to" value="<?php echo @$campaign_to_date;?>" style="width:250px;" required>
+                        </dd> 
+                    </dl>
+					<dl>
+                        <dt style="text-align: left;">
+                        <label for="">Subject to mention in the Mail<span class="mandatory">*</span>:</label>
+                        </dt>
+                        <dd>
+                            <input type = "text" name="campaign_subject" id="campaign_subject" value="<?php echo @$campaign_subject;?>" style="width:250px;" required>
+                        </dd> 
+                    </dl>
+                    <dl>
+                        <dt style="text-align: left;">
+                        <label for="">Sent on Week end<span ></span>:</label>
+                        </dt>
+                        <dd>
+                            <input type="checkbox"  name="weekend" id="weekend" value="1" <?php echo @$weeeke; ?>>
+                        </dd> 
+                    </dl>                  
+                </fieldset>
+                <div class="camp-form">
+                    <dl class="submit" style="width:315px;">
+                        <button class="button2" name="action" type="submit" value="add">Process Campaign</button>
+                        <button type = "button" class="button2" onclick="window.location.href = 'dashboard.php'" >Back</button> 
+                    </dl>
+                </div>
+                <br>
+            </form>
+
+        </article>
+    </div>
+    <!-- content end -->
+</div>
+
+<?php
+include("common/footer.html");
+?>
+<link rel="stylesheet" href="layouts/css/style_datepicker.css">
+
+<script src="layouts/js/js_datepicker.js"></script>
+<script>
+                            $(function() {
+                                $("#from").datepicker({
+                                    defaultDate: "+1w",
+                                    changeMonth: true,
+                                    dateFormat: 'yy-mm-dd',
+                                    numberOfMonths: 1,
+                                    onClose: function(selectedDate) {
+                                        $("#to").datepicker("option", "minDate", selectedDate);
+                                    }
+                                });
+                                $("#to").datepicker({
+                                    defaultDate: "+1w",
+                                    changeMonth: true,
+                                    dateFormat: 'yy-mm-dd',
+                                    numberOfMonths: 1,
+                                    onClose: function(selectedDate) {
+                                        $("#from").datepicker("option", "maxDate", selectedDate);
+                                    }
+                                });
+                            });
+</script>
+<script>
+    function formReset() {
+        document.getElementById('process_campaign_action').reset();
+    }
+</script>
+<script>
+    function getCampaignValue()
+    {
+        var campaign_id = document.getElementById("campaign_list").value;
+        if (campaign_id === "") {
+            alert("Please select Campaign");
+        } else {
+            var url = "campaign_preview.php?cmid=".concat(campaign_id);
+            window.open(url, 'MYWINDOW', 'WIDTH=600,HEIGHT=300');
+        }
+    }
+    function getUserList()
+    {
+        var list_id = document.getElementById("user_list").value;
+        document.getElementById("view_userList").href = "view_userList.php?listid=".concat(list_id);
+        document.getElementById("view_userList").target = "_blank";
+    }
+</script>

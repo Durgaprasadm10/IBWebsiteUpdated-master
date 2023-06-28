@@ -1,0 +1,61 @@
+/* ----------------------------------------------------------------------
+	Base Colors
+-------------------------------------------------------------------------*/
+/*Colors*/
+/*Typography*/
+/*Header*/
+/*Side Panel*/
+/*Margins*/
+/*Transitions*/
+/* ----------------------------------------------------------------------
+    call-to-action (call to action)
+-------------------------------------------------------------------------*/
+.call-to-action {
+  position: relative;
+  overflow: hidden;
+  padding: 36px 40px 24px;
+  margin-bottom: 40px; }
+  .call-to-action .container {
+    position: relative; }
+  .call-to-action h3 {
+    margin-top: 10px;
+    font-weight: 600;
+    margin-bottom: 10px; }
+    .call-to-action h3 span {
+      color: #1abc9c !important; }
+  .call-to-action p {
+    margin-top: 0; }
+  .call-to-action a.btn {
+    margin-top: 20px; }
+  .call-to-action.call-to-action-border {
+    background: #fff;
+    border: 1px solid #eee; }
+  .call-to-action.call-to-action-colored {
+    background-color: #1abc9c; }
+    .call-to-action.call-to-action-colored h3,
+    .call-to-action.call-to-action-colored p {
+      color: #ffffff; }
+    .call-to-action.call-to-action-colored h3 span {
+      color: #ffffff !important; }
+  .call-to-action.call-to-action-dark {
+    background-color: #252525; }
+    .call-to-action.call-to-action-dark h3,
+    .call-to-action.call-to-action-dark p {
+      color: #ffffff; }
+  .call-to-action.cta-center {
+    text-align: center; }
+    .call-to-action.cta-center [class*="col-"] {
+      width: 100%;
+      clear: both;
+      display: block; }
+  .call-to-action.cta-right {
+    text-align: right; }
+    .call-to-action.cta-right [class*="col-"]:first-child {
+      float: right; }
+
+@media (max-width: 991px) {
+  .call-to-action {
+    padding: 26px 12px 18px; }
+
+  [class*="col-"] > .call-to-action {
+    padding: 26px 26px 18px; } }

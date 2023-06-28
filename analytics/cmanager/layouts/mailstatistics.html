@@ -1,0 +1,150 @@
+<?php
+/******************************************************************
+* Ideabytes Software India Pvt Ltd.                              *
+* 50 Jayabheri Enclave, Gachibowli, HYD                          *
+* Created Date : 04/02/2014                                      *
+* Created By : Mahendra Akula                                        *
+* Vision : Project Campaign manager                              *
+* Modified by : Mahendra Akula     Date : 26/05/2014    Version : V1  *
+* Description : Home page - content area                         *
+*****************************************************************/
+
+include("common/header.html");
+?>
+<link rel="stylesheet" href="layouts/css/table.css">
+<div class="body3">
+    <div class="main zerogrid">
+        <!-- content -->
+        <article id="content">
+            <!--			<img src='layouts/images/stats.png'/>-->
+            <form id="getTracking" name="getTracking" method="GET" action=''>
+                <table align="right">
+                    <tr>
+                        <td>Select Campaign</td>
+                        <td>
+                            <select id="pid" name="pid" onchange='this.form.submit()'">
+                                <?php
+                                foreach($aPMList as $data)
+                                {
+                                @$id =$_REQUEST['pid'];
+                                ?>
+                                <option value="<?php echo $data['pid'];?>" <?php if(@$id==$data['pid']) echo 'selected';else echo ''; ?>><?php echo $data['campaign_name'].'('.$data['pid'].')';?></option>
+                                <?php   }
+                                ?>
+                            </select> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td>
+                            <input type = "text" name="campaign_date" id="from" onchange='this.form.submit()' value="<?php  $date = isset($_REQUEST['campaign_date'])?$_REQUEST['campaign_date']:''; echo $date;?>" style="width:250px;" required>
+                        </td>
+                    </tr>
+                </table>
+                <br/><br/><br/>
+                <table border="1" id='example'>
+                    <thead>
+                        <?php 
+                        echo "<tr bgcolor='#CC3333'>";
+                        echo "<th><font color='white'>User EmailID</font></th>";
+                        echo "<th><font color='white'>Campaign Name(ID)</font></th>";
+                        echo "<th><font color='white'>Date</font></th>";
+                        echo "<th><font color='white'>Mail Status</font></th>";
+                        echo "<th><font color='white'>Status on</font></th>";
+                        echo "</tr>";
+
+                        ?>
+                    </thead>
+                    <tbody>				
+                        <?php
+                        if(isset($aCMUserList)){
+                        if(sizeof($aCMUserList)!=0){
+                        $aDefaultGroup = explode(',', DEFAULT_GROUP);
+                        foreach ($aDefaultGroup as $sUserDetails) {
+                        $aUserDetails = explode('#', $sUserDetails);
+                        $aEmailId[] = $aUserDetails[1];
+                        }
+                        //echo "ksjdkv";
+                        foreach($aCMUserList as $data){
+                        // echo "<pre>";
+                        // print_r($data);
+                        if(!in_array($data['user_email'],$aEmailId)){
+                        switch($data['mail_status']){
+
+                        case '0' : $sMS = 'Initiated';
+                        break;
+                        case '1' : $sMS = 'Sent';
+                        break;
+                        case '2' : $sMS = 'Delivered';
+                        break;
+                        case '3' : $sMS = 'Red by User';
+                        break;
+                        case '4' : $sMS = 'Un Delivered';
+                        break;
+                        }//End switch
+                        echo "<tr><td>".$data['user_email']."</td>";
+                        echo "<td>".$sCmName['campaign_name']."(".$data['process_id'].")"."</td>";
+                        echo "<td>".$data['process_date']."</td>";
+                        echo "<td>".$sMS."</td>";
+                        echo "<td>".$data['mail_date']."</td>";
+                        }
+
+                        }//end for
+                        }//endifF
+                        }//end if
+                        ?>
+                    </tbody>
+                </table>
+            </form>
+            <br/>
+            <div class="camp-form">
+                <?php
+                if(sizeof(@$aCMUserList)!=0){
+                if(@$iUDMC>0)
+                echo '<button type = "button" class="button2" onclick="window.location.href = \'sendmailSchedule.php?pid='.$process_id.'\'">Resend Un Delivered Mails</button>'; 
+                }
+                ?>
+                <button type = "button" class="button2" onclick="window.location.href = 'dashboard.php'">Home</button> 
+                <button type = "button" class="button2" onclick="window.location.href = 'view_campaign_statistics.php'">Back</button> 
+            </div>
+            <br>
+        </article>
+        <!-- content end -->
+    </div>
+</div>
+<link rel="stylesheet" href="layouts/css/style_datepicker.css">
+<script src="layouts/js/js_datepicker.js"></script>
+<script>
+                    $(function() {
+                        $("#from").datepicker({
+                            defaultDate: "+1w",
+                            changeMonth: true,
+                            dateFormat: 'yy-mm-dd',
+                            numberOfMonths: 1,
+                            onClose: function(selectedDate) {
+                                $("#to").datepicker("option", "minDate", selectedDate);
+                            }
+                        });
+                        $("#to").datepicker({
+                            defaultDate: "+1w",
+                            changeMonth: true,
+                            dateFormat: 'yy-mm-dd',
+                            numberOfMonths: 1,
+                            onClose: function(selectedDate) {
+                                $("#from").datepicker("option", "maxDate", selectedDate);
+                            }
+                        });
+                    });
+</script>
+<link rel="stylesheet" type="text/css" href="http://www.ideabytestraining.com/CM/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<script>
+                    $(function() {
+                        $("#example").dataTable({
+                            "sPaginationType": "full_numbers"
+                        });
+                    })
+</script>
+<?php
+include("common/footer.html");
+?>
