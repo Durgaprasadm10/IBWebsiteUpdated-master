@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ideabytes
+  labels:
+    app: ideabytes
+  namespace: namespace-workflow-1690798054522
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ideabytes
+  template:
+    metadata:
+      labels:
+        app: ideabytes
+    spec:
+      containers:
+        - name: ideabytes
+          image: acrworkflow1690798054522.azurecr.io/image-workflow-1690798054522:latest
+          ports:
+            - containerPort: 80
